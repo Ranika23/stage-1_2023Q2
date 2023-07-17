@@ -32,6 +32,8 @@
     flex-direction: column;
     justify-content: center;
     font-family: Inter-Regular;
+    font-size: 20px;
+    color: #000;
 }
 /*настройки стиля для header*/
 .header {
@@ -97,7 +99,7 @@
 
 }
 /*настройки стиля для main_welcom*/
-.welcom-container {
+.main-welcom {
     background-image: url("assets/img/Welcome_background.png");
     height: 600px;
     display: flex;
@@ -115,4 +117,68 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     background: #0C0C0E;
+}
+/*настройки стиля для main-about*/
+.main-about {
+    width: 100%;
+    background: #fff;
+    height: 837px;
+    display: flex;
+    flex-direction:column;
+}
+.section-title {
+    font-family: Forum;
+    width: 100%;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 1.5px;
+    margin: 20px 0px;
+    text-align: center;
+    color: #0C0C0E;
+}    
+.section-title::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 50px; 
+    padding-top: 19px;
+    border-bottom: 1px solid #0C0C0E;
+}
+.about-text {
+    width: 100%;
+    margin: 20px 0px;
+    line-height: 40px;
+    text-align: center;
+}
+.about-images {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 20px;
+}
+.about-carousel {
+    display: flex;
+    justify-content: space-around;
+    width: 78px;
+    height: 26px;
+    margin: 40px auto;
+}
+.about-slide {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    border-radius: 50px;
+    background-color: #0C0C0E;
+}
+.about-slide1 {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    border-radius: 50px;
+    background-color: #BB945F;
+}
+.footer {
+    height: 90px;
+    background-color: #0C0C0E;
 }
