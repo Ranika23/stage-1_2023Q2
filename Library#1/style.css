@@ -126,14 +126,14 @@
     display: flex;
     flex-direction:column;
 }
-.section-title {
+.section-title { /*настройка для всех секций main*/
     font-family: Forum;
-    width: 100%;
+    display: inline-block;
     font-weight: 400;
     font-size: 40px;
     line-height: 40px;
-    letter-spacing: 1.5px;
-    margin: 20px 0px;
+    letter-spacing: 2px;
+    margin: 20px auto;
     text-align: center;
     color: #0C0C0E;
 }    
@@ -177,6 +177,90 @@
     margin: 5px;
     border-radius: 50px;
     background-color: #BB945F;
+}
+/*настройки стиля для main-favorites*/
+.main-favorites {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 1439px;
+}
+.autumn-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 -100%;
+    width: 100%;
+    background: #b8420b;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.winter-favorites {
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.spring-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 100%;
+    width: 100%;
+    background: #f5f105;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.summer-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 200%;
+    width: 100%;
+    background: #0d8a33;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.favorites-text {
+    font-family: Inter-Bold;
+    margin: 20px auto 20px 20px;
+    line-height: normal;
+    text-align: start;
+}
+.favorites-radio {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 15px;
+    width: 700px;
+    height: 24px;
+}
+.radio-items:nth-child(1) {
+    font-family: Inter-Bold;
+}
+.radio-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+.input-radio {
+    display: inline-block;
+    height: 112%;
+    width: 17px;
+    margin: 5px 0px 5px 5px;
+    accent-color: #000;
+    cursor: pointer; 
+}
+.label {
+    height: 112%;
+    margin: 5px 5px 5px 0px;
+    padding-left: 20px;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    align-items: center;
 }
 .footer {
     height: 90px;
