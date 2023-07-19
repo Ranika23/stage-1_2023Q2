@@ -19,8 +19,6 @@
 .body {
     width: 1440px;
     margin: 0 auto;
-    border: 1px solid green;
-
 }
 .body-container {
     width: 100%;
@@ -34,6 +32,8 @@
     font-family: Inter-Regular;
     font-size: 20px;
     color: #000;
+    background: #fff;
+    border: 1px solid #1c4f7e;
 }
 /*настройки стиля для header*/
 .header {
@@ -92,7 +92,6 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    border: 1px solid blueviolet;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -180,49 +179,11 @@
 }
 /*настройки стиля для main-favorites*/
 .main-favorites {
-    position: relative;
-    margin: 0;
-    width: 100%;
-    height: 1439px;
-}
-.autumn-favorites [hidden] {
-    display: none;
-    position: absolute;
-    margin: 0 -100%;
-    width: 100%;
-    background: #b8420b;
-    height: 100%;
-    display: flex;
-    flex-direction:column;
-}
-.winter-favorites {
-    position: absolute;
-    margin: 0;
     width: 100%;
     background: #fff;
-    height: 100%;
     display: flex;
-    flex-direction:column;
-}
-.spring-favorites [hidden] {
-    display: none;
-    position: absolute;
-    margin: 0 100%;
-    width: 100%;
-    background: #f5f105;
-    height: 100%;
-    display: flex;
-    flex-direction:column;
-}
-.summer-favorites [hidden] {
-    display: none;
-    position: absolute;
-    margin: 0 200%;
-    width: 100%;
-    background: #0d8a33;
-    height: 100%;
-    display: flex;
-    flex-direction:column;
+    flex-direction: column;
+    height: 1439px;
 }
 .favorites-text {
     font-family: Inter-Bold;
@@ -261,6 +222,145 @@
     letter-spacing: 0.2px;
     cursor: pointer;
     align-items: center;
+}
+.favorites-seasons {
+    position: relative;
+    margin: 20px auto 40px;
+    width: 1400px;
+    height: 1150px;
+    display: flex;
+    
+}
+.autumn-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 -100.3%;
+    padding: 20px;
+    width: 100%;
+    background: #b8420b;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.winter-favorites {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.book-section {
+    display: flex;
+    justify-content: space-between;
+}
+.book1, .book2, .book3, .book4 {
+    position: relative;
+    width: 590px;
+    height: 555px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+.img-book {
+    position: absolute;
+    margin: auto 0px 0px auto
+}
+.items-description {
+    position: absolute;
+    display: flex;
+    right: 40px;
+    height: 100%;
+    width: 550px;
+    border: 1px solid #000;
+}
+.book-description {
+    height: 525px;
+    width: 355px;
+    margin: auto 0px auto 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.staff-pick { 
+    font-family: Forum;
+    display: inline-block;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 40px;
+    text-align: center;
+}    
+.staff-pick::after {
+    content: "";
+    display: block;
+    width: 60px; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid #BB945F;
+}
+.title-description {
+    font-family: Inter-Bold;
+    width: 110%;
+    font-size: 15px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+.title-description span {
+    text-transform: uppercase;
+}
+.text-description {
+    font-size: 15px;
+    font-weight: 400;
+    width: 105%;
+    line-height: 40px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+.button-buy {
+    width: 75px;
+    height: 30px;
+    font-family: Inter-Bold;
+    color: #0C0C0E;
+    font-size: 10px;
+    letter-spacing: 1px;
+    border: 1px solid #0C0C0E;
+    border-radius: 2px;
+    background: #fff;
+    transition: 0.5s;
+}
+.button-buy:disabled {
+    color: #BB945F;
+    border: 1px solid #BB945F;
+    border-radius: 2px;
+}
+.button-buy:not([disabled]):hover{
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    cursor: pointer;
+}
+.spring-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 100.3%;
+    padding: 20px;
+    width: 100%;
+    background: #f5f105;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.summer-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 200.6%;
+    padding: 20px;
+    width: 100%;
+    background: #0d8a33;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
 }
 .footer {
     height: 90px;
