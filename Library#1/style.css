@@ -231,7 +231,7 @@
     height: 1150px;
     display: flex;   
 }
-.autumn-favorites /*[hidden] */{
+.autumn-favorites [hidden] {
     display: none;
     position: absolute;
     width: 100%;
@@ -251,7 +251,7 @@
     justify-content: space-between;
     flex-direction: column;
 }
-.spring-favorites /*[hidden]*/ {
+.spring-favorites [hidden] {
     display: none;
     position: absolute;
     width: 100%;
@@ -259,19 +259,20 @@
     background: #fff;
     display: flex;
     justify-content: space-between;
-    flex-direction:column;
+    flex-direction: column;
     margin: 0 1440px;
 }
 .summer-favorites [hidden] {
     display: none;
     position: absolute;
-    margin: 0 200.6%;
-    padding: 20px;
     width: 100%;
-    background: #0d8a33;
     height: 100%;
+    background: #fff;
     display: flex;
-    flex-direction:column;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 2880px;
+    
 }
 /*настройки стиля для каждого блока favorites-seasons*/
 .book-section {
