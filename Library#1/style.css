@@ -223,34 +223,57 @@
     cursor: pointer;
     align-items: center;
 }
+/*общие настройки стиля для favorites-seasons*/
 .favorites-seasons {
     position: relative;
     margin: 20px auto 40px;
     width: 1400px;
     height: 1150px;
-    display: flex;
-    
+    display: flex;   
 }
-.autumn-favorites [hidden] {
+.autumn-favorites /*[hidden] */{
     display: none;
     position: absolute;
-    margin: 0 -100.3%;
-    padding: 20px;
     width: 100%;
-    background: #b8420b;
     height: 100%;
+    background: #fff;
     display: flex;
+    justify-content: space-between;
     flex-direction:column;
+    margin: 0 -1440px;    
 }
 .winter-favorites {
     position: absolute;
     width: 100%;
-    background: #fff;
     height: 100%;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
+.spring-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 100.3%;
+    padding: 20px;
+    width: 100%;
+    background: #f5f105;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+.summer-favorites [hidden] {
+    display: none;
+    position: absolute;
+    margin: 0 200.6%;
+    padding: 20px;
+    width: 100%;
+    background: #0d8a33;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+}
+/*настройки стиля для каждого блока favorites-seasons*/
 .book-section {
     display: flex;
     justify-content: space-between;
@@ -340,28 +363,13 @@
     background: #BB945F;
     cursor: pointer;
 }
-.spring-favorites [hidden] {
-    display: none;
-    position: absolute;
-    margin: 0 100.3%;
-    padding: 20px;
-    width: 100%;
-    background: #f5f105;
-    height: 100%;
-    display: flex;
-    flex-direction:column;
-}
-.summer-favorites [hidden] {
-    display: none;
-    position: absolute;
-    margin: 0 200.6%;
-    padding: 20px;
-    width: 100%;
-    background: #0d8a33;
-    height: 100%;
-    display: flex;
-    flex-direction:column;
-}
+
+
+
+
+
+
+
 .footer {
     height: 90px;
     background-color: #0C0C0E;
