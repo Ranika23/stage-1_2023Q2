@@ -31,6 +31,8 @@
     justify-content: center;
     font-family: Inter-Regular;
     font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 40px;
     color: #000;
     background: #fff;
     border: 1px solid #1c4f7e;
@@ -130,8 +132,6 @@
     display: inline-block;
     font-weight: 400;
     font-size: 40px;
-    line-height: 40px;
-    letter-spacing: 2px;
     margin: 20px auto;
     text-align: center;
     color: #0C0C0E;
@@ -147,7 +147,6 @@
 .about-text {
     width: 100%;
     margin: 20px 0px;
-    line-height: 40px;
     text-align: center;
 }
 .about-images {
@@ -312,8 +311,6 @@
     font-family: Forum;
     display: inline-block;
     font-weight: 400;
-    letter-spacing: 2px;
-    line-height: 40px;
     text-align: center;
 }    
 .staff-pick::after {
@@ -327,8 +324,6 @@
     font-family: Inter-Bold;
     width: 110%;
     font-size: 15px;
-    line-height: 40px;
-    letter-spacing: 2px;
     margin-bottom: 20px;
 }
 .title-description span {
@@ -338,8 +333,6 @@
     font-size: 15px;
     font-weight: 400;
     width: 105%;
-    line-height: 40px;
-    letter-spacing: 2px;
     margin-bottom: 15px;
 }
 .button-buy {
@@ -364,10 +357,82 @@
     background: #BB945F;
     cursor: pointer;
 }
-
-
-
-
+/*настройки стиля для main-coffeeshop*/
+.main-coffeeshop {
+    width: 100%;
+    height: 841px;
+    padding: 0px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+.coffeeshop-text{
+    width: 1400px;
+    height: 120px;
+    text-align: center;
+    margin: 20px 0px;
+}
+.coffeeshop-menu {
+    width: 100%;
+    height: 520px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu-drink {
+    width: 443px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-eat {
+    width: 466px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.name-price {
+    font-family: Forum;
+    color: #BB945F;
+    font-size: 40px;
+}
+.menu-eat .name-price {
+    text-align: end;
+}
+.drink-item {
+    margin: 40px 0px 0px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.eat-item {
+    margin: 40px 0px 0px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.drink-item .choice-menu {
+    width: 202px;
+}
+.drink-item .item-cost {
+    width: 21px;
+}
+.eat-item .choice-menu {
+    width: 213px;
+    text-align: end;
+}
+.eat-item .item-cost {
+    width: 33px;
+}
+.dash-menu::after {
+    content: "";
+    display: block;
+    width: 98px;
+    height: 100%;
+    margin: 20px 0px;
+    border: 1px solid #BB945F;
+}    
 
 
 
