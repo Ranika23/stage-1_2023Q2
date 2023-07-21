@@ -31,7 +31,7 @@
     justify-content: center;
     font-family: Inter-Regular;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 2%;
     line-height: 40px;
     color: #000;
     background: #fff;
@@ -432,10 +432,194 @@
     height: 100%;
     margin: 20px 0px;
     border: 1px solid #BB945F;
+} 
+/*настройки стиля для main-contact*/
+.main-contacts {
+    width: 100%;
+    height: 575px;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}  
+.contacts-info {
+    width: 100%;
+    height: 414px;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+} 
+.contacts-info-text {
+    width: 503px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 34px;
+}
+.contacts-info-text span {
+    font-family: Inter-Bold;
+}
+.contacts-phone-info {
+    width: 503px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.phone-link {
+    text-decoration: none;
+    text-transform: none;
+    color: #000;
+}
+.contacts-senior-staff {
+    width: 351px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.contacts-senior-staff span {
+    font-family: Inter-Bold;
+}
+.contacts-link {
+    text-decoration: none;
+    text-transform: none;
+    color: #000;
+}
+/*настройки стиля для main-librarycard*/
+.main-librarycard {
+    width: 100%;
+    height: 614px;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+.items-card {
+    height: 533px;
+    padding: 40px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.find-card {
+    height: 453px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.find-card span {
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    line-height: 36px;
+}
+.card-form {
+    width: 600px;
+    height: 390px;
+    border: 3px solid #BB945F;
+    box-shadow: 0 10px 10px -3px #8E8E8E;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px 0px 0px;
+}
+.gold-form {
+    width: 560px;
+    height: 272px;
+    background: #BB945F;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 0px auto 20px;
+}
+.form-name {
+    font-family: Forum;
+    line-height: 50px;
+    margin: 0;
+    font-size: 30px;
 }    
+.input-text {
+    width: 520px;
+    height: 66px;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-top: 8px;
+    padding-left: 20px;
+}
+.input-text::placeholder {
+    font-family: Forum;
+    line-height: 50px;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    margin-top: 8px;
+    margin-left: 20px;
+    color: #8E8E8E;
+}
+.form-button {
+    width: 242px;
+    height: 44px;
+    border: 1px solid #0C0C0E;
+    background: #fff;
+    border-radius: 2px;
+    margin: 0px auto;
+    transition: 0.5s;
+}
+.form-button:hover {
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    cursor: pointer;
+}
+.form-button span {
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+.get-card {
+    width: 456px;
+    height: 253px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+}
+.card-text {
+    letter-spacing: 0.6 px;
+    text-align: right;
+}
 
+.get-card span {
+    font-family: Forum;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+   
+}
 
-
+.get-card-two-button {
+   display: flex;
+}
+.get-card-button {
+    width: 75px;
+    height: 30px;
+    margin-left: 20px;
+    border: 1px solid #0C0C0E;
+    border-radius: 2px;
+    background: #fff;
+    font-weight: 700;
+    transition: 0.5s;
+}
+.get-card-button:hover {
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    cursor: pointer;
+}
+.get-card-button span {
+    font-size: 10px;
+    font-family: Inter-Bord;
+    letter-spacing: 1px;
+    color: #0C0C0E;
+}
 .footer {
     height: 90px;
     background-color: #0C0C0E;
