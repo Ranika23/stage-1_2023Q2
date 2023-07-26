@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="body">
     <div class="body-container">
         <header class="header">
@@ -16,24 +14,24 @@
                 <div class="nav-right">
                     <nav class="nav">
                         <ul class="nav-list">
-                            <li><a class="nav-link" href="#">About</a></li>
-                            <li><a class="nav-link" href="#">Favorites</a></li>
-                            <li><a class="nav-link" href="#">Coffee shop</a></li>
-                            <li><a class="nav-link" href="#">Contacts</a></li>
-                            <li><a class="nav-link" href="#">Library Card</a></li>
+                            <li><a class="nav-link" href="#about">About</a></li>
+                            <li><a class="nav-link" href="#favorites">Favorites</a></li>
+                            <li><a class="nav-link" href="#coffee-shop">Coffee shop</a></li>
+                            <li><a class="nav-link" href="#contacts">Contacts</a></li>
+                            <li><a class="nav-link" href="#library-card">Library Card</a></li>
                         </ul>
                     </nav>
-                    <img class="login" src="assets/img/icon_log-in.png" alt="log_in">
+                    <img class="login" src="assets/svg/icon_log-in.png" alt="log_in">
                 </div>
             </div>
         </header>
         <main class="main">
             <div class="main-container">
-                <div class="main-welcom">
-                    <p class="welcom-item">Welcom <br/> to the Brooklyn <br> Library</p>
-                </div>
-                <div class="main-about">
-                    <div class="section-title">About</div>
+                <section class="main-welcom">
+                    <h2 class="welcom-item">Welcome&nbsp;<br>to the Brooklyn<br>Library</h2>
+                </section>
+                <section class="main-about" id="about">
+                    <h2 class="section-title">About</h2>
                     <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy
                         coffee shop inside</div>
                     <div class="about-images">
@@ -52,31 +50,23 @@
                             <div class="about-slide"></div>
                         </a>
                     </div>
-                </div>
-                <div class="main-favorites">
-                    <div class="section-title">Favorites</div>
+                </section>
+                <section class="main-favorites" id="favorites">
+                    <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
                     <div class="favorites-radio">
-                        <div class="radio-items">
-                            <input class="input-radio" type="radio" id="seasonChoice1" name="seasons" value="winter"
-                                checked>
-                            <label class="label" for="seasonChoice1">Winter</label>
-                        </div>
-
-                        <div class="radio-items">
-                            <input class="input-radio" type="radio" id="seasonChoice2" name="seasons" value="spring">
-                            <label class="label" for="seasonChoice2">Spring</label>
-                        </div>
-
-                        <div class="radio-items">
-                            <input class="input-radio" type="radio" id="seasonChoice3" name="seasons" value="summer">
-                            <label class="label" for="seasonChoice3">Summer</label>
-                        </div>
-
-                        <div class="radio-items">
-                            <input class="input-radio" type="radio" id="seasonChoice4" name="seasons" value="autumn">
-                            <label class="label" for="seasonChoice4">Autumn</label>
-                        </div>
+                        <label class="label">
+                            <input class="input-radio" type="radio" name="seasons" value="winter" checked>
+                            <span>Winter</span></label>
+                        <label class="label">
+                            <input class="input-radio" type="radio" name="seasons" value="spring">
+                            <span>Spring</span></label>
+                        <label class="label">
+                            <input class="input-radio" type="radio" name="seasons" value="summer">
+                            <span>Summer</span></label>
+                        <label class="label">
+                            <input class="input-radio" type="radio" name="seasons" value="autumn">
+                            <span>Autumn</span></label>
                     </div>
                     <div class="favorites-seasons">
                         <div hidden class="autumn-favorites">
@@ -85,7 +75,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Casual Conversation</span><br>
                                                     By Renia White</div>
                                                 <div class="text-description">White's impressive debut collection takes
@@ -104,7 +94,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>The Great Fire</span><br>
                                                     By Lou Ureneck</div>
                                                 <div class="text-description">The harrowing story of an ordinary
@@ -124,8 +114,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
-
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Rickey: The Life and
                                                         Legend</span><br>By Howard Bryant
                                                 </div>
@@ -145,7 +134,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Slug: And Other Stories</span><br>
                                                     By Megan Milks</div>
                                                 <div class="text-description">Exes Tegan and Sara find themselves
@@ -167,7 +156,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>The Book Eaters</span><br>
                                                     By Sunyi Dean</div>
                                                 <div class="text-description">An unusual sci-fi story about a book eater
@@ -186,7 +175,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Cackle</span><br>
                                                     By Rachel Harrison</div>
                                                 <div class="text-description">Are your Halloween movies of choice The
@@ -205,8 +194,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
-
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Dante: Poet of the Secular
                                                         World</span><br>By Erich Auerbach
                                                 </div>
@@ -226,7 +214,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>The Last Queen</span><br>
                                                     By Clive Irving</div>
                                                 <div class="text-description">A timely and revelatory new biography of
@@ -248,7 +236,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>The Body</span><br>
                                                     By Stephen King</div>
                                                 <div class="text-description">Powerful novel that takes you back to a
@@ -264,7 +252,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Carry: A Memoir of Survival on
                                                         Stolen Land</span><br>
                                                     By Toni Jenson</div>
@@ -284,8 +272,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
-
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Days of Distraction</span><br>By
                                                     Alexandra Chang
                                                 </div>
@@ -303,7 +290,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Dominicana</span><br>
                                                     By Angie Cruz</div>
                                                 <div class="text-description">A fascinating story of a teenage girl who
@@ -324,7 +311,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Crude: A Memoir</span><br>
                                                     By Pablo Fajardo & ​​Sophie Tardy-Joubert</div>
                                                 <div class="text-description">Drawing and color by Damien Roudeau | This
@@ -342,7 +329,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Let My People Go Surfing</span><br>
                                                     By Yvon Chouinard</div>
                                                 <div class="text-description">TChouinard—climber, businessman,
@@ -363,8 +350,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
-
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>The Octopus Museum:
                                                         Poems</span><br>
                                                     By Brenda Shaughnessy
@@ -384,7 +370,7 @@
                                     <div class="items-description">
                                         <div class="book-description">
                                             <div>
-                                                <div class="staff-pick">Staff-Picks</div>
+                                                <div class="staff-pick">Staff Picks</div>
                                                 <div class="title-description"><span>Shark Dialogues: A Novel</span><br>
                                                     By Kiana Davenport</div>
                                                 <div class="text-description">An epic saga of seven generations of one
@@ -402,18 +388,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="main-coffeeshop">
-                    <div class="section-title">Coffee Shop</div>
+                </section>
+                <section class="main-coffeeshop" id="coffee-shop">
+                    <h2 class="section-title">Coffee Shop</h2>
                     <div class="coffeeshop-text">In our library, we have of cozy coffee shop, welcoming in customers
                         with frothy cappuccinos and friendly conversation.
-                        you can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and
+                        You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and
                         also you can try desserts from bakery.</div>
                     <div class="coffeeshop-menu">
                         <div class="menu-drink">
-
                             <div class="name-price">Coffee & Tea</div>
-
                             <div class="drink-item">
                                 <div class="choice-menu">Cold Brew Coffee</div>
                                 <div class="dash-menu"></div>
@@ -479,56 +463,80 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="main-contacts">
-                    <div class="section-title">Our Contact</div>
+                </section>
+                <section class="main-contacts" id="contacts">
+                    <h2 class="section-title">Our Contacts</h2>
                     <div class="contacts-info">
                         <div class="contacts-info-text">
                             <div><span>For all Library inquiries:</span></div>
                             <div class="contacts-phone-info">
-                                <div>Please call <a class="phone-link" href="tel:+6177302370">(617) 730-2370</a></div>
-                                <div>For TTY service, please call <a class="phone-link" href="tel:+6177302370">(617) 730-2370</a></div>
-                                <div>Putterham Library: <a class="phone-link" href="tel:6177302385">(617) 730-2385</a></div>
+                                <div>Please call <a href="tel:+76177302370" class="phone-link">(617) 730-2370</a></div>
+                                <div>For TTY service, please call <a href="tel:+76177302370" class="phone-link">(617)730-2370</a></div>
+                                <div>Putterham Library: <a href="tel:+76177302385" class="phone-link">(617) 730-2385</a></div>
                             </div>
                             <div class="contacts-senior-staff">
                                 <div><span>Senior Staff</span></div>
-                                <div>Library Director: <a class="contacts-link" href="mailto:AmandaHirst@gmail.com"><span>Amanda Hirst</span></a></div>
+                                <div>Library Director: <a href="mailto:AmandaHirst@gmail.com" class="contacts-link"><span>Amanda Hirst</span></a></div>
                             </div>
                         </div>
                         <img src="assets/img/contacts-map.png" alt="contacts-map">
-
                     </div>
-                </div>
-                <div class="main-librarycard">
-                    <div class="section-title">Digital Library Cards</div>
+                </section>
+                <section class="main-librarycard" id="library-card">
+                    <h2 class="section-title">Digital Library Cards</h2>
                     <div class="items-card">
-                        <div class="find-card">
-                            <div><span>Find your Library Card</span></div>
-                            <form action="#" class="card-form">
+                        <form action="#" class="find-card">
+                            <div><span>Find your Library card</span></div>
+                            <div class="card-form">
                                 <div class="gold-form">
-                                    <h2 class="form-name">Brooklyn Public Library</h2>
-                                    <input class="input-text" type="text" name="reader's-name" placeholder="Reader's name">
+                                    <div class="form-name">Brooklyn Public Library</div>
+                                    <input class="input-text" type="text" name="reader's-name"
+                                        placeholder="Reader's name">
                                     <input class="input-text" type="text" name="card-number" placeholder="Card number">
                                 </div>
                                 <button class="form-button" type="submit"><span>Cheak the card</span></button>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                         <div class="get-card">
-                            <div><span>Get a reader card</span></div>
-                            <div class="card-text">You will be able to see a reader card after logging into account or you can register a new account</div>
+                            <div class="get-card-title">Get a reader card</div>
+                            <div class="card-text">You will be able to see a reader card after logging into account or
+                                you can register a new account</div>
                             <div class="get-card-two-button">
                                 <button class="get-card-button"><span>Sign Up</span></button>
                                 <button class="get-card-button"><span>Log in</span></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </main>
         <footer class="footer">
-            <div class="container">footer</div>
+            <div class="footer-container">
+                <div class="footer-frame">
+                    <div class="footer-frame-item1">
+                        <div class="footer-frame-item1-text1"><a class="footer-adress" target="_blank" href="https://goo.gl/maps/2LQ5ebURrSND6Cjs6">286 Cadman Plaza, New
+                                York, <br> NY 11238, United States</a></div>
+                        <div class="footer-frame-item1-text2">Mon - Fri <br> 08:00 am - 07:00 pm</div>
+                    </div>
+                    <div class="footer-frame-item2">
+                        <ul class="footer-social-media">
+                            <li><a class="social-link" target="_blank" href="https://twitter.com/i/flow/login?redirect_after_login=%2Frollingscopes"><img src="assets/svg/u_twitter.png" alt="twitter"></a></li>
+                            <li><a class="social-link" target="_blank" href="https://www.instagram.com/rsschool_news/"><img src="assets/svg/u_instagram.png" alt="instagram"></a></li>
+                            <li><a class="social-link" target="_blank" href="https://www.facebook.com/groups/TheRollingScopes/"><img src="assets/svg/u_facebook.png" alt="facebook"></a></li>
+                        </ul>
+                        <div class="footer-frame-item2-text">Sat - Sun <br>10:00 am - 06:00 pm</div>
+                    </div>
+                </div>
+                <div class="footer-line">
+                    <div class="dash-footer"></div>
+                </div>
+                <div class="footer-rss">
+                    <div>2023</div>
+                    <div class="rss">The Rolling Scopes School</div>
+                    <div><a class="account-github" target="_blank" href="https://github.com/Ranika23">Veronika</a></div>
+                </div>
+            </div>
         </footer>
     </div>
 </body>
-
 </html>
