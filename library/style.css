@@ -67,7 +67,7 @@
     font-size: 20px;
     line-height: 50px;
     width: 623px;
-    padding: 0;
+    padding: 0px 10px 0px 0px;
     list-style: none;
     display: flex;
     justify-content: start;
@@ -84,7 +84,7 @@
     text-decoration: underline;
     transition: 0.5s;
 }
-.nav-right {
+.container-right {
     display: flex;
     justify-content: space-between;
 }
@@ -176,12 +176,28 @@
     border-radius: 50px;
     background-color: #0C0C0E;
 }
+.about-slide:hover {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border-radius: 50px;
+    background-color: #BB945F;
+    transition: 0.5s;
+}
 .about-slide1 {
     width: 16px;
     height: 16px;
     margin: 5px;
     border-radius: 50px;
     background-color: #BB945F;
+}
+.about-slide1:hover {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border-radius: 50px;
+    background-color: #BB945F;
+    transition: 0.5s;
 }
 /*настройки стиля для main-favorites*/
 .main-favorites {
@@ -502,6 +518,11 @@
     text-transform: none;
     color: #000;
 }
+.phone-link:hover {
+    color: #BB945F;
+    text-decoration: underline;
+    transition: 0.5s;
+}
 .contacts-senior-staff {
     width: 351px;
     height: 100px;
@@ -516,6 +537,11 @@
     text-decoration: none;
     text-transform: none;
     color: #000;
+}
+.contacts-link:hover {
+    color: #BB945F;
+    text-decoration: underline;
+    transition: 0.5s;
 }
 /*настройки стиля для main-librarycard*/
 .main-librarycard {
@@ -700,6 +726,11 @@
     text-decoration: none;
     color: #fff;
 }
+.footer-adress:hover {
+    color: #BB945F;
+    text-decoration: underline;
+    transition: 0.5s;
+}
 .footer-frame-item1-text2 {
     height: 40px;
     color: #fff;
@@ -733,8 +764,18 @@
     align-items: center;
     list-style: none;
 }
+.social-items {
+    height: 100%;
+}
 .social-link {
+    display: inline-block;
     padding-right: 15px;
+    padding-top: 8px;
+    height: 100%;
+}
+.social-link:hover {
+    padding-top: 2px;
+    transition: 0.5s;
 }
 .footer-line {
     width: 1400px;
@@ -770,7 +811,17 @@
     text-decoration: none;
     color: #fff;
 }
+.rss-link:hover {
+    color: #BB945F;
+    text-decoration: underline;
+    transition: 0.5s;
+}
 .account-github {
     text-decoration: none;
     color: #fff;
+}
+.account-github:hover {
+    color: #BB945F;
+    text-decoration: underline;
+    transition: 0.5s;
 }
