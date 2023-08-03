@@ -23,7 +23,8 @@
     background: #8E8E8E;
 }
 .body-container {
-    width: 1440px;
+    overflow: hidden;
+    max-width: 1440px;
     height: 100%;
     min-height: 100vh;
     margin: 0 auto;
@@ -162,6 +163,21 @@
     width: 100%;
     padding: 0px 20px;
 }
+.about-item1, .about-item2 {
+    display: flex;
+    width: 31,5%;
+    max-height: 100%;
+    margin-right: 25px;
+}
+.about-item3 {
+    display: flex;
+    width: 31,5%;
+    max-height: 100%;
+}
+.about-images-item {
+    max-width: 100%;
+    height: auto;
+}
 .about-carousel {
     display: flex;
     justify-content: space-around;
@@ -257,7 +273,7 @@
 .favorites-seasons {
     position: relative;
     margin: 20px auto 40px;
-    width: 1400px;
+    width: 97.5%;
     height: 1150px;
     display: flex;   
 }
@@ -307,6 +323,7 @@
 .book-section {
     display: flex;
     justify-content: space-between;
+    width: auto;
 }
 .book1, .book2, .book3, .book4 {
     position: relative;
@@ -400,7 +417,7 @@
     flex-direction: column;
 }
 .coffeeshop-text{
-    width: 1400px;
+    max-width: 1400px;
     height: 120px;
     text-align: center;
     margin: 20px 0px;
@@ -703,7 +720,7 @@
     justify-content: space-between;
 }
 .footer-frame {
-    width: 1400px;
+    width: 97.5%;
     height: 90px;
     margin: 20px auto 15px;
     display: flex;
@@ -711,7 +728,7 @@
     justify-content: space-between;
 }
 .footer-frame-item1 {
-    width: 1400px;
+    width: 100%px;
     height: 40px;
     font-size: 15px;    
     display: flex;
@@ -739,7 +756,7 @@
     letter-spacing: 0.2px;
 }
 .footer-frame-item2 {
-    width: 1398px;
+    width: 100%px;
     height: 40px;
     line-height: 20px;
     color: #fff;
@@ -784,7 +801,7 @@
     border-radius: 5px;
 }
 .footer-line {
-    width: 1400px;
+    width: 97.5%;
     height: 26px;
     padding-left: 1px;
     display: flex;
@@ -800,7 +817,7 @@
     border: 1px solid #fff;
 }
 .footer-rss {
-    width: 1400px;
+    width: 97.5%;
     height: 36px;
     margin: 20px auto;
     display: flex;
@@ -830,4 +847,65 @@
     color: #BB945F;
     text-decoration: underline;
     transition: 0.5s;
+}
+@media (max-width: 1439px) {
+    .main-about {
+        height: auto;
+    }
+    .about-carousel {
+        margin-bottom: 3%;
+    }
+    .main-favorites {
+        height: auto;
+    }    
+    .section-title {
+        margin-top: auto;
+    }
+ 
+}
+@media (max-width: 1240px) {
+    .favorites-seasons {
+        height: 2300px;
+        width: auto;
+    }
+    .book-section {
+        flex-direction: column;
+        width: auto;
+        align-items: center;
+    }
+    .book1, .book3 {
+        margin-bottom: 27px;
+    }
+    .main-contacts{
+        height: auto;
+    }
+    .contacts-info {
+        height: auto;
+        flex-direction: column;
+        align-items: start;
+    }
+    .img-map {
+        margin: 0 15% 0 15%;
+    }
+    .main-librarycard {
+        height: auto;
+    }
+    .items-card {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+    .get-card {
+        margin-top: 20px;
+        align-items: center;
+    }
+    .card-text {
+        text-align: center;
+    }
+}
+@media (max-width: 1024px) {
+    .favorites-seasons {
+        height: 2300px;
+        width: auto;
+    }
 }
