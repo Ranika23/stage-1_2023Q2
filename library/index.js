@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("burger").addEventListener("click", function() {
+        document.querySelector(".header").classList.toggle("open")
+    });
+    document.getElementById("menu").addEventListener("click", event => {
+        event._isClickMenu = true;
+    });
+    document.getElementById("burger").addEventListener("click", event => {
+        event._isClickMenu = true;
+    })
+    document.body.addEventListener("click", event => {
+        if (event._isClickMenu) return;
+        document.querySelector(".header").classList.remove("open");
+    })
+    })
 console.log(`
     1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part1.md;
     \n

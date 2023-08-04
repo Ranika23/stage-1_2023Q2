@@ -89,6 +89,55 @@
     display: flex;
     justify-content: space-between;
 }
+.header-burger {
+    display: none;
+    position: relative;
+    padding: auto;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #000;
+    z-index: 2;
+}
+.header-burger span {
+    display: block;
+    position: absolute;
+    left: -3.5px;
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    transition: backgrond-color .5s, opacity .5s, transform .5s;
+    will-change: transform;
+}
+.header-burger:hover {
+    cursor: pointer;
+}
+.header-burger span:nth-child(1) {
+    transform: translateY(-10px);
+}
+.header-burger span:nth-child(3) {
+    transform: translateY(10px);
+}
+/*крестик*/
+.header.open .header-burger {
+    padding: 0; 
+}
+.header.open .header-burger span:nth-child(1) {
+    transform: translateY(0) translateX(-2px) rotate(45deg);
+    width: 45.06px;
+
+}
+.header.open .header-burger span:nth-child(2) {
+    opacity: 0;
+}
+.header.open .header-burger span:nth-child(3) {
+    transform: translateY(0) translateX(-2px) rotate(-45deg);
+    width: 45.06px;
+
+}
+
+
 .login {
     margin: auto 20px auto 0px;
 }
@@ -908,4 +957,51 @@
         height: 2300px;
         width: auto;
     }
+    .container-right {
+        position: relative;
+        width: 332px;
+        padding-right: 13px;
+        justify-content: end;
+        align-items: center;
+    }
+    .nav {
+        position: absolute;
+        right: -332px;
+        top: 0;
+        width: 332px;
+        height: 555px;
+        padding: 51px 20px 30px 20px;
+        background-color: #000;
+        transition: transform .5s, visibility .5s;
+        will-change: transform;
+    }
+    .nav-list {
+        display: inline-block;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding-right: 0; 
+    }
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        line-height: 60px;
+        font-size: 20px;
+        display: inline-block;
+        padding: 10px;
+    }
+    .header-burger {
+        display: block;
+        margin-bottom: 22px;
+    }
+    .header.open .nav {
+        transform: translateX(-100%);
+        visibility: visible;
+    }
+    .login {
+        display: block;
+        position: absolute;
+        right: 72px;
+        bottom: 28px;
+    }  
 }
