@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("burger").addEventListener("click", function() {
-        document.querySelector(".header").classList.toggle("open")
+        document.getElementById("id-header").classList.toggle("open")
     });
-    document.getElementById("menu").addEventListener("click", event => {
+    document.getElementById("nav-menu").addEventListener("click", event => {
         event._isClickMenu = true;
     });
     document.getElementById("burger").addEventListener("click", event => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     document.body.addEventListener("click", event => {
         if (event._isClickMenu) return;
-        document.querySelector(".header").classList.remove("open");
+        document.getElementById("id-header").classList.remove("open");
     })
     })
 console.log(`

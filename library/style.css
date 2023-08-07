@@ -62,6 +62,8 @@
     letter-spacing: 0.02em;
     text-align: left;
     color: #fff;
+    transition: 5s;
+    align-self: center;
 }
 
 .nav-list {
@@ -92,9 +94,8 @@
 .header-burger {
     display: none;
     position: relative;
-    padding: auto;
-    width: 40px;
-    height: 40px;
+    width: 58px;
+    height: 45px;
     border: none;
     outline: none;
     background: #000;
@@ -103,8 +104,7 @@
 .header-burger span {
     display: block;
     position: absolute;
-    left: -3.5px;
-    width: 30px;
+    width: 45px;
     height: 2px;
     background-color: #fff;
     transition: backgrond-color .5s, opacity .5s, transform .5s;
@@ -122,6 +122,8 @@
 /*крестик*/
 .header.open .header-burger {
     padding: 0; 
+    left: 14.5px;
+    top: 2px;
 }
 .header.open .header-burger span:nth-child(1) {
     transform: translateY(0) translateX(-2px) rotate(45deg);
@@ -134,7 +136,15 @@
 .header.open .header-burger span:nth-child(3) {
     transform: translateY(0) translateX(-2px) rotate(-45deg);
     width: 45.06px;
-
+}
+.header.open .login {
+    right: 72px;
+}
+.header.open .container {
+    align-items: start;
+}
+.header.open .container-right {
+    padding-top: 20px;
 }
 
 
@@ -158,6 +168,8 @@
 /*настройки стиля для main_welcom*/
 .main-welcom {
     background-image: url("assets/img/Welcome_background.png");
+    transition: 6s;
+    background-size: 100% 100%;
     height: 600px;
     display: flex;
 }
@@ -167,6 +179,7 @@
     margin-top: 220px;
     padding: 35px 40px;
     color: #fff;
+    font-weight: normal;
     text-align: center;
     font-family: Forum;
     font-size: 40px;
@@ -198,7 +211,7 @@
     display: block;
     margin: 0 auto;
     width: 50px; 
-    padding-top: 19px;
+    padding-top: 20px;
     border-bottom: 1px solid #0C0C0E;
 }
 .about-text {
@@ -211,6 +224,9 @@
     justify-content: space-between;
     width: 100%;
     padding: 0px 20px;
+}
+.carret {
+    display: none;
 }
 .about-item1, .about-item2 {
     display: flex;
@@ -233,6 +249,12 @@
     width: 78px;
     height: 26px;
     margin: 36px auto 44px auto;
+}
+.link-slide:nth-child(4) {
+    display: none;
+}
+.link-slide:nth-child(5) {
+    display: none;
 }
 .about-slide {
     width: 16px;
@@ -281,9 +303,10 @@
 .favorites-radio {
     display: flex;
     justify-content: space-between;
-    margin: 15px 15px;
+    margin: 14px 15px 16px;
     width: 710px;
     height: 34px;
+    transition: 2s;
 }
 .input-radio {
     display: inline-block;
@@ -397,7 +420,7 @@
 .book-description {
     height: 525px;
     width: 358px;
-    margin: auto 0px auto 20px;
+    margin: 12px 0px 17px 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -461,7 +484,7 @@
 .main-coffeeshop {
     width: 100%;
     height: 841px;
-    padding: 0px 20px 40px 20px;
+    padding: 0px 17px 40px 17px;
     display: flex;
     flex-direction: column;
 }
@@ -560,7 +583,7 @@
     justify-content: space-between;
 } 
 .contacts-info-text {
-    width: 507px;
+    width: auto;
     height: 380px;
     letter-spacing: 2px;
     text-transform: capitalize;
@@ -573,7 +596,7 @@
     font-family: Inter-Bold;
 }
 .contacts-phone-info {
-    width: 508px;
+    width: auto;
     height: 160px;
     display: flex;
     flex-direction: column;
@@ -590,11 +613,12 @@
     transition: 0.5s;
 }
 .contacts-senior-staff {
-    width: 351px;
+    width: auto;
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    letter-spacing: 2.1px;
 }
 .contacts-senior-staff span {
     font-family: Inter-Bold;
@@ -751,8 +775,10 @@
 }
 .get-card-button span {
     font-size: 10px;
-    font-family: Inter-Bord;
-    letter-spacing: 1.3px;
+    font-family: Inter-Regular;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-style: normal;
     color: #0C0C0E;
 }
 .footer {
@@ -819,6 +845,7 @@
     line-height: 20px;
     text-align: right;
     font-size: 15px;
+    letter-spacing: 0.2px;
 }
 .footer-social-media {
     width: 102px;
@@ -850,24 +877,26 @@
     border-radius: 5px;
 }
 .footer-line {
-    width: 97.5%;
+    width: 100%;
     height: 26px;
-    padding-left: 1px;
+    padding: 0 20px;
     display: flex;
     margin: 0 auto;
     align-items: center;
 }
+.dash-footer {
+    width: 100%;
+}
 .dash-footer::after {
     content: "";
     display: block;
-    width: 1395px;
+    width: 99.9%;
     height: 100%;
-    padding: 0 auto;
     border: 1px solid #fff;
 }
 .footer-rss {
     width: 97.5%;
-    height: 36px;
+    height: 35px;
     margin: 20px auto;
     display: flex;
     justify-content: space-between;
@@ -902,17 +931,22 @@
         height: auto;
     }
     .about-carousel {
-        margin-bottom: 3%;
+        margin-bottom: 35px;
+        margin-top: 20px;
     }
     .main-favorites {
         height: auto;
-    }    
-    .section-title {
-        margin-top: auto;
     }
+    .coffeeshop-menu {
+        padding-left: 10px;
+        padding-right: 10px;
+    }    
  
 }
 @media (max-width: 1240px) {
+    .about-text {
+        padding: 0px 20px;
+    }
     .favorites-seasons {
         height: 2300px;
         width: auto;
@@ -922,9 +956,10 @@
         width: auto;
         align-items: center;
     }
-    .book1, .book3 {
-        margin-bottom: 27px;
+    .book1, .book2, .book3, .book4 {
+        margin-bottom: 40px;
     }
+ 
     .main-contacts{
         height: auto;
     }
@@ -934,10 +969,17 @@
         align-items: start;
     }
     .img-map {
-        margin: 0 15% 0 15%;
+        margin: auto;
+    }
+    .contacts-info-text {
+        margin-bottom: 14%;
+    }
+    .contacts-info {
+        margin-bottom: 5px;
     }
     .main-librarycard {
         height: auto;
+        padding: 0px 20px 16px 20px;
     }
     .items-card {
         height: auto;
@@ -947,15 +989,84 @@
     .get-card {
         margin-top: 20px;
         align-items: center;
+        width: 560px;
+        height: auto;
+    }
+    .get-card-title {
+        height: 65px;
+        padding-bottom: 25px;
+        margin: 0;
     }
     .card-text {
         text-align: center;
+        height: auto;
+        width: auto;
+        padding: 9px 0px 11px;
+    }
+    .get-card-two-button {
+        height: 62px;
+        padding-bottom: 4px;
+        padding-right: 19px;
+    }
+    .footer-frame {
+        padding: 0 10px;
+    }
+    .footer-rss {
+        width: 94.5%;
+    }
+    .rss {
+        margin-left: -13px;
     }
 }
 @media (max-width: 1024px) {
+    .main-welcom {
+        background-image: url(assets/img/Welcome_768.png);
+        transition: 6s;
+    }
+    .about-images {
+        align-items: center;
+        justify-content: center;
+        gap: 58px;
+    }
+    .about-item2, .about-item3 {
+        display: none;
+    }
+    .about-item1 {
+        margin-right: 0px;
+    }
+    .carret {
+        display: block;
+        margin-top: 51px;
+    }
+    .link-slide:nth-child(4) {
+        display: block;
+    }
+    .link-slide:nth-child(5) {
+        display: block;
+    }
+
     .favorites-seasons {
-        height: 2300px;
+        height: 2340px;
         width: auto;
+    }
+    
+    .coffeeshop-menu {
+        flex-direction: column;
+        height: auto;
+        gap: 40px;
+        padding-left: 0;
+        padding-right: 0;
+        height: 1480px;
+    }
+    .menu-eat {
+        align-self: flex-end;
+    }
+    .coffeeshop-text {
+        height: auto;
+    }
+    .main-coffeeshop {
+        height: 1480px;
+        padding: 0px 20px 40px 20px;
     }
     .container-right {
         position: relative;
@@ -969,8 +1080,8 @@
         right: -332px;
         top: 0;
         width: 332px;
-        height: 555px;
-        padding: 51px 20px 30px 20px;
+        height: 570px;
+        padding: 65px 20px 30px 20px;
         background-color: #000;
         transition: transform .5s, visibility .5s;
         will-change: transform;
@@ -992,7 +1103,7 @@
     }
     .header-burger {
         display: block;
-        margin-bottom: 22px;
+        margin-bottom: 5px;
     }
     .header.open .nav {
         transform: translateX(-100%);
@@ -1001,7 +1112,31 @@
     .login {
         display: block;
         position: absolute;
-        right: 72px;
-        bottom: 28px;
+        right: 85px;
+        bottom: 11px;
     }  
+}
+@media (max-width: 760px) {
+    .logo {
+        font-size: 25px;
+        transition: 5s;
+    }
+    .favorites-radio {
+        width: 80%;
+        transition: 5s;
+    }
+    .img-map {
+        display: flex;
+    }
+    .img-map img{
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+@media (max-width: 655px) {
+    .main-coffeeshop {
+        height: 1510px;
+    }
+    
 }
