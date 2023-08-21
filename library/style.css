@@ -982,7 +982,7 @@
     font-family: Forum;
     font-size: 20px;
     line-height: 20px;
-    letter-spacing: 2%;
+    letter-spacing: 0.3px;
     margin: 20px auto;
 }
 .modal-login-form {
@@ -1037,6 +1037,81 @@
     padding-right: 3px;
 }
 .modal-login-link-register a{
+    color: #000;
+    font-family: Inter-Bold;
+    font-size: 10px;
+    letter-spacing: 0.9px;
+}
+.modal-register {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    right: 0;
+    top: 600px;
+    width: 250px;
+    height: 382px;
+    background-color: #fff;
+}
+.modal-register-name {
+    font-family: Forum;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px auto;
+}
+.modal-register-form {
+    width: 200px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.modal-register-form label {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+}
+.modal-register-form input {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #BB945F;
+}
+.modal-register-form button {
+    width: 75px;
+    height: 30px;
+    background-color: #fff;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 12.1 px;
+    font-family: Inter-Bold;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+.modal-register-form button:hover {
+    cursor: pointer;
+}
+.close-btn {
+    border: none;
+    background-color: #fff;
+    position: absolute;
+    right: 7px;
+    top: 12px;
+}
+.close-btn:hover {
+    cursor: pointer;
+}
+.modal-register-link-login {
+    font-size: 10px;
+    line-height: 12.1px;
+    margin: 10px auto auto 25px;
+    align-self: flex-start;
+}
+.modal-register-link-login div {
+    display: inline-block;
+    padding-right: 3px;
+}
+.modal-register-link-login a{
     color: #000;
     font-family: Inter-Bold;
     font-size: 10px;
