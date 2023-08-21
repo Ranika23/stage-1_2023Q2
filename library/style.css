@@ -926,6 +926,47 @@
     text-decoration: underline;
     transition: 0.5s;
 }
+/*модальные окна*/
+.drop-menu-profile-no-auth, .drop-menu-profile-with-auth {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 115px;
+    background-color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    right: 0;
+
+}
+.drop-menu-profile-no-auth {
+    top: 150px; 
+}
+.drop-link {
+    line-height: 29px;
+    font-style: normal;
+}
+.drop-menu-profile-no-auth a, .drop-menu-profile-with-auth a {
+    text-decoration: none;
+    color: #000;
+}
+
+.drop-profile {
+    font-family: Inter-Bold;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 20px;
+    margin: 5px auto 14px;
+
+}
+.drop-profile::after {
+    content: "";
+    display: block;
+    width: 40px;
+    border-bottom: 1px solid #BB945F;
+    margin: 0 auto;
+}
 @media (max-width: 1439px) {
     .main-about {
         height: auto;
