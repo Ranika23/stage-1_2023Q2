@@ -1117,6 +1117,107 @@
     font-size: 10px;
     letter-spacing: 0.9px;
 }
+.modal-profile{
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 1000px;
+    width: 600px;
+    height: 400px;
+    background-color: #fff;
+}
+.modal-profile-bg {
+    height: 100%;
+    width: 170px;
+    background-color: #0C0C0E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-profile-bg-container {
+    width: 120px;
+    height: 125px;
+    display: flex;
+    background: #0C0C0E;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.modal-profile-bg-avatar {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    color: #BB945F;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-profile-bg-name {
+    width: 120px;
+    height: 30px;
+    background: #fff;
+    padding: auto;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-profile-right {
+    height: 100%;
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 40px;
+}
+.modal-profile-right-name {
+    font-family: Forum;
+    font-size: 40px;
+    letter-spacing: 0.7px;
+    margin-bottom: 30px;
+}
+.modal-profile-right button {
+    top: 22px;
+    right: 17px;
+}
+.modal-profile-right-cards-profile {
+    width: 235px;
+    height: 81px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.modal-profile-right-cards-profile div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cards-profile-count {
+    font-size: 10px;
+}
+.modal-profile-right-rended-books {
+    width: 350px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+.modal-profile-right-rended-books p {
+    margin: 0;
+    font-size: 25px;
+}
+.modal-profile-right-rended-books ul {
+    margin: 15px 0 0;
+    padding-left: 30px;
+    line-height: 30px;
+    letter-spacing: 1.8px;
+}
+.modal-profile-right-card-number {
+    display: flex;
+    gap: 15px;
+}
 @media (max-width: 1439px) {
     .main-about {
         height: auto;
