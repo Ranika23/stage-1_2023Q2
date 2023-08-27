@@ -219,22 +219,29 @@
     margin: 20px 0px;
     text-align: center;
 }
+.wrapper-about-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 .about-images {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 2390px;
     padding: 0px 20px;
+    /* left: 100px; */
+    position: absolute;
 }
 .carret {
     display: none;
 }
-.about-item1, .about-item2 {
+.about-item1, .about-item2, .about-item3, .about-item4 {
     display: flex;
     width: 31,5%;
     max-height: 100%;
     margin-right: 25px;
 }
-.about-item3 {
+.about-item5 {
     display: flex;
     width: 31,5%;
     max-height: 100%;
@@ -248,7 +255,7 @@
     justify-content: space-around;
     width: 78px;
     height: 26px;
-    margin: 36px auto 44px auto;
+    margin: 30px auto 35px auto;
 }
 .link-slide:nth-child(4) {
     display: none;
