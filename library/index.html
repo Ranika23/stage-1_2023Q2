@@ -25,7 +25,7 @@
                         </ul>
                     </nav>
                     <img class="login" src="assets/svg/icon_log-in.svg" alt="log_in">
-                    <div class="drop-menu-profile-no-auth">
+                    <!--<div class="drop-menu-profile-no-auth">
                         <div class="drop-profile">Profile</div>
                         <div class="drop-link"><a href="#">Log In</a></div>
                         <div class="drop-link"><a href="#">Register</a></div>
@@ -113,7 +113,7 @@
                                 <div><img src="assets/svg/icon_copy.svg" alt="icon_copy"></div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <button id="burger" class="header-burger">
                         <span></span><span></span><span></span>
                     </button>
@@ -129,42 +129,40 @@
                     <h2 class="section-title">About</h2>
                     <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy
                         coffee shop inside</div>
-                    <div class="wrapper-about-images">
-                        <div class="about-images">
-                            <div class="carret"><img src="assets/svg/Carret_Left.svg" alt="carret"></div>
-                            <div class="about-item1"><img class="about-images-item" src="assets/img/about-img-1.png"
-                                    alt="the girl in the library"></div>
-                            <div class="carret"><img src="assets/svg/Carret_Right.svg" alt="carret"></div>
-                            <div class="about-item2"><img class="about-images-item" src="assets/img/about-img-2.png"
-                                    alt="the statues in the library"></div>
-                            <div class="about-item3"><img class="about-images-item" src="assets/img/about-img-3.png"
-                                    alt="the bookshelves in the library"></div>
-                            <div class="about-item4"><img class="about-images-item" src="assets/img/about-img-4.png"
-                                    alt="the books in the library"></div>
-                            <div class="about-item5"><img class="about-images-item" src="assets/img/about-img-5.png"
-                                    alt="the books in the library"></div>
+                    <div id="about-slide-tablet" class="about-slide-tablet">
+
+                        <input id="about-slide1" class="about-slide1" type="radio" name="carousel" value="slide-one"
+                        checked>
+                        <input id="about-slide2" class="about-slide2" type="radio" name="carousel" value="slide-two">
+                        <input id="about-slide3" class="about-slide3" type="radio" name="carousel" value="slide-three">
+                        <input id="about-slide4" class="about-slide4" type="radio" name="carousel" value="slide-four">
+                        <input id="about-slide5" class="about-slide5" type="radio" name="carousel" value="slide-five">
+                        <div id="carret-left" class="carret-left"><img src="assets/svg/Carret_Left.svg" alt="carret"></div>
+
+                        <div class="wrapper-about-images">
+                            <div id="about-images" class="about-images">
+
+                                <div id="about-item1" class="about-item1"><img class="about-images-item"
+                                        src="assets/img/about-img-1.png" alt="the girl in the library"></div>
+
+                                <div id="about-item2" class="about-item2"><img class="about-images-item"
+                                        src="assets/img/about-img-2.png" alt="the statues in the library"></div>
+                                <div id="about-item3" class="about-item3"><img class="about-images-item"
+                                        src="assets/img/about-img-3.png" alt="the bookshelves in the library"></div>
+                                <div class="about-item4"><img class="about-images-item" src="assets/img/about-img-4.png"
+                                        alt="the books in the library"></div>
+                                <div class="about-item5"><img class="about-images-item" src="assets/img/about-img-5.png"
+                                        alt="the books in the library"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="about-carousel">
-                        <a class="link-slide" href="#">
-                            <div class="about-slide1"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
+                        <div id="carret-right" class="carret-right"><img src="assets/svg/Carret_Right.svg" alt="carret"></div>
+                        
+
+                        
                     </div>
                 </section>
                 <section class="main-favorites" id="favorites">
-                    <div class="modal-buy-card">
+                    <!--<div class="modal-buy-card">
                         <div class="modal-buy-card-title">
                             <span>BUY A LIBRARY CARD</span>
                             <button class="close-btn"><img src="assets/svg/Close_btn_white.svg"
@@ -199,7 +197,7 @@
                                 form. Visitors to New York State can also use this form to apply for a temporary card.
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
                     <div class="favorites-radio">
@@ -658,7 +656,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="main-librarycard-login-in-account">
+                    <!--<div class="main-librarycard-login-in-account">
                         <h2 class="section-title">Digital Library Cards</h2>
                         <div class="items-card">
                             <form action="#" class="find-card">
@@ -698,7 +696,7 @@
                                 <button class="get-card-button"><span>Profile</span></button>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </section>
             </div>
         </main>

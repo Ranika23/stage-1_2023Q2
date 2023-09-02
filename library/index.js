@@ -27,7 +27,162 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("link5").addEventListener("click", event => {
         document.getElementById("id-header").classList.remove("open");
     })
+    
     })
+ 
+
+const CARRET_LEFT = document.getElementById("carret-left")
+const CARRET_RIGHT = document.getElementById("carret-right")
+const ABOUT_IMAGES = document.getElementById("about-images")
+
+let i = 0
+
+
+const POSITION = {
+    0:"0",
+    1:"-102.1%",
+    2:"-204.3%",
+    3:"-306.5%",
+    4:"-408.7%"
+}
+const CHEACKED = () => {
+    for (i = 0; i < 5; i++){
+    if (document.querySelector("#about-slide-tablet").children[i].checked == true) {
+        break
+    }
+} 
+}
+
+CHEACKED()
+if (i < 4 && i > 0) {
+    CHEACKED()  
+CARRET_RIGHT.classList.add("carret-hover");
+CARRET_LEFT.classList.add("carret-hover");
+CARRET_LEFT.classList.remove("carret-not-hover");
+CARRET_RIGHT.classList.remove("carret-not-hover");
+}
+if (i === 4) {
+    CHEACKED() 
+    CARRET_RIGHT.classList.remove("carret-hover");
+    CARRET_RIGHT.classList.add("carret-not-hover");
+    CARRET_LEFT.classList.add("carret-hover");
+    CARRET_LEFT.classList.remove("carret-not-hover");   
+}
+if (i === 0) {
+    CHEACKED()  
+    CARRET_LEFT.classList.remove("carret-hover");
+    CARRET_LEFT.classList.add("carret-not-hover");
+    CARRET_RIGHT.classList.add("carret-hover");
+    CARRET_RIGHT.classList.remove("carret-not-hover");
+}    
+CARRET_RIGHT.addEventListener("mouseover", event => {
+
+CHEACKED()
+if (i < 4 && i > 0) {
+    CHEACKED()  
+CARRET_RIGHT.classList.add("carret-hover");
+CARRET_LEFT.classList.add("carret-hover");
+CARRET_LEFT.classList.remove("carret-not-hover");
+CARRET_RIGHT.classList.remove("carret-not-hover");
+
+CARRET_RIGHT.removeEventListener("mouseover")
+}
+if (i === 4) {
+    CHEACKED() 
+    CARRET_RIGHT.classList.remove("carret-hover");
+    CARRET_RIGHT.classList.add("carret-not-hover");
+    CARRET_LEFT.classList.add("carret-hover");
+    CARRET_LEFT.classList.remove("carret-not-hover");
+
+    CARRET_RIGHT.removeEventListener("mouseover")
+
+}
+CHEACKED()
+if (i === 0) {
+    CHEACKED()  
+    CARRET_LEFT.classList.remove("carret-hover");
+    CARRET_LEFT.classList.add("carret-not-hover");
+    CARRET_RIGHT.classList.add("carret-hover");
+    CARRET_RIGHT.classList.remove("carret-not-hover");
+
+    CARRET_RIGHT.removeEventListener("mouseover")
+}
+})
+
+CARRET_LEFT.addEventListener("mouseover", event => {
+
+    CHEACKED()
+    if (i < 4 && i > 0) {
+        CHEACKED()  
+    CARRET_RIGHT.classList.add("carret-hover");
+    CARRET_LEFT.classList.add("carret-hover");
+    CARRET_LEFT.classList.remove("carret-not-hover");
+    CARRET_RIGHT.classList.remove("carret-not-hover");
+    
+    CARRET_RIGHT.removeEventListener("mouseover")
+    }
+    if (i === 4) {
+        CHEACKED() 
+        CARRET_RIGHT.classList.remove("carret-hover");
+        CARRET_RIGHT.classList.add("carret-not-hover");
+        CARRET_LEFT.classList.add("carret-hover");
+        CARRET_LEFT.classList.remove("carret-not-hover");
+    
+        CARRET_RIGHT.removeEventListener("mouseover")
+    
+    }
+    CHEACKED()
+    if (i === 0) {
+        CHEACKED()  
+        CARRET_LEFT.classList.remove("carret-hover");
+        CARRET_LEFT.classList.add("carret-not-hover");
+        CARRET_RIGHT.classList.add("carret-hover");
+        CARRET_RIGHT.classList.remove("carret-not-hover");
+    
+        CARRET_RIGHT.removeEventListener("mouseover")
+    }
+    })
+
+CARRET_LEFT.addEventListener("click", event => {
+    CHEACKED()
+    if (i > 0) {
+        CARRET_RIGHT.classList.add("carret-hover");
+        CARRET_LEFT.classList.add("carret-hover");
+        CARRET_LEFT.classList.remove("carret-not-hover");
+        CARRET_RIGHT.classList.remove("carret-not-hover");
+        i -= 1
+        ABOUT_IMAGES.style.left = POSITION[i]
+        document.querySelector("#about-slide-tablet").children[i].checked = true;           
+    }
+    CHEACKED()
+    if (i === 0) {
+        CARRET_LEFT.classList.remove("carret-hover");
+        CARRET_LEFT.classList.add("carret-not-hover");
+    }
+     
+})
+
+ 
+
+CARRET_RIGHT.addEventListener("click", event => {
+    CHEACKED()
+    CARRET_LEFT.classList.add("carret-hover");
+    CARRET_LEFT.classList.remove("carret-not-hover");
+    CARRET_RIGHT.classList.remove("carret-not-hover");
+    if (i < 4) { 
+        i += 1
+        ABOUT_IMAGES.style.left = POSITION[i]  
+        document.querySelector("#about-slide-tablet").children[i].checked = true;  
+    
+    } 
+    if (i >= 4) {
+        CARRET_RIGHT.classList.remove("carret-hover");
+        CARRET_RIGHT.classList.add("carret-not-hover");
+    }
+    CARRET_RIGHT.removeEventListener("click", event => {}) 
+})
+ 
+
 console.log(`
     1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part2.md;
     \n

@@ -219,20 +219,23 @@
     margin: 20px 0px;
     text-align: center;
 }
+.about-slide-tablet {
+    margin-bottom: 30px;
+}
 .wrapper-about-images {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 560px;
+    bottom: 39px;
 }
 .about-images {
     display: flex;
     justify-content: space-between;
-    width: 2390px;
+    width: 166%;
     padding: 0px 20px;
-    /* left: 100px; */
     position: absolute;
 }
-.carret {
+.carret-left, .carret-right {
     display: none;
 }
 .about-item1, .about-item2, .about-item3, .about-item4 {
@@ -250,49 +253,100 @@
     max-width: 100%;
     height: auto;
 }
-.about-carousel {
-    display: flex;
-    justify-content: space-around;
-    width: 78px;
-    height: 26px;
-    margin: 30px auto 35px auto;
+
+.about-slide1, .about-slide2, .about-slide3, .about-slide4, .about-slide5 {
+    position: relative;
+    top: 595px;
+    left: 47.3%;
+    padding-bottom: 700px;
 }
-.link-slide:nth-child(4) {
-    display: none;
-}
-.link-slide:nth-child(5) {
-    display: none;
-}
-.about-slide {
+.about-slide2, .about-slide3, .about-slide4, .about-slide5 {
+    display: inline-block;
+    margin-bottom: 5.6px;
+    margin-left: 0;
+    padding: 0;
+    cursor: pointer; 
+    appearance: none;
+    border-radius: 50%;
     width: 16px;
     height: 16px;
-    margin: 5px;
-    border-radius: 50px;
     background-color: #0C0C0E;
 }
-.about-slide:hover {
+.about-slide2:hover, .about-slide2:checked {
     width: 16px;
     height: 16px;
-    margin-top: 2px;
+    border-radius: 50px;
+    background-color: #BB945F;
+    transition: 0.5s;
+}
+.about-slide3:hover, .about-slide3:checked {
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    background-color: #BB945F;
+    transition: 0.5s;
+}
+.about-slide4:hover, .about-slide4:checked {
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    background-color: #BB945F;
+    transition: 0.5s;
+}
+.about-slide5:hover, .about-slide5:checked  {
+    width: 16px;
+    height: 16px;
     border-radius: 50px;
     background-color: #BB945F;
     transition: 0.5s;
 }
 .about-slide1 {
+    display: inline-block;
+    margin-bottom: 5.6px;
+    padding: 0;
+    cursor: pointer; 
+    appearance: none;
+    border-radius: 50%;
     width: 16px;
     height: 16px;
-    margin: 5px;
-    border-radius: 50px;
+    background-color: #0C0C0E;
+}
+.about-slide1[type=radio]:checked {
     background-color: #BB945F;
 }
-.about-slide1:hover {
+.about-slide1:hover, .about-slide1:checked {
     width: 16px;
     height: 16px;
-    margin-top: 2px;
     border-radius: 50px;
     background-color: #BB945F;
     transition: 0.5s;
 }
+
+.about-slide1:checked ~ .wrapper-about-images > .about-images {
+    left: 0 !important;
+    transition: 2s;
+    
+}
+
+.about-slide2:checked ~ .wrapper-about-images > .about-images {
+    left: -33% !important;
+    transition: 2s;
+}
+.about-slide3:checked ~ .wrapper-about-images > .about-images {
+    left: -66% !important;
+    transition: 2s;
+}
+.about-slide4, .about-slide5 {
+    display: none;
+}
+.about-slide1:checked,
+.about-slide2:checked,
+.about-slide3:checked,
+.about-slide4:checked,
+.about-slide5:checked {
+    cursor: none;
+}
+
 /*настройки стиля для main-favorites*/
 .main-favorites {
     width: 100%;
@@ -1406,9 +1460,13 @@
     .main-about {
         height: auto;
     }
+    .wrapper-about-images {
+        max-height: 560px;
+    }
     .about-carousel {
         margin-bottom: 35px;
         margin-top: 20px;
+        gap: 2px;
     }
     .main-favorites {
         height: auto;
@@ -1423,6 +1481,14 @@
     .about-text {
         padding: 0px 20px;
     }
+    .wrapper-about-images {
+        max-height: 480px;
+        overflow: hidden;
+
+    }
+    .about-slide1, .about-slide2, .about-slide3, .about-slide4, .about-slide5 {
+        top: 495px;
+    }    
     .favorites-seasons {
         height: 2300px;
         width: auto;
@@ -1493,32 +1559,103 @@
     .rss {
         margin-left: -13px;
     }
+
 }
+@media (max-width: 1090px) {
+    .wrapper-about-images {
+        max-height: 430px;
+    }
+    .about-slide1, .about-slide2, .about-slide3, .about-slide4, .about-slide5 {
+        top: 465px;
+    } 
+}
+
+@media (max-width: 1025px) {
+    .about-images {
+        left: 0 !important;
+        transition: 2s;
+    }
+}
+
 @media (max-width: 1024px) {
     .main-welcom {
         background-image: url(assets/img/Welcome_768.png);
         transition: 6s;
     }
+    .about-slide-tablet {
+        height: 610px;
+    }    
+    .wrapper-about-images {
+        max-height: 747px;
+    }
+    .wrapper-about-images {
+        position: relative;
+        width: 450px;
+        height: 560px;
+        bottom: 130px;
+        margin: auto;
+    }
     .about-images {
         align-items: center;
-        justify-content: center;
-        gap: 58px;
+        justify-content: start;
+        gap: 10px;
+        padding: 0;
     }
-    .about-item2, .about-item3 {
-        display: none;
+    .about-images-item {
+        min-width: 450px;
     }
-    .about-item1 {
+    .about-item1, .about-item2, .about-item3, .about-item4, .about-item5 {
         margin-right: 0px;
     }
-    .carret {
+    .carret-left {
         display: block;
         margin-top: 51px;
+        position: relative;
+        top: 195px;
+        left: 10%;
     }
-    .link-slide:nth-child(4) {
+    .carret-right {
         display: block;
+        margin-top: 51px;
+        position: relative;
+        bottom: 455px;
+        left: 87%;
+    }   
+
+    .carret-hover {
+        cursor: pointer;
+    } 
+    .carret-not-hover {
+        cursor: none;
+    } 
+
+    .about-slide4, .about-slide5 {
+        display: inline-block;
     }
-    .link-slide:nth-child(5) {
-        display: block;
+
+    .about-slide1, .about-slide2, .about-slide3, .about-slide4, .about-slide5 {
+        top: 580px;
+        left: 41.9%;
+    }    
+    .about-slide1:checked ~ .wrapper-about-images > .about-images {
+        left: 0% !important;
+        transition: 2s;
+    }
+    .about-slide2:checked ~ .wrapper-about-images > .about-images {
+        left: -102% !important;
+        transition: 2s;
+    }
+    .about-slide3:checked ~ .wrapper-about-images > .about-images {
+        left: -204% !important;
+        transition: 2s;
+    }
+    .about-slide4:checked ~ .wrapper-about-images > .about-images {
+        left: -306% !important;
+        transition: 2s;
+    }
+    .about-slide5:checked ~ .wrapper-about-images > .about-images {
+        left: -408% !important;
+        transition: 2s;
     }
 
     .favorites-seasons {
