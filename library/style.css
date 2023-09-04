@@ -23,7 +23,7 @@
     background: #8E8E8E;
 }
 .body-container {
-    overflow: hidden;
+    overflow: clip;
     max-width: 1440px;
     height: 100%;
     min-height: 100vh;
@@ -325,9 +325,7 @@
 .about-slide1:checked ~ .wrapper-about-images > .about-images {
     left: 0 !important;
     transition: 2s;
-    
-}
-
+}    
 .about-slide2:checked ~ .wrapper-about-images > .about-images {
     left: -33% !important;
     transition: 2s;
@@ -344,11 +342,12 @@
 .about-slide3:checked,
 .about-slide4:checked,
 .about-slide5:checked {
-    cursor: none;
+    cursor: default;
 }
 
 /*настройки стиля для main-favorites*/
 .main-favorites {
+    position: relative;
     width: 100%;
     background: #fff;
     display: flex;
@@ -363,17 +362,24 @@
 }
 .favorites-radio {
     display: flex;
-    justify-content: space-between;
-    margin: 14px 15px 16px;
-    width: 710px;
-    height: 34px;
+    height: 50px;
+    width: 1200px;
+    justify-content: start;
+    margin: 18px 15px 16px;
+    /*width: 710px;
+    height: 34px;*/
     transition: 2s;
+
 }
-.input-radio {
+
+.input-radio1,
+.input-radio2,
+.input-radio3,
+.input-radio4 {
     display: inline-block;
     height: 17px;
     width: 17px;
-    margin: 8px 16px auto 3px;
+    margin: 8px 16px 8px 8px;
     padding: 0;
     cursor: pointer; 
     border: 3px solid white;
@@ -384,13 +390,38 @@
     height: 13px;
     background-color: #fff;
 }
-.input-radio[type=radio]:checked {
+.input-radio1[type=radio]:checked,
+.input-radio2[type=radio]:checked,
+.input-radio3[type=radio]:checked,
+.input-radio4[type=radio]:checked {
     background-color: #000;
+    cursor: default;
 }
-.input-radio[type="radio"]:checked~span {
+.input-radio1[type="radio"]:checked~span,
+.input-radio2[type="radio"]:checked~span,
+.input-radio3[type="radio"]:checked~span,
+.input-radio4[type="radio"]:checked~span {
     font-weight: 700;
 }
-.label {
+.label1 {
+    cursor: default;
+}
+.label1, .label2, .label3 {
+    line-height: normal;
+    text-align: start;
+    display: inline-block;
+    padding: 5px 5px;
+    height: 34px;
+    margin-top: 0px;
+    margin-right: 81px;
+    vertical-align: top;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    align-items: start;
+}.label1 {
+    cursor: default;
+}
+.label4 {
     line-height: normal;
     text-align: start;
     display: inline-block;
@@ -402,56 +433,64 @@
     cursor: pointer;
     align-items: start;
 }
+
 /*общие настройки стиля для favorites-seasons*/
 .favorites-seasons {
-    position: relative;
-    margin: 20px auto 40px;
-    width: 97.5%;
-    height: 1150px;
-    display: flex;   
-}
-.autumn-favorites [hidden] {
-    display: none;
     position: absolute;
+    margin: 20px auto 40px;
+    width: 97.2%;
+    height: 1150px;
+    display: flex; 
+    top: 230px;
+    left: 20px;
+}
+
+.winter-favorites {
+    position: absolute;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: 5s;
+}
+.spring-favorites {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: 5s;
+}
+.summer-favorites {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column; 
+    transition: 5s;
+}
+
+.autumn-favorites {
+    position: absolute;
+    opacity: 0;
     width: 100%;
     height: 100%;
     background: #fff;
     display: flex;
     justify-content: space-between;
     flex-direction:column;
-    margin: 0 -1440px;    
+    transition: 5s;
 }
-.winter-favorites {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-.spring-favorites [hidden] {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 0 1440px;
-}
-.summer-favorites [hidden] {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin: 0 2880px;   
-}
+
 /*настройки стиля для каждого блока favorites-seasons*/
 .book-section {
     display: flex;
@@ -1471,6 +1510,9 @@
     .main-favorites {
         height: auto;
     }
+    .favorites-radio {
+        margin: 18px 15px 1230px;
+    }    
     .coffeeshop-menu {
         padding-left: 10px;
         padding-right: 10px;
@@ -1488,11 +1530,40 @@
     }
     .about-slide1, .about-slide2, .about-slide3, .about-slide4, .about-slide5 {
         top: 495px;
-    }    
+    } 
+    .main-favorites {
+        height: 2630px;
+    }   
+  
     .favorites-seasons {
-        height: 2300px;
-        width: auto;
+        height: 2340px;
+        width: 100%;
     }
+    .favorites-radio {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: white;
+    }    
+
+    .input-radio1,
+    .input-radio2,
+    .input-radio3,
+    .input-radio3,
+    .label1, 
+    .label2, 
+    .label3,
+    .label4 {
+        position: sticky;
+        top: 0 px;
+    }
+    .label1, .label2, .label3 {
+        margin-right: 6.7%;
+    }    
+    .favorites-radio {
+        height: 50px;
+        margin: 18px 15px 18px;
+    }    
     .book-section {
         flex-direction: column;
         width: auto;
@@ -1626,7 +1697,7 @@
         cursor: pointer;
     } 
     .carret-not-hover {
-        cursor: none;
+        cursor: default;
     } 
 
     .about-slide4, .about-slide5 {
@@ -1660,7 +1731,7 @@
 
     .favorites-seasons {
         height: 2340px;
-        width: auto;
+
     }
     
     .coffeeshop-menu {
@@ -1736,10 +1807,10 @@
         font-size: 25px;
         transition: 5s;
     }
-    .favorites-radio {
-        width: 80%;
-        transition: 5s;
-    }
+    .label1, .label2, .label3 {
+        margin-right: 7%;
+    }    
+
     .img-map {
         display: flex;
     }

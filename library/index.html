@@ -200,103 +200,26 @@
                     </div>-->
                     <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
+                    
                     <div class="favorites-radio">
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="winter" checked>
-                            <span>Winter</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="spring">
-                            <span>Spring</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="summer">
-                            <span>Summer</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="autumn">
-                            <span>Autumn</span></label>
-                    </div>
-                    <div class="favorites-seasons">
-                        <div hidden class="autumn-favorites">
-                            <div class="book-section">
-                                <div class="book1">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Casual Conversation</span><br>
-                                                    By Renia White</div>
-                                                <div class="text-description">White's impressive debut collection takes
-                                                    readers through and beyond the concepts of conversation and the
-                                                    casual - both what we say to each other and what we don't, examining
-                                                    the possibilities around how we construct and communicate identity.
-                                                </div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_autumn_book1.png"
-                                        alt="Casual Conversation">
-                                </div>
-                                <div class="book2">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>The Great Fire</span><br>
-                                                    By Lou Ureneck</div>
-                                                <div class="text-description">The harrowing story of an ordinary
-                                                    American and a principled Naval officer who, horrified by the
-                                                    burning of Smyrna, led an extraordinary rescue effort that saved a
-                                                    quarter of a million refugees from the Armenian Genocide</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_autumn_book2.png"
-                                        alt="The Great Fire">
-                                </div>
-                            </div>
-                            <div class="book-section">
-                                <div class="book3">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Rickey: The Life and
-                                                        Legend</span><br>By Howard Bryant
-                                                </div>
-                                                <div class="text-description">With the fall rolling around, one can't
-                                                    help but think of baseball's postseason coming up! And what better
-                                                    way to prepare for it than reading the biography of one of the
-                                                    game's all-time greatest performers, the Man of Steal, Rickey
-                                                    Henderson?</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_autumn_book3.png"
-                                        alt="Rickey: The Life and Legend">
-                                </div>
-                                <div class="book4">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Slug: And Other Stories</span><br>
-                                                    By Megan Milks</div>
-                                                <div class="text-description">Exes Tegan and Sara find themselves
-                                                    chained together by hairballs of codependency. A father and child
-                                                    experience the shared trauma of giving birth to gods from their
-                                                    wounds.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_autumn_book4.png"
-                                        alt="Slug: And Other Stories">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="winter-favorites">
+                  
+                        
+                            <input checked class="input-radio1" id="input-radio1" type="radio" name="seasons" value="winter">
+                            <label for="input-radio1"  id="label1" class="label1"><span>Winter</span></label>
+                        
+                            <input class="input-radio2" id="input-radio2" type="radio" name="seasons" value="spring">
+                            <label for="input-radio2"  id="label2" class="label2"><span>Spring</span></label>
+                        
+                            <input class="input-radio3" id="input-radio3" type="radio" name="seasons" value="summer">
+                            <label for="input-radio3"  id="label3" class="label3"><span>Summer</span></label>
+                        
+                            <input class="input-radio4" id="input-radio4" type="radio" name="seasons" value="autumn">
+                            <label for="input-radio4"  id="label4" class="label4"><span>Autumn</span></label>
+                    
+                       </div>
+                            <div class="favorites-seasons">
+                        
+                        <div id="winter-favorites" class="winter-favorites">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -376,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div hidden class="spring-favorites">
+                        <div id="spring-favorites" class="spring-favorites">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -451,7 +374,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div hidden class="summer-favorites">
+                        <div id="summer-favorites" class="summer-favorites">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -533,7 +456,90 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <div id="autumn-favorites" class="autumn-favorites">
+                            <div class="book-section">
+                                <div class="book1">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Casual Conversation</span><br>
+                                                    By Renia White</div>
+                                                <div class="text-description">White's impressive debut collection takes
+                                                    readers through and beyond the concepts of conversation and the
+                                                    casual - both what we say to each other and what we don't, examining
+                                                    the possibilities around how we construct and communicate identity.
+                                                </div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_autumn_book1.png"
+                                        alt="Casual Conversation">
+                                </div>
+                                <div class="book2">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>The Great Fire</span><br>
+                                                    By Lou Ureneck</div>
+                                                <div class="text-description">The harrowing story of an ordinary
+                                                    American and a principled Naval officer who, horrified by the
+                                                    burning of Smyrna, led an extraordinary rescue effort that saved a
+                                                    quarter of a million refugees from the Armenian Genocide</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_autumn_book2.png"
+                                        alt="The Great Fire">
+                                </div>
+                            </div>
+                            <div class="book-section">
+                                <div class="book3">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Rickey: The Life and
+                                                        Legend</span><br>By Howard Bryant
+                                                </div>
+                                                <div class="text-description">With the fall rolling around, one can't
+                                                    help but think of baseball's postseason coming up! And what better
+                                                    way to prepare for it than reading the biography of one of the
+                                                    game's all-time greatest performers, the Man of Steal, Rickey
+                                                    Henderson?</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_autumn_book3.png"
+                                        alt="Rickey: The Life and Legend">
+                                </div>
+                                <div class="book4">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Slug: And Other Stories</span><br>
+                                                    By Megan Milks</div>
+                                                <div class="text-description">Exes Tegan and Sara find themselves
+                                                    chained together by hairballs of codependency. A father and child
+                                                    experience the shared trauma of giving birth to gods from their
+                                                    wounds.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_autumn_book4.png"
+                                        alt="Slug: And Other Stories">
+                                </div>
+                            </div>
+                        </div>
+                   
+                        </div>
+                    
                 </section>
                 <section class="main-coffeeshop" id="coffee-shop">
                     <h2 class="section-title">Coffee Shop</h2>
