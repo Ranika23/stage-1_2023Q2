@@ -150,6 +150,7 @@
 
 .login {
     margin: auto 20px auto 0px;
+    cursor: pointer;
 }
 /*настройки стиля для main*/
 .main {
@@ -1042,7 +1043,13 @@
 
 }
 .drop-menu-profile-no-auth {
-    top: 150px; 
+    top: 59px; 
+    right: 20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.drop-menu-profile-no-auth.open {
+    opacity: 1;
 }
 .drop-link {
     line-height: 29px;
@@ -1649,6 +1656,10 @@
 }
 
 @media (max-width: 1024px) {
+    .drop-menu-profile-no-auth {
+        top: 59px; 
+        right: 108px;
+    }
     .main-welcom {
         background-image: url(assets/img/Welcome_768.png);
         transition: 6s;

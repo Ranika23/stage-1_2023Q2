@@ -28,9 +28,27 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("link5").addEventListener("click", event => {
         document.getElementById("id-header").classList.remove("open");
     })
-    
     })
- 
+// menu-no-auth    
+    document.getElementById("login").addEventListener("click", event => {
+        document.getElementById("drop-menu-profile-no-auth").classList.toggle("open");
+    });
+    document.getElementById("login").addEventListener("click", event => {
+        event._isClickLogin = true;
+    })
+    document.body.addEventListener("click", event => {
+        if (event._isClickLogin) return;
+        document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
+    })
+    document.getElementById("burger").addEventListener("click", event => {
+        if (event._isClickLogin) return;
+        document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
+    })
+
+
+
+    
+    
 // slider for section About
 const CARRET_LEFT = document.getElementById("carret-left")
 const CARRET_RIGHT = document.getElementById("carret-right")
@@ -217,7 +235,7 @@ document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("autumn-favorites").style.opacity = "1";
 })
 
-
+document.getElementById("form-button").setAttribute('disabled', '');
 
 console.log(`
     1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part2.md;
