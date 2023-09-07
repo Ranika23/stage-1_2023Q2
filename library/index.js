@@ -44,11 +44,60 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event._isClickLogin) return;
         document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
     })
+    document.getElementById("drop-link-log-in").addEventListener("click", event => {
+        if (event._isClickLogin) return;
+        document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
+    })
+    document.getElementById("drop-link-register").addEventListener("click", event => {
+        if (event._isClickLogin) return;
+        document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
+    })
 
+// modal-register
+document.getElementById("drop-link-register").addEventListener("click", event => {
+    document.getElementById("modal-register-wrapper").classList.remove("close");
+    document.getElementById("modal-register-wrapper").classList.add("open");    
+});
+document.getElementById("drop-link-register").addEventListener("click", event => {
+    event._isClickLogin = true;
+})
+document.getElementById("modal-register").addEventListener("click", event => {
+    event._isClickLogin = true;
+})
+document.getElementById("get-card-button-sign-up").addEventListener("click", event => {
+    document.getElementById("modal-register-wrapper").classList.remove("close");
+    document.getElementById("modal-register-wrapper").classList.add("open");
+});
+document.getElementById("get-card-button-sign-up").addEventListener("click", event => {
+    event._isClickLogin = true;
+})
+document.getElementById("modal-register-wrapper").addEventListener("click", event => {
+    if (event._isClickLogin) return;
 
-
+    document.getElementById("modal-register-wrapper").classList.add("close");
+    document.getElementById("modal-register-wrapper").classList.remove("open");
     
+})
+document.getElementById("close-btn").addEventListener("click", event => {
+    if (event._isClickLogin) return;
+    document.getElementById("modal-register-wrapper").classList.add("close");
+    document.getElementById("modal-register-wrapper").classList.remove("open");
     
+})
+
+/*document.getElementById("button-register-form").setAttribute('disabled', '');
+const INPUT_EMAIL = document.getElementById("register-email");
+const EMAIL_FOR_TEST = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+INPUT_EMAIL.addEventListener("input", event => {
+    if(EMAIL_FOR_TEST.test(INPUT_EMAIL.value)) {
+         INPUT_EMAIL.style.borderColor = "green";
+         document.getElementById("button-register-form").addEventListener("click", event => {
+            console.log("Мы отменили стандартное действие браузера")
+            event.preventDefault() == false;
+});
+    }*/
+
+
 // slider for section About
 const CARRET_LEFT = document.getElementById("carret-left")
 const CARRET_RIGHT = document.getElementById("carret-right")

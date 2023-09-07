@@ -11,6 +11,34 @@
 
 <body class="body">
     <div class="body-container">
+        <div class="modal-register-wrapper" id="modal-register-wrapper">
+        <div class="modal-register" id="modal-register">
+            <div class="modal-register-name">REGISTER</div>
+            <button class="close-btn" id="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+            <form id="modal-register-form" class="modal-register-form" <!==action="#"==>>
+                <label for="register-first-name">First name</label>
+                <input id="register-first-name" value = '' type="text" required  name="register-first-name"
+                    placeholder="Your first name" pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
+                <label for="register-last-name">Last name</label>
+                <input id="register-last-name" type="text" required name="register-last-name"
+                pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$" placeholder="Your last name">
+                <label for="register-email">E-mail</label>
+                <input id="register-email" type="email" 
+                value = '' name="register-email" placeholder="Your e-mail" required pattern="[a-zA-Z1-9\-\._]+@[a-z1-9]+(.[a-z1-9]+){1,}">
+                <label for="register-password">Password</label>
+                <input id="register-password" type="password" value = '' required minlength="8" name="register-password"
+                    placeholder="Your password">
+                <button id="button-register-form">Sign Up</button>
+            </form>
+            
+            <div class="modal-register-link-login">
+                <div>Already have an account?</div>
+                <a href="#"> Login</a>
+            </div>
+        </div>
+    </div>
+
+
         <header id="id-header" class="header">
             <div class="container">
                 <h1 class="logo">Brooklyn Public Library</h1>
@@ -28,8 +56,8 @@
                     <img class="login" id="login" src="assets/svg/icon_log-in.svg" alt="log_in">
                     <div  id="drop-menu-profile-no-auth" class="drop-menu-profile-no-auth">
                         <div class="drop-profile">Profile</div>
-                        <div class="drop-link"><a href="#">Log In</a></div>
-                        <div class="drop-link"><a href="#">Register</a></div>
+                        <div class="drop-link" id="drop-link-log-in">Log In</div>
+                        <div class="drop-link" id="drop-link-register">Register</div>
                     </div>
                     <!--<div class="drop-menu-profile-with-auth">
                         <div class="drop-profile">Profile</div>
@@ -51,30 +79,9 @@
                             <div>Don't have an account?</div>
                             <a href="#"> Register</a>
                         </div>
-                    </div>
-                    <div class="modal-register">
-                        <div class="modal-register-name">REGISTER</div>
-                        <button class="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
-                        <form class="modal-register-form" action="#">
-                            <label for="register-first-name">First name</label>
-                            <input id="register-first-name" type="text" name="register-first-name"
-                                placeholder="Your first name">
-                            <label for="register-last-name">Last name</label>
-                            <input id="register-last-name" type="text" name="register-last-name"
-                                placeholder="Your last name">
-                            <label for="register-email">E-mail</label>
-                            <input id="register-email" type="text" name="register-email" placeholder="Your e-mail">
-                            <label for="register-password">Password</label>
-                            <input id="register-password" type="text" name="register-password"
-                                placeholder="Your password">
-                            <button>Sign Up</button>
-                        </form>
-                        <div class="modal-register-link-login">
-                            <div>Already have an account?</div>
-                            <a href="#"> Login</a>
-                        </div>
-                    </div>
-                    <div class="modal-profile">
+                    </div>-->
+         
+                    <!--<div class="modal-profile">
                         <div class="modal-profile-bg">
                             <div class="modal-profile-bg-container">
                                 <div class="modal-profile-bg-avatar">JD</div>
@@ -121,7 +128,7 @@
                 </div>
             </div>
         </header>
-        <main class="main">
+        <main class="main" id="main">
             <div class="main-container">
                 <section class="main-welcom">
                     <h2 class="welcom-item">Welcome&nbsp;<br>to the Brooklyn<br>Library</h2>
@@ -658,8 +665,8 @@
                             <div class="card-text">You will be able to see a reader card after logging into account or
                                 you can register a new account</div>
                             <div class="get-card-two-button">
-                                <button class="get-card-button"><span>Sign Up</span></button>
-                                <button class="get-card-button"><span>Log in</span></button>
+                                <button class="get-card-button" id="get-card-button-sign-up"><span>Sign Up</span></button>
+                                <button class="get-card-button" id="get-card-button-log-in"><span>Log in</span></button>
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,7 @@
 }
 .body-container {
     overflow: clip;
+    
     max-width: 1440px;
     height: 100%;
     min-height: 100vh;
@@ -1055,6 +1056,10 @@
     line-height: 29px;
     font-style: normal;
 }
+.drop-link:hover {
+    color: #BB945F;
+    cursor: pointer;
+}
 .drop-menu-profile-no-auth a, .drop-menu-profile-with-auth a {
     text-decoration: none;
     color: #000;
@@ -1150,18 +1155,79 @@
     font-size: 10px;
     letter-spacing: 0.9px;
 }
-.modal-register {
+.modal-register-wrapper {
+    display: none;
+    opacity: 0;
+}
+.modal-register-wrapper.close {
+    display: none;
+    opacity: 0;
+    animation: fadeFromBlock 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeFromBlock {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.modal-register-wrapper.open {
+    display: block;
+    opacity: 1; 
+    animation: fadeInBlock 0.5s ease-in;
+
+}
+@keyframes fadeInBlock {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+  
+    1% {
+      display: block;
+      opacity: 0;
+    }
+  
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+.modal-register-wrapper:before {
     position: absolute;
+    content: '' ;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 9999;
+}
+
+.modal-register {
     display: flex;
     flex-direction: column;
     align-items: center;
-    right: 0;
-    top: 600px;
     width: 250px;
     height: 382px;
     background-color: #fff;
+    position: fixed;
+      top: 50%;
+    left: 50%;
+    margin-left: -125px;
+    margin-top: -191px;
+    z-index: 99999;
+    opacity: 1;  
 }
 .modal-register-name {
+
     font-family: Forum;
     font-size: 20px;
     line-height: 20px;
@@ -1184,6 +1250,9 @@
     width: 200px;
     height: 20px;
     border: 1px solid #BB945F;
+}
+.modal-register-form input:valid {
+    border: 1px solid green;
 }
 .modal-register-form button {
     width: 75px;
