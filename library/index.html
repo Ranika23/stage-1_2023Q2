@@ -15,12 +15,12 @@
         <div class="modal-register" id="modal-register">
             <div class="modal-register-name">REGISTER</div>
             <button class="close-btn" id="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
-            <form id="modal-register-form" class="modal-register-form" <!==action="#"==>>
+            <form id="modal-register-form" class="modal-register-form" onsubmit="return false">
                 <label for="register-first-name">First name</label>
                 <input id="register-first-name" value = '' type="text" required  name="register-first-name"
                     placeholder="Your first name" pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
                 <label for="register-last-name">Last name</label>
-                <input id="register-last-name" type="text" required name="register-last-name"
+                <input id="register-last-name" value = '' type="text" required name="register-last-name"
                 pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$" placeholder="Your last name">
                 <label for="register-email">E-mail</label>
                 <input id="register-email" type="email" 
@@ -54,6 +54,9 @@
                     </nav>
                     
                     <img class="login" id="login" src="assets/svg/icon_log-in.svg" alt="log_in">
+                    <div class="login-reg" id="login-reg">
+                        <span>JD</span>
+                    </div>
                     <div  id="drop-menu-profile-no-auth" class="drop-menu-profile-no-auth">
                         <div class="drop-profile">Profile</div>
                         <div class="drop-link" id="drop-link-log-in">Log In</div>

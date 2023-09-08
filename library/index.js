@@ -95,9 +95,73 @@ INPUT_EMAIL.addEventListener("input", event => {
             console.log("Мы отменили стандартное действие браузера")
             event.preventDefault() == false;
 });
-    }*/
+    }
+
+    let result = false
+    document.getElementById("button-register-form").addEventListener("sumbit", event => {
+        event.preventDefault();
+        
+})
+      */ 
+document.getElementById("modal-register-form").addEventListener("submit", event => {
+    
+    //generation random digital
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    let RandomNumberCard = String(getRandomNumber(99999999, 9999999999).toString(16));
+
+    if(RandomNumberCard.length < 9) {
+        while(true) {
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        RandomNumberCard = String(getRandomNumber(99999999, 9999999999).toString(16));
+        if(RandomNumberCard.length === 9) {break}
+        }
+    }
+
+    //save input.value in localStorage
+    let KeyFirst = document.getElementById("register-first-name").value;
+    let Last = document.getElementById("register-last-name").value;
+    let EmailValue = document.getElementById("register-email").value;
+    let PasswordValue = document.getElementById("register-password").value;
+    
+    let user = {
+       email: EmailValue,
+       password: PasswordValue,
+       cardnumber: RandomNumberCard
+    }; 
+    localStorage.setItem(KeyFirst, JSON.stringify(user)); 
+    
+    
+    document.getElementById("login-reg").style.display = "block";
+    document.getElementById("login-reg").style.display = "flex";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("login-reg").innerHTML = KeyFirst[0] + Last[0];
+    document.getElementById("login-reg").setAttribute("title", KeyFirst + " " + Last)
 
 
+
+    //reset to default input.value
+    document.getElementById("register-last-name").value = "";
+    document.getElementById("register-first-name").value = "";
+    document.getElementById("register-email").value = "";
+    document.getElementById("register-password").value = "";
+    document.getElementById("modal-register-wrapper").classList.add("close");
+    document.getElementById("modal-register-wrapper").classList.remove("open");
+    
+    
+    
+})
+/*if(result) {
+    alert(es)
+}   
+document.getElementById("button-register-form").addEventListener("submit", event => {
+    document.getElementById("login-reg").classList.add("style");
+    document.getElementById("login-reg").innerHTML = "12";
+})*/
+    
 // slider for section About
 const CARRET_LEFT = document.getElementById("carret-left")
 const CARRET_RIGHT = document.getElementById("carret-right")

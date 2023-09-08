@@ -153,6 +153,25 @@
     margin: auto 20px auto 0px;
     cursor: pointer;
 }
+.login-reg {
+    
+    justify-content: center;
+    display: flex;
+    display: none;
+    letter-spacing: 0.05px;
+    font-size: 15px;
+    line-height: 20px;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: auto 35px auto 0px;
+    cursor: pointer;
+    color: #BB945F;
+}
+
+
 /*настройки стиля для main*/
 .main {
     flex: 1;
