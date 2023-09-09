@@ -166,7 +166,7 @@
     height: 28px;
     background-color: #fff;
     border-radius: 50%;
-    margin: auto 35px auto 0px;
+    margin: auto 20px auto 0px;
     cursor: pointer;
     color: #BB945F;
 }
@@ -756,6 +756,8 @@
 }
 /*настройки стиля для main-librarycard*/
 .main-librarycard {
+    z-index: 1;
+    position: relative;
     width: 100%;
     height: 614px;
     padding: 0px 20px 20px 20px;
@@ -769,6 +771,7 @@
     justify-content: space-between;
 }
 .find-card {
+    z-index: inherit;
     height: 453px;
     width: 600px;
     display: flex;
@@ -792,7 +795,7 @@
     align-items: center;
     padding: 17px 0px 23px 0px;
 }
-.gold-form {
+.gold-form {position: relative;
     width: 560px;
     height: 272px;
     background: #BB945F;
@@ -814,7 +817,8 @@
     height: 66px;
     border: 1px solid #fff;
     border-radius: 10px;
-  
+    font-size: 30px;
+    color: #BB945F;
     margin-bottom: 25px;
     padding-top: 7px;
     padding-left: 20px;
@@ -822,13 +826,22 @@
 .input-text::placeholder {
     font-family: Forum;
     line-height: 50px;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 0.6px;
     margin-top: 8px;
     margin-left: 20px;
     color: #8E8E8E;
 }
+.form-button:hover {
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    cursor: pointer;
+
+}
 .form-button {
+    position: absolute;
+    left: 28.5%;
+    top: 292px;
     width: 242px;
     height: 44px;
     border: 1px solid #0C0C0E;
@@ -837,15 +850,12 @@
     margin: 0px auto;
     transition: 0.5s;
 }
-.form-button:hover {
-    border: 1px solid #BB945F;
-    background: #BB945F;
-    cursor: pointer;
-}
+
 .form-button span {
     letter-spacing: 1.3px;
     text-align: center;
     font-weight: 700;
+    font-family: Inter-Bold;
     font-size: 20px;
 }
 .get-card {
@@ -925,7 +935,7 @@
     justify-content: space-between;
 }
 .footer-frame-item1 {
-    width: 100%px;
+    width: 100%;
     height: 40px;
     font-size: 15px;    
     display: flex;
@@ -1069,6 +1079,15 @@
     transition: 0.5s;
 }
 .drop-menu-profile-no-auth.open {
+    opacity: 1;
+}
+.drop-menu-profile-with-auth {
+    top: 59px; 
+    right: 20px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.drop-menu-profile-with-auth.open {
     opacity: 1;
 }
 .drop-link {
@@ -1512,9 +1531,11 @@
     padding: 0px 20px 20px 20px;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 5300px;
+
     background-color: #fff;
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
 }
 .input-text-login-in-account {
     width: 520px;
@@ -1536,6 +1557,23 @@
     padding: 19px 20px 0px;
     margin: 0px auto 16px;
 }
+.find-card-login {
+    opacity: 0;
+    position: absolute;
+    height: 453px;
+    width: 600px;
+    top: 122px;
+    left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.find-card-login span {
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    line-height: 36px;
+}
 .input-text-login-in-account::placeholder {
     font-family: Forum;
     line-height: 50px;
@@ -1546,6 +1584,12 @@
     color: #BB945F;
 }
 .main-librarycard-login-in-account-profile {
+
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+    top: 290px;
+    left: 35%;
     width: 169px;
     height: 63px;
     display: flex;
@@ -1744,7 +1788,7 @@
 }
 
 @media (max-width: 1024px) {
-    .drop-menu-profile-no-auth {
+    .drop-menu-profile-no-auth, .drop-menu-profile-with-auth {
         top: 59px; 
         right: 108px;
     }
@@ -1894,12 +1938,18 @@
         transform: translateX(-100%);
         visibility: visible;
     }
-    .login {
+    .login{
         display: block;
         position: absolute;
         right: 87px;
         bottom: 8px;
     }  
+    .login-reg {
+        position: absolute;
+        right: 87px;
+        bottom: 8px; 
+    }
+
 }
 @media (max-width: 760px) {
     .logo {

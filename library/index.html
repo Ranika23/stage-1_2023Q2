@@ -19,6 +19,7 @@
                 <label for="register-first-name">First name</label>
                 <input id="register-first-name" value = '' type="text" required  name="register-first-name"
                     placeholder="Your first name" pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
+                    
                 <label for="register-last-name">Last name</label>
                 <input id="register-last-name" value = '' type="text" required name="register-last-name"
                 pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$" placeholder="Your last name">
@@ -62,12 +63,12 @@
                         <div class="drop-link" id="drop-link-log-in">Log In</div>
                         <div class="drop-link" id="drop-link-register">Register</div>
                     </div>
-                    <!--<div class="drop-menu-profile-with-auth">
+                    <div id="drop-menu-profile-with-auth" class="drop-menu-profile-with-auth">
                         <div class="drop-profile">Profile</div>
-                        <div class="drop-link"><a href="#">My profile</a></div>
-                        <div class="drop-link"><a href="#">Log Out</a></div>
+                        <div class="drop-link" id="drop-link-my-profile">My profile</div>
+                        <div class="drop-link" id="drop-link-log-out">Log Out</div>
                     </div>
-                    <div class="modal-login">
+                    <!--<div class="modal-login">
                         <div class="modal-login-name">LOGIN</div>
                         <button class="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
                         <form class="modal-login-form" action="#">
@@ -651,18 +652,41 @@
                 <section class="main-librarycard" id="library-card">
                     <h2 class="section-title">Digital Library Cards</h2>
                     <div class="items-card">
-                        <form action="#" class="find-card">
+                        
+                        <div class="find-card" id="find-card">
                             <div><span>Find your Library card</span></div>
-                            <div class="card-form">
-                                <div class="gold-form">
+                            <div class="card-form" id="card-form">
+                                <form class="gold-form" id="gold-form" onsubmit="return false">
                                     <div class="form-name">Brooklyn Public Library</div>
-                                    <input class="input-text" type="text" name="reader's-name"
-                                        placeholder="Reader's name">
-                                    <input class="input-text" type="text" name="card-number" placeholder="Card number">
+                                    <input class="input-text" id="input-text-form-name" type="text" name="reader's-name"
+                                        placeholder="Reader's name" required value = "">
+                                    <input class="input-text" id="input-text-form-numbercard" type="text" name="card-number" placeholder="Card number" required value = "">
+                                   <div class="main-librarycard-login-in-account-profile" id="main-librarycard-login-in-account-profile">
+                                    <div>
+                                        <div>Visits</div>
+                                        <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                        <div class="cards-profile-count">23</div>
+                                    </div>
+                                    <div>
+                                        <div>Bonuses</div>
+                                        <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                        <div class="cards-profile-count">1240</div>
+                                    </div>
+                                    <div>
+                                        <div>Books</div>
+                                        <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                        <div class="cards-profile-count">2</div>
+                                    </div>
                                 </div>
-                                <button id="form-button" class="form-button" type="submit"><span>Cheak the card</span></button>
+                                <button disabled id="form-button" class="form-button"><span>Check the card</span></button>
+                                
+                            </form>
+                              
+                                
+
+                                
                             </div>
-                        </form>
+                        </div>
                         <div class="get-card">
                             <div class="get-card-title">Get a reader card</div>
                             <div class="card-text">You will be able to see a reader card after logging into account or
@@ -673,49 +697,51 @@
                             </div>
                         </div>
                     </div>
-                    <!--<div class="main-librarycard-login-in-account">
-                        <h2 class="section-title">Digital Library Cards</h2>
-                        <div class="items-card">
-                            <form action="#" class="find-card">
-                                <div><span>Your Library card</span></div>
-                                <div class="card-form">
-                                    <div class="gold-form-login-in-account">
-                                        <div class="form-name">Brooklyn Public Library</div>
-                                        <input class="input-text-login-in-account" type="text" name="reader's-name"
-                                            placeholder="John Doe">
-                                        <input class="input-text-login-in-account" type="text" name="card-number"
-                                            placeholder="F00234030">
+
+                            
+
+                </section>
+                <!--<div class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
+                    <h2 class="section-title">Digital Library Cards</h2>
+                    <div class="items-card">
+                        <form class="find-card-login" id="find-card-login">
+                            <div><span>Your Library card</span></div>
+                            <div class="card-form">
+                                <div class="gold-form-login-in-account">
+                                    <div class="form-name">Brooklyn Public Library</div>
+                                    <input class="input-text-login-in-account" type="text" name="reader's-name"
+                                        placeholder="John Doe">
+                                    <input class="input-text-login-in-account" type="text" name="card-number"
+                                        placeholder="F00234030">
+                                </div>
+                                <div class="main-librarycard-login-in-account-profile">
+                                    <div>
+                                        <div>Visits</div>
+                                        <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                        <div class="cards-profile-count">23</div>
                                     </div>
-                                    <div class="main-librarycard-login-in-account-profile">
-                                        <div>
-                                            <div>Visits</div>
-                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                            <div class="cards-profile-count">23</div>
-                                        </div>
-                                        <div>
-                                            <div>Bonuses</div>
-                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
-                                            <div class="cards-profile-count">1240</div>
-                                        </div>
-                                        <div>
-                                            <div>Books</div>
-                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                            <div class="cards-profile-count">2</div>
-                                        </div>
+                                    <div>
+                                        <div>Bonuses</div>
+                                        <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                        <div class="cards-profile-count">1240</div>
+                                    </div>
+                                    <div>
+                                        <div>Books</div>
+                                        <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                        <div class="cards-profile-count">2</div>
                                     </div>
                                 </div>
-                            </form>
-                            <div class="get-card-login-in-account">
-                                <div class="get-card-title-login-in-account">Visit your profile</div>
-                                <div class="card-text-login-in-account">With a digital library card you get free access
-                                    to the Library’s wide array of digital resources including e-books, databases,
-                                    educational resources, and more.</div>
-                                <button class="get-card-button"><span>Profile</span></button>
                             </div>
+                        </form>
+                        <div class="get-card-login-in-account">
+                            <div class="get-card-title-login-in-account">Visit your profile</div>
+                            <div class="card-text-login-in-account">With a digital library card you get free access
+                                to the Library’s wide array of digital resources including e-books, databases,
+                                educational resources, and more.</div>
+                            <button class="get-card-button"><span>Profile</span></button>
                         </div>
                     </div>-->
-                </section>
-            </div>
+                </div>
         </main>
         <footer class="footer">
             <div class="footer-container">

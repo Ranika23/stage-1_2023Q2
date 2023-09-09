@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // menu-no-auth    
     document.getElementById("login").addEventListener("click", event => {
         document.getElementById("drop-menu-profile-no-auth").classList.toggle("open");
+        document.getElementById("drop-menu-profile-no-auth").style.zIndex = "1";
     });
     document.getElementById("login").addEventListener("click", event => {
         event._isClickLogin = true;
@@ -85,24 +86,47 @@ document.getElementById("close-btn").addEventListener("click", event => {
     
 })
 
-/*document.getElementById("button-register-form").setAttribute('disabled', '');
-const INPUT_EMAIL = document.getElementById("register-email");
-const EMAIL_FOR_TEST = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-INPUT_EMAIL.addEventListener("input", event => {
-    if(EMAIL_FOR_TEST.test(INPUT_EMAIL.value)) {
-         INPUT_EMAIL.style.borderColor = "green";
-         document.getElementById("button-register-form").addEventListener("click", event => {
-            console.log("Мы отменили стандартное действие браузера")
-            event.preventDefault() == false;
-});
-    }
+ 
+// check reader's card in Library Card
+if(localStorage.getItem("user") !== null) {
+    document.getElementById("form-button").disabled = false; 
 
-    let result = false
-    document.getElementById("button-register-form").addEventListener("sumbit", event => {
-        event.preventDefault();
+    // click form's button 
+    document.getElementById("gold-form").addEventListener("submit", event => {
+        let checkLocalStorage = JSON.parse(localStorage.getItem("user"))
+        let inputTextFormName = document.getElementById("input-text-form-name").value;
+        let inputTextFormNumbercard = document.getElementById("input-text-form-numbercard").value;
+        let count = 0;
         
-})
-      */ 
+        for(let key in checkLocalStorage) {
+            if(inputTextFormName === checkLocalStorage[key]){ 
+                count += 1}
+            if(inputTextFormNumbercard === checkLocalStorage[key]){
+                count += 1}
+            if(count == 2) {    
+                document.getElementById("form-button").style.opacity = "0";
+                document.getElementById("main-librarycard-login-in-account-profile").style.opacity = "1";
+                document.getElementById("main-librarycard-login-in-account-profile").style.zIndex = "1";
+                // timeout
+                function buttonTimeout() {
+                    document.getElementById("form-button").style.opacity = "1";
+                    document.getElementById("main-librarycard-login-in-account-profile").style.opacity = "0";
+                    document.getElementById("main-librarycard-login-in-account-profile").style.zIndex = "0";
+                    document.getElementById("input-text-form-name").value = ""; 
+                    document.getElementById("input-text-form-numbercard").value = "";  
+                }
+                setTimeout(buttonTimeout, 10000);      
+            }
+        }
+    })
+}
+
+
+
+
+
+
+
 document.getElementById("modal-register-form").addEventListener("submit", event => {
     
     //generation random digital
@@ -110,7 +134,6 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     let RandomNumberCard = String(getRandomNumber(99999999, 9999999999).toString(16));
-
     if(RandomNumberCard.length < 9) {
         while(true) {
         function getRandomNumber(min, max) {
@@ -122,7 +145,8 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     }
 
     //save input.value in localStorage
-    let KeyFirst = document.getElementById("register-first-name").value;
+    let FirstLast = document.getElementById("register-first-name").value + " " + document.getElementById("register-last-name").value;
+    let First = document.getElementById("register-first-name").value
     let Last = document.getElementById("register-last-name").value;
     let EmailValue = document.getElementById("register-email").value;
     let PasswordValue = document.getElementById("register-password").value;
@@ -130,19 +154,11 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     let user = {
        email: EmailValue,
        password: PasswordValue,
-       cardnumber: RandomNumberCard
+       cardnumber: RandomNumberCard,
+       firstlast: FirstLast
     }; 
-    localStorage.setItem(KeyFirst, JSON.stringify(user)); 
+    localStorage.setItem("user", JSON.stringify(user)); 
     
-    
-    document.getElementById("login-reg").style.display = "block";
-    document.getElementById("login-reg").style.display = "flex";
-    document.getElementById("login").style.display = "none";
-    document.getElementById("login-reg").innerHTML = KeyFirst[0] + Last[0];
-    document.getElementById("login-reg").setAttribute("title", KeyFirst + " " + Last)
-
-
-
     //reset to default input.value
     document.getElementById("register-last-name").value = "";
     document.getElementById("register-first-name").value = "";
@@ -151,16 +167,46 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     document.getElementById("modal-register-wrapper").classList.add("close");
     document.getElementById("modal-register-wrapper").classList.remove("open");
     
-    
-    
+    //setting login-icon
+    document.getElementById("login-reg").style.display = "block";
+    document.getElementById("login-reg").style.display = "flex";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("login-reg").innerHTML = First[0] + Last[0];
+    document.getElementById("login-reg").setAttribute("title", First + " " + Last)
+
+    // menu-with-auth    
+    document.getElementById("login-reg").addEventListener("click", event => {
+        document.getElementById("drop-menu-profile-with-auth").classList.toggle("open");
+        document.getElementById("drop-menu-profile-with-auth").style.zIndex = "1";
+    });
+    document.getElementById("login-reg").addEventListener("click", event => {
+        event._isClickLoginReg = true;
+    })
+    document.body.addEventListener("click", event => {
+        if (event._isClickLoginReg) return;
+        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+    })
+    document.getElementById("burger").addEventListener("click", event => {
+        if (event._isClickLoginReg) return;
+        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+    })
+    document.getElementById("drop-link-my-profile").addEventListener("click", event => {
+        if (event._isClickLoginReg) return;
+        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+    })
+    document.getElementById("drop-link-log-out").addEventListener("click", event => {
+        if (event._isClickLogin) return;
+        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+    })
+
+    // return after log out
+    document.getElementById("drop-link-log-out").addEventListener("click", event => {
+        location.reload()  
+
+    })  
 })
-/*if(result) {
-    alert(es)
-}   
-document.getElementById("button-register-form").addEventListener("submit", event => {
-    document.getElementById("login-reg").classList.add("style");
-    document.getElementById("login-reg").innerHTML = "12";
-})*/
+
+
     
 // slider for section About
 const CARRET_LEFT = document.getElementById("carret-left")
@@ -183,7 +229,6 @@ const CHEACKED = () => {
     }
 } 
 }
-
 CHEACKED()
 if (i < 4 && i > 0) {
     CHEACKED()  
@@ -236,7 +281,6 @@ if (i === 0) {
 })
 
 CARRET_LEFT.addEventListener("mouseover", event => {
-
     CHEACKED()
     if (i < 4 && i > 0) {
         CHEACKED()  
@@ -280,8 +324,7 @@ CARRET_LEFT.addEventListener("click", event => {
     if (i === 0) {
         CARRET_LEFT.classList.remove("carret-hover");
         CARRET_LEFT.classList.add("carret-not-hover");
-    }
-     
+    }    
 })
 
 CARRET_RIGHT.addEventListener("click", event => {
@@ -293,7 +336,6 @@ CARRET_RIGHT.addEventListener("click", event => {
         i += 1
         ABOUT_IMAGES.style.left = POSITION[i]  
         document.querySelector("#about-slide-tablet").children[i].checked = true;  
-    
     } 
     if (i >= 4) {
         CARRET_RIGHT.classList.remove("carret-hover");
@@ -302,6 +344,8 @@ CARRET_RIGHT.addEventListener("click", event => {
     CARRET_RIGHT.removeEventListener("click", event => {}) 
 })
  
+
+
 //slider for section Favorites
 document.getElementById("input-radio1").addEventListener("click", event => {
     document.getElementById("input-radio1").checked = true;
@@ -348,7 +392,7 @@ document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("autumn-favorites").style.opacity = "1";
 })
 
-document.getElementById("form-button").setAttribute('disabled', '');
+
 
 console.log(`
     1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part2.md;
