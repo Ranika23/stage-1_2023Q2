@@ -89,6 +89,7 @@
     transition: 0.5s;
 }
 .container-right {
+    position: relative;
     display: flex;
     justify-content: space-between;
 }
@@ -579,6 +580,16 @@
     letter-spacing: 2px;
     text-transform: capitalize;
 }
+.button-buy:not([disabled]):hover{
+    border: 1px solid #BB945F;
+    background: #BB945F;
+    cursor: pointer;
+}
+.button-buy:disabled {
+    color: #BB945F;
+    border: 1px solid #BB945F;
+    border-radius: 2px;
+}
 .button-buy {
     width: 75px;
     height: 30px;
@@ -591,16 +602,9 @@
     background: #fff;
     transition: 0.5s;
 }
-.button-buy:disabled {
-    color: #BB945F;
-    border: 1px solid #BB945F;
-    border-radius: 2px;
-}
-.button-buy:not([disabled]):hover{
-    border: 1px solid #BB945F;
-    background: #BB945F;
-    cursor: pointer;
-}
+
+
+
 /*настройки стиля для main-coffeeshop*/
 .main-coffeeshop {
     width: 100%;
@@ -1118,16 +1122,88 @@
     border-bottom: 1px solid #BB945F;
     margin: 0 auto;
 }
-.modal-login {
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal-login-wrapper {
+    display: none;
+    opacity: 0;
+}
+.modal-login-wrapper.close {
+    display: none;
+    opacity: 0;
+    animation: fromBlock 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes fromBlock {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.modal-login-wrapper.open {
+    display: block;
+    opacity: 1; 
+    animation: inBlock 0.5s ease-in;
+
+}
+@keyframes inBlock {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+  
+    1% {
+      display: block;
+      opacity: 0;
+    }
+  
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }
+.modal-login-wrapper:before {
     position: absolute;
+    content: '' ;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 9999;
+}
+.modal-login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    right: 0;
-    top: 300px;
     width: 250px;
     height: 262px;
     background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -125px;
+    margin-top: -191px;
+    z-index: 99999;
+    opacity: 1; 
 }
 .modal-login-name {
     font-family: Forum;
@@ -1166,6 +1242,8 @@
 }
 .modal-login-form button:hover {
     cursor: pointer;
+    border: 1px solid #BB945F;
+    background: #BB945F;
 }
 .close-btn {
     border: none;
@@ -1193,6 +1271,19 @@
     font-size: 10px;
     letter-spacing: 0.9px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 .modal-register-wrapper {
     display: none;
     opacity: 0;
@@ -1305,6 +1396,8 @@
 }
 .modal-register-form button:hover {
     cursor: pointer;
+    border: 1px solid #BB945F;
+    background: #BB945F;
 }
 .close-btn {
     border: none;
@@ -1332,6 +1425,17 @@
     font-size: 10px;
     letter-spacing: 0.9px;
 }
+
+
+
+
+
+
+
+
+
+
+
 .modal-profile{
     position: absolute;
     display: flex;

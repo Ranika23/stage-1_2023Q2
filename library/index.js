@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event._isClickLogin) return;
         document.getElementById("drop-menu-profile-no-auth").classList.remove("open");
     })
-
-// modal-register
+//drop menu profile
+// no auth register
 document.getElementById("drop-link-register").addEventListener("click", event => {
     document.getElementById("modal-register-wrapper").classList.remove("close");
     document.getElementById("modal-register-wrapper").classList.add("open");    
@@ -84,6 +84,46 @@ document.getElementById("close-btn").addEventListener("click", event => {
     document.getElementById("modal-register-wrapper").classList.add("close");
     document.getElementById("modal-register-wrapper").classList.remove("open");
     
+})
+
+// no auth login
+const BUTTON_BUY = document.querySelectorAll('.button-buy');
+BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+    document.getElementById("modal-login-wrapper").classList.remove("close");
+    document.getElementById("modal-login-wrapper").classList.add("open");   
+}));
+BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+    event._isClickLogIn = true 
+}));
+
+document.getElementById("drop-link-log-in").addEventListener("click", event => {
+    document.getElementById("modal-login-wrapper").classList.remove("close");
+    document.getElementById("modal-login-wrapper").classList.add("open");    
+});
+document.getElementById("drop-link-log-in").addEventListener("click", event => {
+    event._isClickLogIn = true;
+})
+document.getElementById("modal-login").addEventListener("click", event => {
+    event._isClickLogIn = true;
+})
+document.getElementById("get-card-button-log-in").addEventListener("click", event => {
+    document.getElementById("modal-login-wrapper").classList.remove("close");
+    document.getElementById("modal-login-wrapper").classList.add("open");
+});
+document.getElementById("get-card-button-log-in").addEventListener("click", event => {
+    event._isClickLogIn = true;
+})
+document.getElementById("modal-login-wrapper").addEventListener("click", event => {
+    if (event._isClickLogIn) return;
+
+    document.getElementById("modal-login-wrapper").classList.add("close");
+    document.getElementById("modal-login-wrapper").classList.remove("open");
+    
+})
+document.getElementById("close-btn-login").addEventListener("click", event => {
+    if (event._isClickLogIn) return;
+    document.getElementById("modal-login-wrapper").classList.add("close");
+    document.getElementById("modal-login-wrapper").classList.remove("open");  
 })
 
  
@@ -123,10 +163,62 @@ if(localStorage.getItem("user") !== null) {
 
 
 
+/*function ICONLOGIN() {
+    let loginLocalStorage = JSON.parse(localStorage.getItem("user"))
+    for(let k in loginLocalStorage) {
+        if(loginLocalStorage["firstlast"]){ 
+            let FirstLast = loginLocalStorage["firstlast"];
+        }; 
+        if(loginLocalStorage["first"]){
+            let First = loginLocalStorage["first"]
+        };  
+        if(loginLocalStorage["last"]){
+            let Last = loginLocalStorage["last"]
+        };  
+    }
+    
+     //setting login-icon
+     document.getElementById("login-reg").style.display = "block";
+     document.getElementById("login-reg").style.display = "flex";
+     document.getElementById("login").style.display = "none";
+     document.getElementById("login-reg").innerHTML = First[0] + Last[0];
+     document.getElementById("login-reg").setAttribute("title", First + " " + Last);
+
+       // menu-with-auth    
+     document.getElementById("login-reg").addEventListener("click", event => {
+     document.getElementById("drop-menu-profile-with-auth").classList.toggle("open");
+     document.getElementById("drop-menu-profile-with-auth").style.zIndex = "1";
+     event._isClickLoginReg = true;
+     });
+
+     document.body.addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("burger").addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("drop-link-my-profile").addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("drop-link-log-out").addEventListener("click", event => {
+     if (event._isClickLogin) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+
+     // return after log out
+     document.getElementById("drop-link-log-out").addEventListener("click", event => {
+     location.reload()  
+
+     })
+}*/
 
 
 
 
+// modal register
 document.getElementById("modal-register-form").addEventListener("submit", event => {
     
     //generation random digital
@@ -145,17 +237,19 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     }
 
     //save input.value in localStorage
+    let First = document.getElementById("register-first-name").value;
+    let Last = document.getElementById("register-last-name").value
     let FirstLast = document.getElementById("register-first-name").value + " " + document.getElementById("register-last-name").value;
-    let First = document.getElementById("register-first-name").value
-    let Last = document.getElementById("register-last-name").value;
     let EmailValue = document.getElementById("register-email").value;
     let PasswordValue = document.getElementById("register-password").value;
+    let InnerName = document.getElementById("login-reg").innerHTML = First[0] + Last[0]; 
     
     let user = {
        email: EmailValue,
        password: PasswordValue,
        cardnumber: RandomNumberCard,
-       firstlast: FirstLast
+       firstlast: FirstLast,
+       inner: InnerName
     }; 
     localStorage.setItem("user", JSON.stringify(user)); 
     
@@ -167,44 +261,144 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     document.getElementById("modal-register-wrapper").classList.add("close");
     document.getElementById("modal-register-wrapper").classList.remove("open");
     
-    //setting login-icon
-    document.getElementById("login-reg").style.display = "block";
-    document.getElementById("login-reg").style.display = "flex";
-    document.getElementById("login").style.display = "none";
-    document.getElementById("login-reg").innerHTML = First[0] + Last[0];
-    document.getElementById("login-reg").setAttribute("title", First + " " + Last)
+    
+     //setting login-icon
+     document.getElementById("login-reg").style.display = "block";
+     document.getElementById("login-reg").style.display = "flex";
+     document.getElementById("login").style.display = "none";
+     document.getElementById("login-reg").innerHTML = First[0] + Last[0];
+     document.getElementById("login-reg").setAttribute("title", First + " " + Last);
+     document.getElementById("drop-profile-auth").innerHTML = RandomNumberCard;
+     document.getElementById("drop-profile-auth").style.fontSize = "13px";
 
-    // menu-with-auth    
-    document.getElementById("login-reg").addEventListener("click", event => {
-        document.getElementById("drop-menu-profile-with-auth").classList.toggle("open");
-        document.getElementById("drop-menu-profile-with-auth").style.zIndex = "1";
-    });
-    document.getElementById("login-reg").addEventListener("click", event => {
-        event._isClickLoginReg = true;
-    })
-    document.body.addEventListener("click", event => {
-        if (event._isClickLoginReg) return;
-        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
-    })
-    document.getElementById("burger").addEventListener("click", event => {
-        if (event._isClickLoginReg) return;
-        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
-    })
-    document.getElementById("drop-link-my-profile").addEventListener("click", event => {
-        if (event._isClickLoginReg) return;
-        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
-    })
-    document.getElementById("drop-link-log-out").addEventListener("click", event => {
-        if (event._isClickLogin) return;
-        document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
-    })
 
-    // return after log out
-    document.getElementById("drop-link-log-out").addEventListener("click", event => {
-        location.reload()  
 
-    })  
+
+       // menu-with-auth    
+     document.getElementById("login-reg").addEventListener("click", event => {
+     document.getElementById("drop-menu-profile-with-auth").classList.toggle("open");
+     document.getElementById("drop-menu-profile-with-auth").style.zIndex = "1";
+     event._isClickLoginReg = true;
+     });
+
+     document.body.addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("burger").addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("drop-link-my-profile").addEventListener("click", event => {
+     if (event._isClickLoginReg) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+     document.getElementById("drop-link-log-out").addEventListener("click", event => {
+     if (event._isClickLogin) return;
+     document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+     })
+
+     // return after log out
+     document.getElementById("drop-link-log-out").addEventListener("click", event => {
+     location.reload()  
+
+     })
 })
+
+
+// modal login
+document.getElementById("modal-login-form").addEventListener("submit", event => {
+    let countCheck = 0
+    let modalLoginEmail = document.getElementById("modal-login-email").value;
+    let modalLoginPassword = document.getElementById("modal-login-password").value;
+    let checkLoginLocalStorage = JSON.parse(localStorage.getItem("user"))
+    for(let k in checkLoginLocalStorage) {
+        if(modalLoginEmail === checkLoginLocalStorage[k]){ 
+          
+            countCheck += 1
+            alert(countCheck)
+        };   
+            ; 
+        if (modalLoginPassword === checkLoginLocalStorage[k] && k != "cardnumber" && k != "email"){
+           
+            countCheck += 1
+            alert(countCheck)};
+        if (k == "inner") {
+            document.getElementById("login-reg").innerHTML = checkLoginLocalStorage[k];
+        };
+        if (k == "firstlast") {
+            document.getElementById("login-reg").setAttribute("title", checkLoginLocalStorage[k]);
+        }
+        if (k == "cardnumber") {
+            document.getElementById("drop-profile-auth").innerHTML = checkLoginLocalStorage[k];
+            document.getElementById("drop-profile-auth").style.fontSize = "13px";
+        };
+    }
+    if(countCheck === 2) {
+        document.getElementById("modal-login-email").value = "";
+        document.getElementById("modal-login-password").value = "";
+        document.getElementById("modal-login-wrapper").classList.add("close");
+        document.getElementById("modal-login-wrapper").classList.remove("open");
+        
+        //setting login-icon
+        document.getElementById("login-reg").style.display = "block";
+        document.getElementById("login-reg").style.display = "flex";
+        document.getElementById("login").style.display = "none";
+
+
+         // menu-with-auth    
+        document.getElementById("login-reg").addEventListener("click", event => {
+            document.getElementById("drop-menu-profile-with-auth").classList.toggle("open");
+            document.getElementById("drop-menu-profile-with-auth").style.zIndex = "1";
+            event._isClickLoginRe = true;
+        });
+        
+        document.body.addEventListener("click", event => {
+            if (event._isClickLoginRe) return;
+            document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+        })
+        document.getElementById("burger").addEventListener("click", event => {
+            if (event._isClickLoginRe) return;
+            document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+        })
+        document.getElementById("drop-link-my-profile").addEventListener("click", event => {
+            if (event._isClickLoginRe) return;
+            document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+        })
+        document.getElementById("drop-link-log-out").addEventListener("click", event => {
+            if (event._isClickLoginRe) return;
+            document.getElementById("drop-menu-profile-with-auth").classList.remove("open");
+        })
+       
+
+        // return after log out
+        document.getElementById("drop-link-log-out").addEventListener("click", event => {
+            location.reload()  
+         })
+        
+        
+
+
+
+
+
+
+         //modal my profile
+
+
+
+
+
+
+
+
+          
+    }
+})
+
+
+
+
 
 
     
@@ -212,9 +406,7 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
 const CARRET_LEFT = document.getElementById("carret-left")
 const CARRET_RIGHT = document.getElementById("carret-right")
 const ABOUT_IMAGES = document.getElementById("about-images")
-
 let i = 0
-
 const POSITION = {
     0:"0",
     1:"-102.1%",

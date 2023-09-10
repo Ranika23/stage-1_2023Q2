@@ -12,32 +12,53 @@
 <body class="body">
     <div class="body-container">
         <div class="modal-register-wrapper" id="modal-register-wrapper">
-        <div class="modal-register" id="modal-register">
-            <div class="modal-register-name">REGISTER</div>
-            <button class="close-btn" id="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
-            <form id="modal-register-form" class="modal-register-form" onsubmit="return false">
-                <label for="register-first-name">First name</label>
-                <input id="register-first-name" value = '' type="text" required  name="register-first-name"
-                    placeholder="Your first name" pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
-                    
-                <label for="register-last-name">Last name</label>
-                <input id="register-last-name" value = '' type="text" required name="register-last-name"
-                pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$" placeholder="Your last name">
-                <label for="register-email">E-mail</label>
-                <input id="register-email" type="email" 
-                value = '' name="register-email" placeholder="Your e-mail" required pattern="[a-zA-Z1-9\-\._]+@[a-z1-9]+(.[a-z1-9]+){1,}">
-                <label for="register-password">Password</label>
-                <input id="register-password" type="password" value = '' required minlength="8" name="register-password"
-                    placeholder="Your password">
-                <button id="button-register-form">Sign Up</button>
-            </form>
-            
-            <div class="modal-register-link-login">
-                <div>Already have an account?</div>
-                <a href="#"> Login</a>
+            <div class="modal-register" id="modal-register">
+                <div class="modal-register-name">REGISTER</div>
+                <button class="close-btn" id="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                <form id="modal-register-form" class="modal-register-form" onsubmit="return false">
+                    <label for="register-first-name">First name</label>
+                    <input id="register-first-name" value='' type="text" required name="register-first-name"
+                        
+                        pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
+
+                    <label for="register-last-name">Last name</label>
+                    <input id="register-last-name" value='' type="text" required name="register-last-name"
+                        pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$"
+                        >
+                    <label for="register-email">E-mail</label>
+                    <input id="register-email" type="email" value='' name="register-email" 
+                        required pattern="[a-zA-Z1-9\-\._]+@[a-z1-9]+(.[a-z1-9]+){1,}">
+                    <label for="register-password">Password</label>
+                    <input id="register-password" type="password" value='' required minlength="8"
+                        name="register-password">
+                    <button id="button-register-form">Sign Up</button>
+                </form>
+
+                <div class="modal-register-link-login">
+                    <div>Already have an account?</div>
+                    <a href="#"> Login</a>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="modal-login-wrapper" id="modal-login-wrapper">
+            <div class="modal-login" id="modal-login">
+                <div class="modal-login-name">LOGIN</div>
+                <button class="close-btn" id="close-btn-login"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                <form class="modal-login-form" id="modal-login-form" onsubmit="return false">
+                    <label for="modal-login-email">E-mail or readers card</label>
+                    <input id="modal-login-email" type="text" name="e-mail"
+                    required>
+                    <label for="modal-login-password">Password</label>
+                    <input id="modal-login-password" type="password" name="password" required minlength="8">
+                    <button id="button-login-form">Log In</button>
+                </form>
+                <div class="modal-login-link-register">
+                    <div>Don't have an account?</div>
+                    <a href="#"> Register</a>
+                </div>
+            </div>
+        </div>
+        
 
 
         <header id="id-header" class="header">
@@ -53,18 +74,18 @@
                             <li><a id="link5" class="nav-link" href="#library-card">Library Card</a></li>
                         </ul>
                     </nav>
-                    
+
                     <img class="login" id="login" src="assets/svg/icon_log-in.svg" alt="log_in">
                     <div class="login-reg" id="login-reg">
                         <span>JD</span>
                     </div>
-                    <div  id="drop-menu-profile-no-auth" class="drop-menu-profile-no-auth">
+                    <div id="drop-menu-profile-no-auth" class="drop-menu-profile-no-auth">
                         <div class="drop-profile">Profile</div>
                         <div class="drop-link" id="drop-link-log-in">Log In</div>
                         <div class="drop-link" id="drop-link-register">Register</div>
                     </div>
                     <div id="drop-menu-profile-with-auth" class="drop-menu-profile-with-auth">
-                        <div class="drop-profile">Profile</div>
+                        <div class="drop-profile" id="drop-profile-auth">Profile</div>
                         <div class="drop-link" id="drop-link-my-profile">My profile</div>
                         <div class="drop-link" id="drop-link-log-out">Log Out</div>
                     </div>
@@ -84,7 +105,7 @@
                             <a href="#"> Register</a>
                         </div>
                     </div>-->
-         
+
                     <!--<div class="modal-profile">
                         <div class="modal-profile-bg">
                             <div class="modal-profile-bg-container">
@@ -144,12 +165,13 @@
                     <div id="about-slide-tablet" class="about-slide-tablet">
 
                         <input id="about-slide1" class="about-slide1" type="radio" name="carousel" value="slide-one"
-                        checked>
+                            checked>
                         <input id="about-slide2" class="about-slide2" type="radio" name="carousel" value="slide-two">
                         <input id="about-slide3" class="about-slide3" type="radio" name="carousel" value="slide-three">
                         <input id="about-slide4" class="about-slide4" type="radio" name="carousel" value="slide-four">
                         <input id="about-slide5" class="about-slide5" type="radio" name="carousel" value="slide-five">
-                        <div id="carret-left" class="carret-left"><img src="assets/svg/Carret_Left.svg" alt="carret"></div>
+                        <div id="carret-left" class="carret-left"><img src="assets/svg/Carret_Left.svg" alt="carret">
+                        </div>
 
                         <div class="wrapper-about-images">
                             <div id="about-images" class="about-images">
@@ -167,10 +189,11 @@
                                         alt="the books in the library"></div>
                             </div>
                         </div>
-                        <div id="carret-right" class="carret-right"><img src="assets/svg/Carret_Right.svg" alt="carret"></div>
-                        
+                        <div id="carret-right" class="carret-right"><img src="assets/svg/Carret_Right.svg" alt="carret">
+                        </div>
 
-                        
+
+
                     </div>
                 </section>
                 <section class="main-favorites" id="favorites">
@@ -212,25 +235,26 @@
                     </div>-->
                     <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
-                    
+
                     <div class="favorites-radio">
-                  
-                        
-                            <input checked class="input-radio1" id="input-radio1" type="radio" name="seasons" value="winter">
-                            <label for="input-radio1"  id="label1" class="label1"><span>Winter</span></label>
-                        
-                            <input class="input-radio2" id="input-radio2" type="radio" name="seasons" value="spring">
-                            <label for="input-radio2"  id="label2" class="label2"><span>Spring</span></label>
-                        
-                            <input class="input-radio3" id="input-radio3" type="radio" name="seasons" value="summer">
-                            <label for="input-radio3"  id="label3" class="label3"><span>Summer</span></label>
-                        
-                            <input class="input-radio4" id="input-radio4" type="radio" name="seasons" value="autumn">
-                            <label for="input-radio4"  id="label4" class="label4"><span>Autumn</span></label>
-                    
-                       </div>
-                            <div class="favorites-seasons">
-                        
+
+
+                        <input checked class="input-radio1" id="input-radio1" type="radio" name="seasons"
+                            value="winter">
+                        <label for="input-radio1" id="label1" class="label1"><span>Winter</span></label>
+
+                        <input class="input-radio2" id="input-radio2" type="radio" name="seasons" value="spring">
+                        <label for="input-radio2" id="label2" class="label2"><span>Spring</span></label>
+
+                        <input class="input-radio3" id="input-radio3" type="radio" name="seasons" value="summer">
+                        <label for="input-radio3" id="label3" class="label3"><span>Summer</span></label>
+
+                        <input class="input-radio4" id="input-radio4" type="radio" name="seasons" value="autumn">
+                        <label for="input-radio4" id="label4" class="label4"><span>Autumn</span></label>
+
+                    </div>
+                    <div class="favorites-seasons">
+
                         <div id="winter-favorites" class="winter-favorites">
                             <div class="book-section">
                                 <div class="book1">
@@ -549,9 +573,9 @@
                                 </div>
                             </div>
                         </div>
-                   
-                        </div>
-                    
+
+                    </div>
+
                 </section>
                 <section class="main-coffeeshop" id="coffee-shop">
                     <h2 class="section-title">Coffee Shop</h2>
@@ -652,39 +676,42 @@
                 <section class="main-librarycard" id="library-card">
                     <h2 class="section-title">Digital Library Cards</h2>
                     <div class="items-card">
-                        
+
                         <div class="find-card" id="find-card">
                             <div><span>Find your Library card</span></div>
                             <div class="card-form" id="card-form">
                                 <form class="gold-form" id="gold-form" onsubmit="return false">
                                     <div class="form-name">Brooklyn Public Library</div>
                                     <input class="input-text" id="input-text-form-name" type="text" name="reader's-name"
-                                        placeholder="Reader's name" required value = "">
-                                    <input class="input-text" id="input-text-form-numbercard" type="text" name="card-number" placeholder="Card number" required value = "">
-                                   <div class="main-librarycard-login-in-account-profile" id="main-librarycard-login-in-account-profile">
-                                    <div>
-                                        <div>Visits</div>
-                                        <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                        <div class="cards-profile-count">23</div>
+                                        placeholder="Reader's name" required value="">
+                                    <input class="input-text" id="input-text-form-numbercard" type="text"
+                                        name="card-number" placeholder="Card number" required value="">
+                                    <div class="main-librarycard-login-in-account-profile"
+                                        id="main-librarycard-login-in-account-profile">
+                                        <div>
+                                            <div>Visits</div>
+                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                            <div class="cards-profile-count">23</div>
+                                        </div>
+                                        <div>
+                                            <div>Bonuses</div>
+                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                            <div class="cards-profile-count">1240</div>
+                                        </div>
+                                        <div>
+                                            <div>Books</div>
+                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                            <div class="cards-profile-count">2</div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div>Bonuses</div>
-                                        <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
-                                        <div class="cards-profile-count">1240</div>
-                                    </div>
-                                    <div>
-                                        <div>Books</div>
-                                        <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                        <div class="cards-profile-count">2</div>
-                                    </div>
-                                </div>
-                                <button disabled id="form-button" class="form-button"><span>Check the card</span></button>
-                                
-                            </form>
-                              
-                                
+                                    <button disabled id="form-button" class="form-button"><span>Check the
+                                            card</span></button>
 
-                                
+                                </form>
+
+
+
+
                             </div>
                         </div>
                         <div class="get-card">
@@ -692,13 +719,14 @@
                             <div class="card-text">You will be able to see a reader card after logging into account or
                                 you can register a new account</div>
                             <div class="get-card-two-button">
-                                <button class="get-card-button" id="get-card-button-sign-up"><span>Sign Up</span></button>
+                                <button class="get-card-button" id="get-card-button-sign-up"><span>Sign
+                                        Up</span></button>
                                 <button class="get-card-button" id="get-card-button-log-in"><span>Log in</span></button>
                             </div>
                         </div>
                     </div>
 
-                            
+
 
                 </section>
                 <!--<div class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
@@ -741,7 +769,7 @@
                             <button class="get-card-button"><span>Profile</span></button>
                         </div>
                     </div>-->
-                </div>
+            </div>
         </main>
         <footer class="footer">
             <div class="footer-container">
