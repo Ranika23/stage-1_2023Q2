@@ -62,7 +62,7 @@
             <div class="modal-profile" id="modal-profile">
                 <div class="modal-profile-bg" id="modal-profile-bg">
                     <div class="modal-profile-bg-container">
-                        <div class="modal-profile-bg-avatar">JD</div>
+                        <div class="modal-profile-bg-avatar" id="modal-profile-bg-avatar">JD</div>
                         <div class="modal-profile-bg-name" id="modal-profile-bg-name">John Doe</div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <div class="modal-profile-right-card-number">
                         <div>Card number</div>
                         <div id="copy-number">F00234030</div>
-                        <button id="icon-copy"><img src="assets/svg/icon_copy.svg" alt="icon_copy"></button>
+                        <button class="icon-copy" id="icon-copy"><img src="assets/svg/icon_copy.svg" alt="icon_copy"></button>
                     </div>
                 </div>
             </div>
@@ -732,6 +732,48 @@
 
 
 
+                </section>
+                <section class="main-librarycard-auth" id="main-librarycard-auth">
+                    <h2 class="section-title">Digital Library Cards</h2>
+                    <div class="items-card">
+                        <div class="find-card" id="find-card">
+                            <div><span>Your Library card</span></div>
+                            <div class="card-form" id="card-form">
+                                <form class="gold-form" id="gold-form" onsubmit="return false">
+                                    <div class="form-name">Brooklyn Public Library</div>
+                                    <input class="input-auth-text" id="input-text-form-name-auth" type="text" name="reader's-name"
+                                        placeholder="John Doe" required value="">
+                                    <input class="input-auth-text" id="input-text-form-numbercard-auth" type="text"
+                                        name="card-number" placeholder="F00234030" required value="">
+                                    <div class="main-librarycard-profile-count"
+                                        id="main-librarycard-login-in-account-profile">
+                                        <div>
+                                            <div>Visits</div>
+                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                            <div class="cards-profile-count" id="profile-visit-auth">23</div>
+                                        </div>
+                                        <div>
+                                            <div>Bonuses</div>
+                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                            <div class="cards-profile-count">1240</div>
+                                        </div>
+                                        <div>
+                                            <div>Books</div>
+                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                            <div class="cards-profile-count">2</div>
+                                        </div>
+                                    </div>
+                               </form>
+                            </div>
+                        </div>
+                        <div class="get-card-auth">
+                            <div class="get-card-title">Visit your profile</div>
+                            <div class="card-text-auth">With a digital library card you get free access
+                                to the Library’s wide array of digital resources including e-books, databases,
+                                educational resources, and more.</div>
+                            <button class="get-card-button" id="get-card-button-profile"><span>Profile</span></button>
+                        </div>
+                    </div>
                 </section>
                 <!--<section class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
                     <h2 class="section-title">Digital Library Cards</h2>

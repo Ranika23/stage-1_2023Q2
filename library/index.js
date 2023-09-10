@@ -128,10 +128,6 @@ document.getElementById("close-btn-login").addEventListener("click", event => {
 })
 
 
-if(localStorage.getItem("user") === null) {
-    document.getElementById("profile-visits").innerHTML = 0;};
-
-
 
 
 
@@ -169,11 +165,71 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     }; 
     localStorage.setItem("user", JSON.stringify(user)); 
     
+
+    //настройки для авторизованной страницы
+    document.getElementById("input-text-form-name-auth").placeholder = FirstLast;
+    document.getElementById("modal-profile-bg-name").innerHTML = FirstLast;
+    document.getElementById("modal-profile-bg-avatar").innerHTML = InnerName;
+    document.getElementById("input-text-form-numbercard-auth").placeholder = RandomNumberCard;
+    document.getElementById("drop-profile-auth").innerHTML = RandomNumberCard;
+    document.getElementById("drop-profile-auth").style.fontSize = "13px";
+    document.getElementById("copy-number").innerHTML = RandomNumberCard;
+    document.getElementById("main-librarycard-auth").style.display = "block";
+    document.getElementById("main-librarycard-auth").style.display = "flex";
+    document.getElementById("library-card").style.display = "none";
+    //modal my profile
+    document.getElementById("drop-link-my-profile").addEventListener("click", event => {          
+        document.getElementById("modal-profile-wrapper").classList.remove("close");
+        document.getElementById("modal-profile-wrapper").classList.add("open"); 
+        event._isClickProfile = true;   
+    });
+    document.getElementById("modal-login").addEventListener("click", event => {
+        event._isClickProfile = true;
+    })
+    document.getElementById("modal-profile-wrapper").addEventListener("click", event => {
+        if (event._isClickProfile) return;
+        document.getElementById("modal-profile-wrapper").classList.add("close");
+        document.getElementById("modal-profile-wrapper").classList.remove("open");   
+    })
+    document.getElementById("close-btn-profile").addEventListener("click", event => {
+        if (event._isClickProfile) return;
+        document.getElementById("modal-profile-wrapper").classList.add("close");
+        document.getElementById("modal-profile-wrapper").classList.remove("open");  
+    })
+    document.getElementById("get-card-button-profile").addEventListener("click", event => {          
+        document.getElementById("modal-profile-wrapper").classList.remove("close");
+        document.getElementById("modal-profile-wrapper").classList.add("open"); 
+        event._isClickProfileButton = true;   
+    });
+    document.getElementById("modal-profile").addEventListener("click", event => {
+        event._isClickProfileButton = true;
+    })
+    document.getElementById("modal-profile-wrapper").addEventListener("click", event => {
+        if (event._isClickProfileButton) return;
+        document.getElementById("modal-profile-wrapper").classList.add("close");
+        document.getElementById("modal-profile-wrapper").classList.remove("open");   
+    })
+    document.getElementById("close-btn-profile").addEventListener("click", event => {
+        if (event._isClickProfileButton) return;
+        document.getElementById("modal-profile-wrapper").classList.add("close");
+        document.getElementById("modal-profile-wrapper").classList.remove("open");  
+    })
+
+    // copy number
+    document.getElementById("icon-copy").addEventListener("click", event => {
+        let textCopy = document.getElementById("copy-number");
+        navigator.clipboard.writeText(textCopy.innerHTML);               
+    })
+
+
+    //count Visits
     let visits = 1;
     localStorage.setItem("visits", JSON.stringify(visits));
     let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits"))
-
     document.getElementById("profile-visits").innerHTML = checkLoginLocalVisits;
+    document.getElementById("count-visits").innerHTML = checkLoginLocalVisits;
+    document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisits;
+        
 
 
     //reset to default input.value
@@ -191,8 +247,7 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
      document.getElementById("login").style.display = "none";
      document.getElementById("login-reg").innerHTML = First[0] + Last[0];
      document.getElementById("login-reg").setAttribute("title", First + " " + Last);
-     document.getElementById("drop-profile-auth").innerHTML = RandomNumberCard;
-    
+     document.getElementById("drop-profile-auth").innerHTML = RandomNumberCard;  
      document.getElementById("drop-profile-auth").style.fontSize = "13px";
 
 
@@ -247,41 +302,40 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
     let checkLoginLocalStorage = JSON.parse(localStorage.getItem("user"))
     for(let k in checkLoginLocalStorage) {
         if(modalLoginEmail === checkLoginLocalStorage[k]){ 
-          
             countCheck += 1
-            alert(countCheck)
         };   
             ; 
         if (modalLoginPassword === checkLoginLocalStorage[k] && k != "cardnumber" && k != "email"){
-           
             countCheck += 1
-            alert(countCheck)};
+            };
         if (k == "inner") {
             document.getElementById("login-reg").innerHTML = checkLoginLocalStorage[k];
+            document.getElementById("modal-profile-bg-avatar").innerHTML = checkLoginLocalStorage[k];
         };
         if (k == "firstlast") {
             document.getElementById("login-reg").setAttribute("title", checkLoginLocalStorage[k]);
+            document.getElementById("input-text-form-name-auth").placeholder = checkLoginLocalStorage[k];
             document.getElementById("modal-profile-bg-name").innerHTML = checkLoginLocalStorage[k];
         }
         if (k == "cardnumber") {
+            document.getElementById("input-text-form-numbercard-auth").placeholder = checkLoginLocalStorage[k];
             document.getElementById("drop-profile-auth").innerHTML = checkLoginLocalStorage[k];
             document.getElementById("drop-profile-auth").style.fontSize = "13px";
             document.getElementById("copy-number").innerHTML = checkLoginLocalStorage[k];
         };
-        /*if (k == "visits") {
-            localStorage.setItem("", JSON.stringify(user)); 
-            checkLoginLocalStorage[k] = checkLoginLocalStorage[k] + 1;
-            
-        }*/
     }
     if(countCheck === 2) {
-       
+        document.getElementById("main-librarycard-auth").style.display = "block";
+        document.getElementById("main-librarycard-auth").style.display = "flex";
+        document.getElementById("library-card").style.display = "none";
         let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits")) + 1;
         localStorage.setItem("visits", JSON.stringify(checkLoginLocalVisits));
         let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
         document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
         document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
-
+        alert("l")
+        document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;
+        
         document.getElementById("modal-login-email").value = "";
         document.getElementById("modal-login-password").value = "";
         document.getElementById("modal-login-wrapper").classList.add("close");
@@ -336,28 +390,39 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
             document.getElementById("modal-profile-wrapper").classList.add("open"); 
             event._isClickProfile = true;   
         });
-        document.getElementById("modal-login").addEventListener("click", event => {
+        document.getElementById("modal-profile").addEventListener("click", event => {
             event._isClickProfile = true;
         })
-        /*document.getElementById("get-card-button-log-in").addEventListener("click", event => {
-            document.getElementById("modal-login-wrapper").classList.remove("close");
-            document.getElementById("modal-login-wrapper").classList.add("open");
-        });
-        document.getElementById("get-card-button-log-in").addEventListener("click", event => {
-            event._isClickPrifile = true;
-        })*/
         document.getElementById("modal-profile-wrapper").addEventListener("click", event => {
             if (event._isClickProfile) return;
-        
             document.getElementById("modal-profile-wrapper").classList.add("close");
-            document.getElementById("modal-profile-wrapper").classList.remove("open");
-            
+            document.getElementById("modal-profile-wrapper").classList.remove("open");   
         })
         document.getElementById("close-btn-profile").addEventListener("click", event => {
             if (event._isClickProfile) return;
             document.getElementById("modal-profile-wrapper").classList.add("close");
             document.getElementById("modal-profile-wrapper").classList.remove("open");  
         })
+
+        document.getElementById("get-card-button-profile").addEventListener("click", event => {          
+            document.getElementById("modal-profile-wrapper").classList.remove("close");
+            document.getElementById("modal-profile-wrapper").classList.add("open"); 
+            event._isClickProfileButton = true;   
+        });
+        document.getElementById("modal-profile").addEventListener("click", event => {
+            event._isClickProfileButton = true;
+        })
+        document.getElementById("modal-profile-wrapper").addEventListener("click", event => {
+            if (event._isClickProfileButton) return;
+            document.getElementById("modal-profile-wrapper").classList.add("close");
+            document.getElementById("modal-profile-wrapper").classList.remove("open");   
+        })
+        document.getElementById("close-btn-profile").addEventListener("click", event => {
+            if (event._isClickProfileButton) return;
+            document.getElementById("modal-profile-wrapper").classList.add("close");
+            document.getElementById("modal-profile-wrapper").classList.remove("open");  
+        })
+
 
         // copy number
         document.getElementById("icon-copy").addEventListener("click", event => {
@@ -386,9 +451,9 @@ if(localStorage.getItem("user") !== null) {
 
 
         for(let key in checkLocalStorage) {
-            if(inputTextFormName === checkLocalStorage[key]){ 
+            if(inputTextFormName === checkLocalStorage[key] && key != "email" && key != "inner" && key != "password"){ 
                 count += 1}
-            if(inputTextFormNumbercard === checkLocalStorage[key]){
+            if(inputTextFormNumbercard === checkLocalStorage[key] && key != "email" && key != "inner" && key != "password"){
                 count += 1}
             if(count == 2) {    
                 document.getElementById("form-button").style.opacity = "0";
