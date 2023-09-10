@@ -11,6 +11,100 @@
 
 <body class="body">
     <div class="body-container">
+        <div class="modal-register-wrapper" id="modal-register-wrapper">
+            <div class="modal-register" id="modal-register">
+                <div class="modal-register-name">REGISTER</div>
+                <button class="close-btn" id="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                <form id="modal-register-form" class="modal-register-form" onsubmit="return false">
+                    <label for="register-first-name">First name</label>
+                    <input id="register-first-name" value='' type="text" required name="register-first-name"
+                        
+                        pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$">
+
+                    <label for="register-last-name">Last name</label>
+                    <input id="register-last-name" value='' type="text" required name="register-last-name"
+                        pattern="^\s*[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?\s*$"
+                        >
+                    <label for="register-email">E-mail</label>
+                    <input id="register-email" type="email" value='' name="register-email" 
+                        required pattern="[a-zA-Z1-9\-\._]+@[a-z1-9]+(.[a-z1-9]+){1,}">
+                    <label for="register-password">Password</label>
+                    <input id="register-password" type="password" value='' required minlength="8"
+                        name="register-password">
+                    <button id="button-register-form">Sign Up</button>
+                </form>
+
+                <div class="modal-register-link-login">
+                    <div>Already have an account?</div>
+                    <a href="#"> Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-login-wrapper" id="modal-login-wrapper">
+            <div class="modal-login" id="modal-login">
+                <div class="modal-login-name">LOGIN</div>
+                <button class="close-btn" id="close-btn-login"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                <form class="modal-login-form" id="modal-login-form" onsubmit="return false">
+                    <label for="modal-login-email">E-mail or readers card</label>
+                    <input id="modal-login-email" type="text" name="e-mail"
+                    required>
+                    <label for="modal-login-password">Password</label>
+                    <input id="modal-login-password" type="password" name="password" required minlength="8">
+                    <button id="button-login-form">Log In</button>
+                </form>
+                <div class="modal-login-link-register">
+                    <div>Don't have an account?</div>
+                    <a href="#"> Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-profile-wrapper" id="modal-profile-wrapper">
+            <div class="modal-profile" id="modal-profile">
+                <div class="modal-profile-bg" id="modal-profile-bg">
+                    <div class="modal-profile-bg-container">
+                        <div class="modal-profile-bg-avatar">JD</div>
+                        <div class="modal-profile-bg-name" id="modal-profile-bg-name">John Doe</div>
+                    </div>
+                </div>
+                <div class="modal-profile-right">
+                    <div class="modal-profile-right-name">MY PROFILE</div>
+                    <button class="close-btn" id="close-btn-profile"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                    <div class="modal-profile-right-cards-profile">
+                        <div>
+                            <div>Visits</div>
+                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                            <div class="cards-profile-count" id="count-visits">23</div>
+                        </div>
+                        <div>
+                            <div>Bonuses</div>
+                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                            <div class="cards-profile-count">1240</div>
+                        </div>
+                        <div>
+                            <div>Books</div>
+                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                            <div class="cards-profile-count">2</div>
+                        </div>
+                    </div>
+                    <div class="modal-profile-right-rended-books">
+                        <p>Rented books</p>
+                        <ul>
+                            <li>The Last Queen, Clive Irving</li>
+                            <li>Dominicana, Angie Cruz</li>
+                        </ul>
+                    </div>
+                    <div class="modal-profile-right-card-number">
+                        <div>Card number</div>
+                        <div id="copy-number">F00234030</div>
+                        <button id="icon-copy"><img src="assets/svg/icon_copy.svg" alt="icon_copy"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+
         <header id="id-header" class="header">
             <div class="container">
                 <h1 class="logo">Brooklyn Public Library</h1>
@@ -24,14 +118,46 @@
                             <li><a id="link5" class="nav-link" href="#library-card">Library Card</a></li>
                         </ul>
                     </nav>
-                    <img class="login" src="assets/svg/icon_log-in.svg" alt="log_in">
+
+                    <img class="login" id="login" src="assets/svg/icon_log-in.svg" alt="log_in">
+                    <div class="login-reg" id="login-reg">
+                        <span>JD</span>
+                    </div>
+                    <div id="drop-menu-profile-no-auth" class="drop-menu-profile-no-auth">
+                        <div class="drop-profile">Profile</div>
+                        <div class="drop-link" id="drop-link-log-in">Log In</div>
+                        <div class="drop-link" id="drop-link-register">Register</div>
+                    </div>
+                    <div id="drop-menu-profile-with-auth" class="drop-menu-profile-with-auth">
+                        <div class="drop-profile" id="drop-profile-auth">Profile</div>
+                        <div class="drop-link" id="drop-link-my-profile">My profile</div>
+                        <div class="drop-link" id="drop-link-log-out">Log Out</div>
+                    </div>
+                    <!--<div class="modal-login">
+                        <div class="modal-login-name">LOGIN</div>
+                        <button class="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                        <form class="modal-login-form" action="#">
+                            <label for="modal-login-email">E-mail or readers card</label>
+                            <input id="modal-login-email" type="text" name="e-mail"
+                                placeholder="E-mail or readers card">
+                            <label for="modal-login-password">Password</label>
+                            <input id="modal-login-password" type="text" name="password" placeholder="Your password">
+                            <button>Log In</button>
+                        </form>
+                        <div class="modal-login-link-register">
+                            <div>Don't have an account?</div>
+                            <a href="#"> Register</a>
+                        </div>
+                    </div>-->
+
+                    
                     <button id="burger" class="header-burger">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
         </header>
-        <main class="main">
+        <main class="main" id="main">
             <div class="main-container">
                 <section class="main-welcom">
                     <h2 class="welcom-item">Welcome&nbsp;<br>to the Brooklyn<br>Library</h2>
@@ -40,50 +166,337 @@
                     <h2 class="section-title">About</h2>
                     <div class="about-text">The Brooklyn Library is a free workspace, a large number of books and a cozy
                         coffee shop inside</div>
-                    <div class="about-images">
-                        <div class="carret"><img src="assets/svg/Carret_Left.svg" alt="carret"></div>
-                        <div class="about-item1"><img class="about-images-item" src="assets/img/about-img-1.png" alt="the girl in the library"></div>
-                        <div class="carret"><img src="assets/svg/Carret_Right.svg" alt="carret"></div>
-                        <div class="about-item2"><img class="about-images-item" src="assets/img/about-img-2.png" alt="the statues in the library"></div>
-                        <div class="about-item3"><img class="about-images-item" src="assets/img/about-img-3.png" alt="the bookshelves in the library"></div>
-                    </div>
-                    <div class="about-carousel">
-                        <a class="link-slide" href="#">
-                            <div class="about-slide1"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
-                        <a class="link-slide" href="#">
-                            <div class="about-slide"></div>
-                        </a>
+                    <div id="about-slide-tablet" class="about-slide-tablet">
+
+                        <input id="about-slide1" class="about-slide1" type="radio" name="carousel" value="slide-one"
+                            checked>
+                        <input id="about-slide2" class="about-slide2" type="radio" name="carousel" value="slide-two">
+                        <input id="about-slide3" class="about-slide3" type="radio" name="carousel" value="slide-three">
+                        <input id="about-slide4" class="about-slide4" type="radio" name="carousel" value="slide-four">
+                        <input id="about-slide5" class="about-slide5" type="radio" name="carousel" value="slide-five">
+                        <div id="carret-left" class="carret-left"><img src="assets/svg/Carret_Left.svg" alt="carret">
+                        </div>
+
+                        <div class="wrapper-about-images">
+                            <div id="about-images" class="about-images">
+
+                                <div id="about-item1" class="about-item1"><img class="about-images-item"
+                                        src="assets/img/about-img-1.png" alt="the girl in the library"></div>
+
+                                <div id="about-item2" class="about-item2"><img class="about-images-item"
+                                        src="assets/img/about-img-2.png" alt="the statues in the library"></div>
+                                <div id="about-item3" class="about-item3"><img class="about-images-item"
+                                        src="assets/img/about-img-3.png" alt="the bookshelves in the library"></div>
+                                <div class="about-item4"><img class="about-images-item" src="assets/img/about-img-4.png"
+                                        alt="the books in the library"></div>
+                                <div class="about-item5"><img class="about-images-item" src="assets/img/about-img-5.png"
+                                        alt="the books in the library"></div>
+                            </div>
+                        </div>
+                        <div id="carret-right" class="carret-right"><img src="assets/svg/Carret_Right.svg" alt="carret">
+                        </div>
+
+
+
                     </div>
                 </section>
                 <section class="main-favorites" id="favorites">
+                    <!--<div class="modal-buy-card">
+                        <div class="modal-buy-card-title">
+                            <span>BUY A LIBRARY CARD</span>
+                            <button class="close-btn"><img src="assets/svg/Close_btn_white.svg"
+                                    alt="close-btn"></button>
+                        </div>
+                        <div class="modal-buy-card-container">
+                            <form class="modal-buy-card-form" action="#">
+                                <label for="card_number">Bank card number</label>
+                                <input class="modal-buy-card-input-long" id="card_number" type="text"
+                                    name="card_number">
+                                <label for="expiration_code">Expiration code</label>
+                                <div>
+                                    <input class="modal-buy-card-input-short" id="expiration_code" type="text"
+                                        name="expiration_code">
+                                    <input class="modal-buy-card-input-short" id="expiration_code" type="text"
+                                        name="expiration_code">
+                                </div>
+                                <label for="cvc">CVC</label>
+                                <input class="modal-buy-card-input-short" id="cvc" type="text" name="cvc">
+                                <label for="cardholder">Cardholder name</label>
+                                <input class="modal-buy-card-input-long" id="cardholder" type="text" name="cardholder">
+                                <label for="postal_code">Postal code</label>
+                                <input class="modal-buy-card-input-long" id="postal_code" type="text"
+                                    name="postal_code">
+                                <label for="city_town">City / Town</label>
+                                <input class="modal-buy-card-input-long" id="city_town" type="text" name="city_town">
+                                <button class="button-buy">Buy</button>
+                                <p>$ 25.00</p>
+                            </form>
+                            <div class="modal-buy-card-text">If you are live, work, attend school, or pay property taxes
+                                in New York State, you can get a $25 digital library card right now using this online
+                                form. Visitors to New York State can also use this form to apply for a temporary card.
+                            </div>
+                        </div>
+                    </div>-->
                     <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
+
                     <div class="favorites-radio">
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="winter" checked>
-                            <span>Winter</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="spring">
-                            <span>Spring</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="summer">
-                            <span>Summer</span></label>
-                        <label class="label">
-                            <input class="input-radio" type="radio" name="seasons" value="autumn">
-                            <span>Autumn</span></label>
+
+
+                        <input checked class="input-radio1" id="input-radio1" type="radio" name="seasons"
+                            value="winter">
+                        <label for="input-radio1" id="label1" class="label1"><span>Winter</span></label>
+
+                        <input class="input-radio2" id="input-radio2" type="radio" name="seasons" value="spring">
+                        <label for="input-radio2" id="label2" class="label2"><span>Spring</span></label>
+
+                        <input class="input-radio3" id="input-radio3" type="radio" name="seasons" value="summer">
+                        <label for="input-radio3" id="label3" class="label3"><span>Summer</span></label>
+
+                        <input class="input-radio4" id="input-radio4" type="radio" name="seasons" value="autumn">
+                        <label for="input-radio4" id="label4" class="label4"><span>Autumn</span></label>
+
                     </div>
                     <div class="favorites-seasons">
-                        <div hidden class="autumn-favorites">
+
+                        <div id="winter-favorites" class="winter-favorites">
+                            <div class="book-section">
+                                <div class="book1">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>The Book Eaters</span><br>
+                                                    By Sunyi Dean</div>
+                                                <div class="text-description">An unusual sci-fi story about a book eater
+                                                    woman who tries desperately to save her dangerous mind-eater son
+                                                    from tradition and certain death. Complete with dysfunctional family
+                                                    values, light Sapphic romance, and a strong, complex protagonist.
+                                                    Not for the faint of heart.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_winter_book1.png"
+                                        alt="The Book Eaters">
+                                </div>
+                                <div class="book2">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Cackle</span><br>
+                                                    By Rachel Harrison</div>
+                                                <div class="text-description">Are your Halloween movies of choice The
+                                                    Witches of Eastwick and Practical Magic? Look no further than here -
+                                                    where a woman recovering from a breakup moves to a quaint town in
+                                                    upstate New York and befriends a beautiful witch.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_winter_book2.png" alt="Cackle">
+                                </div>
+                            </div>
+                            <div class="book-section">
+                                <div class="book3">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Dante: Poet of the Secular
+                                                        World</span><br>By Erich Auerbach
+                                                </div>
+                                                <div class="text-description">Auerbach's engaging book places the
+                                                    'Comedy' within the tradition of epic, tragedy, and philosophy in
+                                                    general, arguing for Dante's uniqueness as one who raised the
+                                                    individual and his drama of soul into something of divine
+                                                    significance—an inspired introduction to Dante's main themes.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_winter_book3.png" alt="Dante: Poet of the Secular
+                                        World">
+                                </div>
+                                <div class="book4">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>The Last Queen</span><br>
+                                                    By Clive Irving</div>
+                                                <div class="text-description">A timely and revelatory new biography of
+                                                    Queen Elizabeth (and her family) exploring how the Windsors have
+                                                    evolved and thrived as the modern world has changed around them.
+                                                </div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_winter_book4.png"
+                                        alt="The Last Queen">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="spring-favorites" class="spring-favorites">
+                            <div class="book-section">
+                                <div class="book1">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>The Body</span><br>
+                                                    By Stephen King</div>
+                                                <div class="text-description">Powerful novel that takes you back to a
+                                                    nostalgic time, exploring both the beauty and danger and loss of
+                                                    innocence that is youth.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_spring_book1.png" alt="The Body">
+                                </div>
+                                <div class="book2">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Carry: A Memoir of Survival on
+                                                        Stolen Land</span><br>
+                                                    By Toni Jenson</div>
+                                                <div class="text-description">This memoir about the author's
+                                                    relationship with gun violence feels both expansive and intimate,
+                                                    resulting in a lyrical indictment of the way things are.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_spring_book2.png"
+                                        alt="Carry: A Memoir of Survival on Stolen Land">
+                                </div>
+                            </div>
+                            <div class="book-section">
+                                <div class="book3">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Days of Distraction</span><br>By
+                                                    Alexandra Chang
+                                                </div>
+                                                <div class="text-description">A sardonic view of Silicon Valley culture,
+                                                    a meditation on race, and a journal of displacement and belonging,
+                                                    all in one form-defying package of spare prose.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_spring_book3.png"
+                                        alt="Days of Distraction">
+                                </div>
+                                <div class="book4">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Dominicana</span><br>
+                                                    By Angie Cruz</div>
+                                                <div class="text-description">A fascinating story of a teenage girl who
+                                                    marries a man twice her age with the promise to bring her to
+                                                    America. Her marriage is an opportunity for her family to eventually
+                                                    immigrate. For fans of Isabel Allende and Julia Alvarez.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_spring_book4.png" alt="Dominicana">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="summer-favorites" class="summer-favorites">
+                            <div class="book-section">
+                                <div class="book1">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Crude: A Memoir</span><br>
+                                                    By Pablo Fajardo & ​​Sophie Tardy-Joubert</div>
+                                                <div class="text-description">Drawing and color by Damien Roudeau | This
+                                                    book illustrates the struggles of a group of indigenous Ecuadoreans
+                                                    as they try to sue the ChevronTexaco company for damage their oil
+                                                    fields did to the Amazon and her people</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_summer_book1.png"
+                                        alt="Crude: A Memoir">
+                                </div>
+                                <div class="book2">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Let My People Go Surfing</span><br>
+                                                    By Yvon Chouinard</div>
+                                                <div class="text-description">TChouinard—climber, businessman,
+                                                    environmentalist—shares tales of courage and persistence from his
+                                                    experience of founding and leading Patagonia, Inc. Full title: Let
+                                                    My People Go Surfing: The Education of a Reluctant Businessman,
+                                                    Including 10 More Years of Business Unusual.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_summer_book2.png"
+                                        alt="Let My People Go Surfing">
+                                </div>
+                            </div>
+                            <div class="book-section">
+                                <div class="book3">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>The Octopus Museum:
+                                                        Poems</span><br>
+                                                    By Brenda Shaughnessy
+                                                </div>
+                                                <div class="text-description">This collection of bold and scathingly
+                                                    beautiful feminist poems imagines what comes after our current age
+                                                    of environmental destruction, racism, sexism, and divisive politics.
+                                                </div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_summer_book3.png"
+                                        alt="The Octopus Museum: Poems">
+                                </div>
+                                <div class="book4">
+                                    <div class="items-description">
+                                        <div class="book-description">
+                                            <div>
+                                                <div class="staff-pick">Staff Picks</div>
+                                                <div class="title-description"><span>Shark Dialogues: A Novel</span><br>
+                                                    By Kiana Davenport</div>
+                                                <div class="text-description">An epic saga of seven generations of one
+                                                    family encompasses the tumultuous history of Hawaii as a Hawaiian
+                                                    woman gathers her four granddaughters together in an erotic tale of
+                                                    villains and dreamers, queens and revolutionaries, lepers and
+                                                    healers.</div>
+                                            </div>
+                                            <button class="button-buy">Buy</button>
+                                        </div>
+                                    </div>
+                                    <img class="img-book" src="assets/img/favorites_summer_book4.png"
+                                        alt="Shark Dialogues: A Novel">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="autumn-favorites" class="autumn-favorites">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -164,248 +577,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="winter-favorites">
-                            <div class="book-section">
-                                <div class="book1">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>The Book Eaters</span><br>
-                                                    By Sunyi Dean</div>
-                                                <div class="text-description">An unusual sci-fi story about a book eater
-                                                    woman who tries desperately to save her dangerous mind-eater son
-                                                    from tradition and certain death. Complete with dysfunctional family
-                                                    values, light Sapphic romance, and a strong, complex protagonist.
-                                                    Not for the faint of heart.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_winter_book1.png"
-                                        alt="The Book Eaters">
-                                </div>
-                                <div class="book2">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Cackle</span><br>
-                                                    By Rachel Harrison</div>
-                                                <div class="text-description">Are your Halloween movies of choice The
-                                                    Witches of Eastwick and Practical Magic? Look no further than here -
-                                                    where a woman recovering from a breakup moves to a quaint town in
-                                                    upstate New York and befriends a beautiful witch.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_winter_book2.png" alt="Cackle">
-                                </div>
-                            </div>
-                            <div class="book-section">
-                                <div class="book3">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Dante: Poet of the Secular
-                                                        World</span><br>By Erich Auerbach
-                                                </div>
-                                                <div class="text-description">Auerbach's engaging book places the
-                                                    'Comedy' within the tradition of epic, tragedy, and philosophy in
-                                                    general, arguing for Dante's uniqueness as one who raised the
-                                                    individual and his drama of soul into something of divine
-                                                    significance—an inspired introduction to Dante's main themes.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_winter_book3.png" alt="Dante: Poet of the Secular
-                                        World">
-                                </div>
-                                <div class="book4">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>The Last Queen</span><br>
-                                                    By Clive Irving</div>
-                                                <div class="text-description">A timely and revelatory new biography of
-                                                    Queen Elizabeth (and her family) exploring how the Windsors have
-                                                    evolved and thrived as the modern world has changed around them.
-                                                </div>
-                                            </div>
-                                            <button disabled class="button-buy">Own</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_winter_book4.png"
-                                        alt="The Last Queen">
-                                </div>
-                            </div>
-                        </div>
-                        <div hidden class="spring-favorites">
-                            <div class="book-section">
-                                <div class="book1">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>The Body</span><br>
-                                                    By Stephen King</div>
-                                                <div class="text-description">Powerful novel that takes you back to a
-                                                    nostalgic time, exploring both the beauty and danger and loss of
-                                                    innocence that is youth.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_spring_book1.png" alt="The Body">
-                                </div>
-                                <div class="book2">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Carry: A Memoir of Survival on
-                                                        Stolen Land</span><br>
-                                                    By Toni Jenson</div>
-                                                <div class="text-description">This memoir about the author's
-                                                    relationship with gun violence feels both expansive and intimate,
-                                                    resulting in a lyrical indictment of the way things are.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_spring_book2.png"
-                                        alt="Carry: A Memoir of Survival on Stolen Land">
-                                </div>
-                            </div>
-                            <div class="book-section">
-                                <div class="book3">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Days of Distraction</span><br>By
-                                                    Alexandra Chang
-                                                </div>
-                                                <div class="text-description">A sardonic view of Silicon Valley culture,
-                                                    a meditation on race, and a journal of displacement and belonging,
-                                                    all in one form-defying package of spare prose.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_spring_book3.png"
-                                        alt="Days of Distraction">
-                                </div>
-                                <div class="book4">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Dominicana</span><br>
-                                                    By Angie Cruz</div>
-                                                <div class="text-description">A fascinating story of a teenage girl who
-                                                    marries a man twice her age with the promise to bring her to
-                                                    America. Her marriage is an opportunity for her family to eventually
-                                                    immigrate. For fans of Isabel Allende and Julia Alvarez.</div>
-                                            </div>
-                                            <button disabled class="button-buy">Own</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_spring_book4.png" alt="Dominicana">
-                                </div>
-                            </div>
-                        </div>
-                        <div hidden class="summer-favorites">
-                            <div class="book-section">
-                                <div class="book1">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Crude: A Memoir</span><br>
-                                                    By Pablo Fajardo & ​​Sophie Tardy-Joubert</div>
-                                                <div class="text-description">Drawing and color by Damien Roudeau | This
-                                                    book illustrates the struggles of a group of indigenous Ecuadoreans
-                                                    as they try to sue the ChevronTexaco company for damage their oil
-                                                    fields did to the Amazon and her people</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_summer_book1.png"
-                                        alt="Crude: A Memoir">
-                                </div>
-                                <div class="book2">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Let My People Go Surfing</span><br>
-                                                    By Yvon Chouinard</div>
-                                                <div class="text-description">TChouinard—climber, businessman,
-                                                    environmentalist—shares tales of courage and persistence from his
-                                                    experience of founding and leading Patagonia, Inc. Full title: Let
-                                                    My People Go Surfing: The Education of a Reluctant Businessman,
-                                                    Including 10 More Years of Business Unusual.</div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_summer_book2.png"
-                                        alt="Let My People Go Surfing">
-                                </div>
-                            </div>
-                            <div class="book-section">
-                                <div class="book3">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>The Octopus Museum:
-                                                        Poems</span><br>
-                                                    By Brenda Shaughnessy
-                                                </div>
-                                                <div class="text-description">This collection of bold and scathingly
-                                                    beautiful feminist poems imagines what comes after our current age
-                                                    of environmental destruction, racism, sexism, and divisive politics.
-                                                </div>
-                                            </div>
-                                            <button class="button-buy">Buy</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_summer_book3.png"
-                                        alt="The Octopus Museum: Poems">
-                                </div>
-                                <div class="book4">
-                                    <div class="items-description">
-                                        <div class="book-description">
-                                            <div>
-                                                <div class="staff-pick">Staff Picks</div>
-                                                <div class="title-description"><span>Shark Dialogues: A Novel</span><br>
-                                                    By Kiana Davenport</div>
-                                                <div class="text-description">An epic saga of seven generations of one
-                                                    family encompasses the tumultuous history of Hawaii as a Hawaiian
-                                                    woman gathers her four granddaughters together in an erotic tale of
-                                                    villains and dreamers, queens and revolutionaries, lepers and
-                                                    healers.</div>
-                                            </div>
-                                            <button disabled class="button-buy">Own</button>
-                                        </div>
-                                    </div>
-                                    <img class="img-book" src="assets/img/favorites_summer_book4.png"
-                                        alt="Shark Dialogues: A Novel">
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+
                 </section>
                 <section class="main-coffeeshop" id="coffee-shop">
                     <h2 class="section-title">Coffee Shop</h2>
-                    <div class="coffeeshop-text">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</div>
+                    <div class="coffeeshop-text">In our library, we have of cozy coffee shop, welcoming in customers
+                        with frothy cappuccinos and friendly conversation. You can get a favorite book and read in
+                        coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.
+                    </div>
                     <div class="coffeeshop-menu">
                         <div class="menu-drink">
                             <div class="name-price">Coffee & Tea</div>
@@ -499,30 +680,102 @@
                 <section class="main-librarycard" id="library-card">
                     <h2 class="section-title">Digital Library Cards</h2>
                     <div class="items-card">
-                        <form action="#" class="find-card">
+
+                        <div class="find-card" id="find-card">
                             <div><span>Find your Library card</span></div>
-                            <div class="card-form">
-                                <div class="gold-form">
+                            <div class="card-form" id="card-form">
+                                <form class="gold-form" id="gold-form" onsubmit="return false">
                                     <div class="form-name">Brooklyn Public Library</div>
-                                    <input class="input-text" type="text" name="reader's-name"
-                                        placeholder="Reader's name">
-                                    <input class="input-text" type="text" name="card-number" placeholder="Card number">
-                                </div>
-                                <button class="form-button" type="submit"><span>Cheak the card</span></button>
+                                    <input class="input-text" id="input-text-form-name" type="text" name="reader's-name"
+                                        placeholder="Reader's name" required value="">
+                                    <input class="input-text" id="input-text-form-numbercard" type="text"
+                                        name="card-number" placeholder="Card number" required value="">
+                                    <div class="main-librarycard-login-in-account-profile"
+                                        id="main-librarycard-login-in-account-profile">
+                                        <div>
+                                            <div>Visits</div>
+                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                            <div class="cards-profile-count" id="profile-visits">23</div>
+                                        </div>
+                                        <div>
+                                            <div>Bonuses</div>
+                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                            <div class="cards-profile-count">1240</div>
+                                        </div>
+                                        <div>
+                                            <div>Books</div>
+                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                            <div class="cards-profile-count">2</div>
+                                        </div>
+                                    </div>
+                                    <button disabled id="form-button" class="form-button"><span>Check the
+                                            card</span></button>
+
+                                </form>
+
+
+
+
                             </div>
-                        </form>
+                        </div>
                         <div class="get-card">
                             <div class="get-card-title">Get a reader card</div>
                             <div class="card-text">You will be able to see a reader card after logging into account or
                                 you can register a new account</div>
                             <div class="get-card-two-button">
-                                <button class="get-card-button"><span>Sign Up</span></button>
-                                <button class="get-card-button"><span>Log in</span></button>
+                                <button class="get-card-button" id="get-card-button-sign-up"><span>Sign
+                                        Up</span></button>
+                                <button class="get-card-button" id="get-card-button-log-in"><span>Log in</span></button>
                             </div>
                         </div>
                     </div>
+
+
+
                 </section>
-            </div>
+                <!--<section class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
+                    <h2 class="section-title">Digital Library Cards</h2>
+                    <div class="items-card">
+                        <form class="find-card-login" id="find-card-login">
+                            <div><span>Your Library card</span></div>
+                            <div class="card-form" id="card-form">
+                                <form class="gold-form-login-in-account" id="gold-form" onsubmit="return false">
+                                    <div class="form-name">Brooklyn Public Library</div>
+
+                                    <input class="input-text-login-in-account" type="text" name="reader's-name"
+                                        placeholder="John Doe">
+                                    <input class="input-text-login-in-account" type="text" name="card-number"
+                                        placeholder="F00234030">
+                                    <div class="main-librarycard-login-in-account-profile"
+                                        id="main-librarycard-login-in-account-profile">
+                                        <div>
+                                            <div>Visits</div>
+                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                            <div class="cards-profile-count" id="profile-visits">23</div>
+                                        </div>
+                                        <div>
+                                            <div>Bonuses</div>
+                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                            <div class="cards-profile-count">1240</div>
+                                        </div>
+                                        <div>
+                                            <div>Books</div>
+                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                            <div class="cards-profile-count">2</div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="get-card-login-in-account">
+                            <div class="get-card-title-login-in-account">Visit your profile</div>
+                            <div class="card-text-login-in-account">With a digital library card you get free access
+                                to the Library’s wide array of digital resources including e-books, databases,
+                                educational resources, and more.</div>
+                            <button class="get-card-button"><span>Profile</span></button>
+                        </div>
+                </section>-->
+                
         </main>
         <footer class="footer">
             <div class="footer-container">
@@ -536,8 +789,8 @@
                     <div class="footer-frame-item2">
                         <ul class="footer-social-media">
                             <li class="social-items"><a class="social-link" target="_blank"
-                                    href="https://twitter.com/i/flow/login?redirect_after_login=%2Frollingscopes"><img class="social-img"
-                                        src="assets/svg/u_twitter.svg" alt="twitter"></a></li>
+                                    href="https://twitter.com/i/flow/login?redirect_after_login=%2Frollingscopes"><img
+                                        class="social-img" src="assets/svg/u_twitter.svg" alt="twitter"></a></li>
                             <li class="social-items"><a class="social-link" target="_blank"
                                     href="https://www.instagram.com/rsschool_news/"><img class="social-img"
                                         src="assets/svg/u_instagram.svg" alt="instagram"></a></li>
@@ -553,7 +806,8 @@
                 </div>
                 <div class="footer-rss">
                     <div>2023</div>
-                    <div class="rss"><a class="rss-link" target="_blank" href="https://rs.school/js-stage0/">The Rolling Scopes School</a></div>
+                    <div class="rss"><a class="rss-link" target="_blank" href="https://rs.school/js-stage0/">The Rolling
+                            Scopes School</a></div>
                     <div><a class="account-github" target="_blank" href="https://github.com/Ranika23">Veronika</a></div>
                 </div>
             </div>
