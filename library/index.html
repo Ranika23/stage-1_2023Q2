@@ -58,6 +58,50 @@
                 </div>
             </div>
         </div>
+        <div class="modal-profile-wrapper" id="modal-profile-wrapper">
+            <div class="modal-profile" id="modal-profile">
+                <div class="modal-profile-bg" id="modal-profile-bg">
+                    <div class="modal-profile-bg-container">
+                        <div class="modal-profile-bg-avatar">JD</div>
+                        <div class="modal-profile-bg-name" id="modal-profile-bg-name">John Doe</div>
+                    </div>
+                </div>
+                <div class="modal-profile-right">
+                    <div class="modal-profile-right-name">MY PROFILE</div>
+                    <button class="close-btn" id="close-btn-profile"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
+                    <div class="modal-profile-right-cards-profile">
+                        <div>
+                            <div>Visits</div>
+                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                            <div class="cards-profile-count" id="count-visits">23</div>
+                        </div>
+                        <div>
+                            <div>Bonuses</div>
+                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                            <div class="cards-profile-count">1240</div>
+                        </div>
+                        <div>
+                            <div>Books</div>
+                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                            <div class="cards-profile-count">2</div>
+                        </div>
+                    </div>
+                    <div class="modal-profile-right-rended-books">
+                        <p>Rented books</p>
+                        <ul>
+                            <li>The Last Queen, Clive Irving</li>
+                            <li>Dominicana, Angie Cruz</li>
+                        </ul>
+                    </div>
+                    <div class="modal-profile-right-card-number">
+                        <div>Card number</div>
+                        <div id="copy-number">F00234030</div>
+                        <button id="icon-copy"><img src="assets/svg/icon_copy.svg" alt="icon_copy"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
 
 
@@ -106,47 +150,7 @@
                         </div>
                     </div>-->
 
-                    <!--<div class="modal-profile">
-                        <div class="modal-profile-bg">
-                            <div class="modal-profile-bg-container">
-                                <div class="modal-profile-bg-avatar">JD</div>
-                                <div class="modal-profile-bg-name">John Doe</div>
-                            </div>
-                        </div>
-                        <div class="modal-profile-right">
-                            <div class="modal-profile-right-name">MY PROFILE</div>
-                            <button class="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
-                            <div class="modal-profile-right-cards-profile">
-                                <div>
-                                    <div>Visits</div>
-                                    <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                    <div class="cards-profile-count">23</div>
-                                </div>
-                                <div>
-                                    <div>Bonuses</div>
-                                    <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
-                                    <div class="cards-profile-count">1240</div>
-                                </div>
-                                <div>
-                                    <div>Books</div>
-                                    <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                    <div class="cards-profile-count">2</div>
-                                </div>
-                            </div>
-                            <div class="modal-profile-right-rended-books">
-                                <p>Rented books</p>
-                                <ul>
-                                    <li>The Last Queen, Clive Irving</li>
-                                    <li>Dominicana, Angie Cruz</li>
-                                </ul>
-                            </div>
-                            <div class="modal-profile-right-card-number">
-                                <div>Card number</div>
-                                <div>F00234030</div>
-                                <div><img src="assets/svg/icon_copy.svg" alt="icon_copy"></div>
-                            </div>
-                        </div>
-                    </div>-->
+                    
                     <button id="burger" class="header-burger">
                         <span></span><span></span><span></span>
                     </button>
@@ -691,7 +695,7 @@
                                         <div>
                                             <div>Visits</div>
                                             <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                            <div class="cards-profile-count">23</div>
+                                            <div class="cards-profile-count" id="profile-visits">23</div>
                                         </div>
                                         <div>
                                             <div>Bonuses</div>
@@ -729,38 +733,40 @@
 
 
                 </section>
-                <!--<div class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
+                <!--<section class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
                     <h2 class="section-title">Digital Library Cards</h2>
                     <div class="items-card">
                         <form class="find-card-login" id="find-card-login">
                             <div><span>Your Library card</span></div>
-                            <div class="card-form">
-                                <div class="gold-form-login-in-account">
+                            <div class="card-form" id="card-form">
+                                <form class="gold-form-login-in-account" id="gold-form" onsubmit="return false">
                                     <div class="form-name">Brooklyn Public Library</div>
+
                                     <input class="input-text-login-in-account" type="text" name="reader's-name"
                                         placeholder="John Doe">
                                     <input class="input-text-login-in-account" type="text" name="card-number"
                                         placeholder="F00234030">
-                                </div>
-                                <div class="main-librarycard-login-in-account-profile">
-                                    <div>
-                                        <div>Visits</div>
-                                        <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                        <div class="cards-profile-count">23</div>
+                                    <div class="main-librarycard-login-in-account-profile"
+                                        id="main-librarycard-login-in-account-profile">
+                                        <div>
+                                            <div>Visits</div>
+                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
+                                            <div class="cards-profile-count" id="profile-visits">23</div>
+                                        </div>
+                                        <div>
+                                            <div>Bonuses</div>
+                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
+                                            <div class="cards-profile-count">1240</div>
+                                        </div>
+                                        <div>
+                                            <div>Books</div>
+                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
+                                            <div class="cards-profile-count">2</div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div>Bonuses</div>
-                                        <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
-                                        <div class="cards-profile-count">1240</div>
-                                    </div>
-                                    <div>
-                                        <div>Books</div>
-                                        <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                        <div class="cards-profile-count">2</div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                         <div class="get-card-login-in-account">
                             <div class="get-card-title-login-in-account">Visit your profile</div>
                             <div class="card-text-login-in-account">With a digital library card you get free access
@@ -768,8 +774,8 @@
                                 educational resources, and more.</div>
                             <button class="get-card-button"><span>Profile</span></button>
                         </div>
-                    </div>-->
-            </div>
+                </section>-->
+                
         </main>
         <footer class="footer">
             <div class="footer-container">
