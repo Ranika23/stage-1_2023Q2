@@ -101,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal-buy-card-wrapper" id="modal-buy-card-wrapper">
+        <div class="modal-buy-card-wrapper" id="modal-buy-card-wrapper" onsubmit="return false">
             <div class="modal-buy-card" id="modal-buy-card">
                 <div class="modal-buy-card-title">
                     <span>BUY A LIBRARY CARD</span>
@@ -109,27 +109,27 @@
                             alt="close-btn"></button>
                 </div>
                 <div class="modal-buy-card-container">
-                    <form class="modal-buy-card-form" action="#">
+                    <form class="modal-buy-card-form" id="modal-buy-card-form" onclick="return">
                         <label for="card_number">Bank card number</label>
                         <input class="modal-buy-card-input-long" id="card_number" type="text"
-                            name="card_number">
+                            name="card_number" required pattern="[0-9]{16}">
                         <label for="expiration_code">Expiration code</label>
                         <div>
                             <input class="modal-buy-card-input-short" id="expiration_code" type="text"
-                                name="expiration_code">
+                                name="expiration_code" required pattern="[0-9]{2}">
                             <input class="modal-buy-card-input-short" id="expiration_code" type="text"
-                                name="expiration_code">
+                                name="expiration_code" required pattern="[0-9]{2}">
                         </div>
                         <label for="cvc">CVC</label>
-                        <input class="modal-buy-card-input-short" id="cvc" type="text" name="cvc">
+                        <input class="modal-buy-card-input-short" id="cvc" type="text" name="cvc" required pattern="[0-9]{3}">
                         <label for="cardholder">Cardholder name</label>
-                        <input class="modal-buy-card-input-long" id="cardholder" type="text" name="cardholder">
+                        <input class="modal-buy-card-input-long" id="cardholder" type="text" name="cardholder" required>
                         <label for="postal_code">Postal code</label>
                         <input class="modal-buy-card-input-long" id="postal_code" type="text"
-                            name="postal_code">
+                            name="postal_code" required>
                         <label for="city_town">City / Town</label>
-                        <input class="modal-buy-card-input-long" id="city_town" type="text" name="city_town">
-                        <button class="button-buy">Buy</button>
+                        <input class="modal-buy-card-input-long" id="city_town" type="text" name="city_town" required>
+                        <button class="button-modal-buy" id="button-modal-buy">Buy</button>
                         <p>$ 25.00</p>
                     </form>
                     <div class="modal-buy-card-text">If you are live, work, attend school, or pay property taxes
