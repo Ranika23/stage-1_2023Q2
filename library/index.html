@@ -83,7 +83,7 @@
                         <div>
                             <div>Books</div>
                             <div><img src="assets/svg/Books.svg" alt="books"></div>
-                            <div class="cards-profile-count">2</div>
+                            <div class="cards-profile-count" id="count-profile-books">2</div>
                         </div>
                     </div>
                     <div class="modal-profile-right-rended-books">
@@ -101,6 +101,45 @@
                 </div>
             </div>
         </div>
+        <div class="modal-buy-card-wrapper" id="modal-buy-card-wrapper">
+            <div class="modal-buy-card" id="modal-buy-card">
+                <div class="modal-buy-card-title">
+                    <span>BUY A LIBRARY CARD</span>
+                    <button class="close-btn" id="close-btn-buycard"><img src="assets/svg/Close_btn_white.svg"
+                            alt="close-btn"></button>
+                </div>
+                <div class="modal-buy-card-container">
+                    <form class="modal-buy-card-form" action="#">
+                        <label for="card_number">Bank card number</label>
+                        <input class="modal-buy-card-input-long" id="card_number" type="text"
+                            name="card_number">
+                        <label for="expiration_code">Expiration code</label>
+                        <div>
+                            <input class="modal-buy-card-input-short" id="expiration_code" type="text"
+                                name="expiration_code">
+                            <input class="modal-buy-card-input-short" id="expiration_code" type="text"
+                                name="expiration_code">
+                        </div>
+                        <label for="cvc">CVC</label>
+                        <input class="modal-buy-card-input-short" id="cvc" type="text" name="cvc">
+                        <label for="cardholder">Cardholder name</label>
+                        <input class="modal-buy-card-input-long" id="cardholder" type="text" name="cardholder">
+                        <label for="postal_code">Postal code</label>
+                        <input class="modal-buy-card-input-long" id="postal_code" type="text"
+                            name="postal_code">
+                        <label for="city_town">City / Town</label>
+                        <input class="modal-buy-card-input-long" id="city_town" type="text" name="city_town">
+                        <button class="button-buy">Buy</button>
+                        <p>$ 25.00</p>
+                    </form>
+                    <div class="modal-buy-card-text">If you are live, work, attend school, or pay property taxes
+                        in New York State, you can get a $25 digital library card right now using this online
+                        form. Visitors to New York State can also use this form to apply for a temporary card.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
         
 
@@ -132,25 +171,7 @@
                         <div class="drop-profile" id="drop-profile-auth">Profile</div>
                         <div class="drop-link" id="drop-link-my-profile">My profile</div>
                         <div class="drop-link" id="drop-link-log-out">Log Out</div>
-                    </div>
-                    <!--<div class="modal-login">
-                        <div class="modal-login-name">LOGIN</div>
-                        <button class="close-btn"><img src="assets/svg/Close_btn.svg" alt="close-btn"></button>
-                        <form class="modal-login-form" action="#">
-                            <label for="modal-login-email">E-mail or readers card</label>
-                            <input id="modal-login-email" type="text" name="e-mail"
-                                placeholder="E-mail or readers card">
-                            <label for="modal-login-password">Password</label>
-                            <input id="modal-login-password" type="text" name="password" placeholder="Your password">
-                            <button>Log In</button>
-                        </form>
-                        <div class="modal-login-link-register">
-                            <div>Don't have an account?</div>
-                            <a href="#"> Register</a>
-                        </div>
-                    </div>-->
-
-                    
+                    </div>                   
                     <button id="burger" class="header-burger">
                         <span></span><span></span><span></span>
                     </button>
@@ -201,43 +222,7 @@
                     </div>
                 </section>
                 <section class="main-favorites" id="favorites">
-                    <!--<div class="modal-buy-card">
-                        <div class="modal-buy-card-title">
-                            <span>BUY A LIBRARY CARD</span>
-                            <button class="close-btn"><img src="assets/svg/Close_btn_white.svg"
-                                    alt="close-btn"></button>
-                        </div>
-                        <div class="modal-buy-card-container">
-                            <form class="modal-buy-card-form" action="#">
-                                <label for="card_number">Bank card number</label>
-                                <input class="modal-buy-card-input-long" id="card_number" type="text"
-                                    name="card_number">
-                                <label for="expiration_code">Expiration code</label>
-                                <div>
-                                    <input class="modal-buy-card-input-short" id="expiration_code" type="text"
-                                        name="expiration_code">
-                                    <input class="modal-buy-card-input-short" id="expiration_code" type="text"
-                                        name="expiration_code">
-                                </div>
-                                <label for="cvc">CVC</label>
-                                <input class="modal-buy-card-input-short" id="cvc" type="text" name="cvc">
-                                <label for="cardholder">Cardholder name</label>
-                                <input class="modal-buy-card-input-long" id="cardholder" type="text" name="cardholder">
-                                <label for="postal_code">Postal code</label>
-                                <input class="modal-buy-card-input-long" id="postal_code" type="text"
-                                    name="postal_code">
-                                <label for="city_town">City / Town</label>
-                                <input class="modal-buy-card-input-long" id="city_town" type="text" name="city_town">
-                                <button class="button-buy">Buy</button>
-                                <p>$ 25.00</p>
-                            </form>
-                            <div class="modal-buy-card-text">If you are live, work, attend school, or pay property taxes
-                                in New York State, you can get a $25 digital library card right now using this online
-                                form. Visitors to New York State can also use this form to apply for a temporary card.
-                            </div>
-                        </div>
-                    </div>-->
-                    <h2 class="section-title">Favorites</h2>
+                     <h2 class="section-title">Favorites</h2>
                     <div class="favorites-text">Pick favorites of season</div>
 
                     <div class="favorites-radio">
@@ -259,7 +244,7 @@
                     </div>
                     <div class="favorites-seasons">
 
-                        <div id="winter-favorites" class="winter-favorites">
+                        <div id="winter-favorites" class="winter-favorites open">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -339,7 +324,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="spring-favorites" class="spring-favorites">
+                        <div id="spring-favorites" class="spring-favorites close">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -414,7 +399,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="summer-favorites" class="summer-favorites">
+                        <div id="summer-favorites" class="summer-favorites close">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -496,7 +481,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="autumn-favorites" class="autumn-favorites">
+                        <div id="autumn-favorites" class="autumn-favorites close">
                             <div class="book-section">
                                 <div class="book1">
                                     <div class="items-description">
@@ -705,7 +690,7 @@
                                         <div>
                                             <div>Books</div>
                                             <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                            <div class="cards-profile-count">2</div>
+                                            <div class="cards-profile-count" id="count-books">2</div>
                                         </div>
                                     </div>
                                     <button disabled id="form-button" class="form-button"><span>Check the
@@ -760,7 +745,7 @@
                                         <div>
                                             <div>Books</div>
                                             <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                            <div class="cards-profile-count">2</div>
+                                            <div class="cards-profile-count" id="count-books-auth">2</div>
                                         </div>
                                     </div>
                                </form>
@@ -774,50 +759,7 @@
                             <button class="get-card-button" id="get-card-button-profile"><span>Profile</span></button>
                         </div>
                     </div>
-                </section>
-                <!--<section class="main-librarycard-login-in-account" id="main-librarycard-login-in-account">
-                    <h2 class="section-title">Digital Library Cards</h2>
-                    <div class="items-card">
-                        <form class="find-card-login" id="find-card-login">
-                            <div><span>Your Library card</span></div>
-                            <div class="card-form" id="card-form">
-                                <form class="gold-form-login-in-account" id="gold-form" onsubmit="return false">
-                                    <div class="form-name">Brooklyn Public Library</div>
-
-                                    <input class="input-text-login-in-account" type="text" name="reader's-name"
-                                        placeholder="John Doe">
-                                    <input class="input-text-login-in-account" type="text" name="card-number"
-                                        placeholder="F00234030">
-                                    <div class="main-librarycard-login-in-account-profile"
-                                        id="main-librarycard-login-in-account-profile">
-                                        <div>
-                                            <div>Visits</div>
-                                            <div><img src="assets/svg/Visits.svg" alt="visits"></div>
-                                            <div class="cards-profile-count" id="profile-visits">23</div>
-                                        </div>
-                                        <div>
-                                            <div>Bonuses</div>
-                                            <div><img src="assets/svg/Bonuses.svg" alt="bonuses"></div>
-                                            <div class="cards-profile-count">1240</div>
-                                        </div>
-                                        <div>
-                                            <div>Books</div>
-                                            <div><img src="assets/svg/Books.svg" alt="books"></div>
-                                            <div class="cards-profile-count">2</div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="get-card-login-in-account">
-                            <div class="get-card-title-login-in-account">Visit your profile</div>
-                            <div class="card-text-login-in-account">With a digital library card you get free access
-                                to the Library’s wide array of digital resources including e-books, databases,
-                                educational resources, and more.</div>
-                            <button class="get-card-button"><span>Profile</span></button>
-                        </div>
-                </section>-->
-                
+                </section>        
         </main>
         <footer class="footer">
             <div class="footer-container">
