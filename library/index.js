@@ -178,6 +178,17 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     document.getElementById("main-librarycard-auth").style.display = "block";
     document.getElementById("main-librarycard-auth").style.display = "flex";
     document.getElementById("library-card").style.display = "none";
+    
+    
+        //counter Visits
+  
+        localStorage.setItem("visits", JSON.stringify(1));
+        let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits"))
+        document.getElementById("profile-visits").innerHTML = checkLoginLocalVisits;
+        document.getElementById("count-visits").innerHTML = checkLoginLocalVisits;
+        document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisits;
+            
+    
     //modal my profile
     document.getElementById("drop-link-my-profile").addEventListener("click", event => {          
         document.getElementById("modal-profile-wrapper").classList.remove("close");
@@ -217,44 +228,24 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     })
 
     // copy number
+    document.getElementById("copy-number").style.color = "#BB945F";
     document.getElementById("icon-copy").addEventListener("click", event => {
         let textCopy = document.getElementById("copy-number");
         navigator.clipboard.writeText(textCopy.innerHTML);               
     })
 
 
-    //counter Visits
-    let visitsCount = 1;
-    localStorage.setItem("visits", JSON.stringify(visitsCount));
-    let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits"))
-    document.getElementById("profile-visits").innerHTML = checkLoginLocalVisits;
-    document.getElementById("count-visits").innerHTML = checkLoginLocalVisits;
-    document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisits;
-        
-    
-    // counter bookes
-    let countBooks = 0;
-    BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
-        if (countBooks > 0) {
-         
-            countBooks += 1;
-            //counter 
-            let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1
-            localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
-            
-            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
 
-            document.getElementById("modal-login-wrapper").classList.remove("open");
-            document.getElementById("modal-login-wrapper").classList.add("close"); 
-       
-            b.setAttribute('disabled', '');
-            b.innerHTML = "Own";
-            
-        } 
-        if (countBooks === 0) {
+    
+    // counter books
+    
+    BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
+        let parrentItem = b.parentNode.querySelector("div > .title-description > span").innerHTML + ", " + b.parentNode.querySelector("div > .title-description > p").innerHTML;
+        let liItem = document.createElement("li");
+        liItem.innerHTML = parrentItem;
+        document.querySelector(".modal-profile-right-rended-books > ul").append(liItem)
+
+        if (localStorage.getItem("books") === null) {
             //modal buy
             document.getElementById("modal-login-wrapper").classList.remove("open");
             document.getElementById("modal-login-wrapper").classList.add("close"); 
@@ -268,21 +259,18 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
             document.getElementById("modal-buy-card-wrapper").addEventListener("click", event => {
                 if (event._isClickBuy) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");   
             })
             document.getElementById("close-btn-buycard").addEventListener("click", event => {
                 if (event._isClickBuy) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
             document.getElementById("close-btn-buycard").addEventListener("click", event => {
                 if (event._isClickProfileButton) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
@@ -296,24 +284,43 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
             document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalBooks;
 
             document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
-            
-                countBooks += 1;
                 b.setAttribute('disabled', '');
                 b.innerHTML = "Own";
-                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1
+                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
                 localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
+                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
                 document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
 
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");
+                
 
-               
+                let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
+                document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
+                document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
+                document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;       
             })
        
         }   
+        if (localStorage.getItem("books") !== null) {
+         
+            //counter 
+            let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
+            localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
+            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+            
+            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
+            document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
+            document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
+
+            document.getElementById("modal-login-wrapper").classList.remove("open");
+            document.getElementById("modal-login-wrapper").classList.add("close"); 
+       
+            b.setAttribute('disabled', '');
+            b.innerHTML = "Own";
+        } 
      
       }));
     
@@ -384,8 +391,20 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
 
 
 })
+
+
+
 // modal login
 document.getElementById("modal-login-form").addEventListener("submit", event => {
+    let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
+        document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
+        document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
+        document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;
+
+    let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+        document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
+        document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
+        document.getElementById("count-books").innerHTML = checkLoginLocalBooks;   
     //digital library cards
 
 
@@ -433,28 +452,16 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
         
 
     // counter bookes
-    let countBooks = 0;
-    BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
-        if (countBooks > 0) {
-         
-            countBooks += 1;
-            //counter 
-            let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1
-            localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
-            
-            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
 
-            document.getElementById("modal-login-wrapper").classList.remove("open");
-            document.getElementById("modal-login-wrapper").classList.add("close"); 
-       
-            b.setAttribute('disabled', '');
-            b.innerHTML = "Own";
-            
-        } 
-        if (countBooks === 0) {
+    // counter bookes
+    
+    BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
+        let parrentItem = b.parentNode.querySelector("div > .title-description > span").innerHTML + ", " + b.parentNode.querySelector("div > .title-description > p").innerHTML;
+        let liItem = document.createElement("li");
+        liItem.innerHTML = parrentItem;
+        document.querySelector(".modal-profile-right-rended-books > ul").append(liItem)
+        
+        if (localStorage.getItem("books") === null) {
             //modal buy
             document.getElementById("modal-login-wrapper").classList.remove("open");
             document.getElementById("modal-login-wrapper").classList.add("close"); 
@@ -468,21 +475,18 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
             document.getElementById("modal-buy-card-wrapper").addEventListener("click", event => {
                 if (event._isClickBuy) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");   
             })
             document.getElementById("close-btn-buycard").addEventListener("click", event => {
                 if (event._isClickBuy) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
             document.getElementById("close-btn-buycard").addEventListener("click", event => {
                 if (event._isClickProfileButton) return;
                 localStorage.removeItem("books");
-                countBooks = 0;
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
@@ -496,24 +500,43 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
             document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalBooks;
 
             document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
-            
-                countBooks += 1;
                 b.setAttribute('disabled', '');
                 b.innerHTML = "Own";
-                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1
+                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
                 localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
+                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
                 document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
 
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");
+                
 
-               
+                let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
+                document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
+                document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
+                document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;       
             })
        
         }   
+        if (localStorage.getItem("books") !== null) {
+         
+            //counter 
+            let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
+            localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
+            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+            
+            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
+            document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
+            document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
+
+            document.getElementById("modal-login-wrapper").classList.remove("open");
+            document.getElementById("modal-login-wrapper").classList.add("close"); 
+       
+            b.setAttribute('disabled', '');
+            b.innerHTML = "Own";
+        } 
      
       }));
 
@@ -609,6 +632,7 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
 
         // copy number
         document.getElementById("icon-copy").addEventListener("click", event => {
+            document.getElementById("copy-number").style.color = "#BB945F";
             let textCopy = document.getElementById("copy-number");
             navigator.clipboard.writeText(textCopy.innerHTML);               
         })
@@ -631,6 +655,9 @@ if(localStorage.getItem("user") !== null) {
         let count = 0;
         let checkLocalVisits = JSON.parse(localStorage.getItem("visits"))
         document.getElementById("profile-visits").innerHTML = checkLocalVisits;
+        let checkLocalBooks = JSON.parse(localStorage.getItem("books"))
+        document.getElementById("count-books").innerHTML = checkLocalBooks;
+        
 
 
         for(let key in checkLocalStorage) {
