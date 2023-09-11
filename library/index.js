@@ -222,7 +222,7 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     })
 
 
-    //count Visits
+    //counter Visits
     let visits = 1;
     localStorage.setItem("visits", JSON.stringify(visits));
     let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits"))
@@ -230,7 +230,51 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     document.getElementById("count-visits").innerHTML = checkLoginLocalVisits;
     document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisits;
         
+    //counter Books
+    let books = 0;
+    localStorage.setItem("books", JSON.stringify(books));
+    let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+    BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+        b.setAttribute('disabled', '');
+        b.innerHTML = "Own";
+        if(checkLoginLocalBooks === 0) {
+            document.getElementById("modal-login-wrapper").classList.remove("open");
+            document.getElementById("modal-login-wrapper").classList.add("close"); 
+            document.getElementById("modal-buy-card-wrapper").classList.remove("close");
+            document.getElementById("modal-buy-card-wrapper").classList.add("open");   
+            BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+                event._isClickBuycard = true; 
+                }));
+            document.getElementById("modal-buy-card").addEventListener("click", event => {
+                event._isClickBuycard = true;
+            })
+            document.getElementById("modal-buy-card-wrapper").addEventListener("click", event => {
+                if (event._isClickBuycard) return;
+            
+                document.getElementById("modal-buy-card-wrapper").classList.add("close");
+                document.getElementById("modal-buy-card-wrapper").classList.remove("open");
+                
+            })
+            document.getElementById("close-btn-buycard").addEventListener("click", event => {
+                if (event._isClickBuycard) return;
+                document.getElementById("modal-buy-card-wrapper").classList.add("close");
+                document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
+            })
+            
+        } 
+        let checkLoginLocalBook = checkLoginLocalBooks + 1
+        localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
+        document.getElementById("profile-visits").innerHTML = checkLoginLocalBook;
+        document.getElementById("count-visits").innerHTML = checkLoginLocalBook;
+        document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalBook; 
+}));
 
+
+    
+    document.getElementById("profile-visits").innerHTML = checkLoginLocalVisits;
+    document.getElementById("count-visits").innerHTML = checkLoginLocalVisits;
+    document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisits;
+        
 
     //reset to default input.value
     document.getElementById("register-last-name").value = "";
@@ -328,14 +372,56 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
         document.getElementById("main-librarycard-auth").style.display = "block";
         document.getElementById("main-librarycard-auth").style.display = "flex";
         document.getElementById("library-card").style.display = "none";
+
+        //counter visits
         let checkLoginLocalVisits = JSON.parse(localStorage.getItem("visits")) + 1;
         localStorage.setItem("visits", JSON.stringify(checkLoginLocalVisits));
         let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
         document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
         document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
-        alert("l")
         document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;
         
+         //counter books
+         let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+         if(checkLoginLocalBooks === 0) {
+
+               
+            BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+                BUTTON_BUY.disabled = true
+                document.getElementById("modal-buy-card-wrapper").classList.remove("close");
+                document.getElementById("modal-buy-card-wrapper").classList.add("open");
+                event._isClickBuycard = true; 
+                }));
+            document.getElementById("modal-buy-card").addEventListener("click", event => {
+                event._isClickBuycard = true;
+            })
+            document.getElementById("modal-buy-card-wrapper").addEventListener("click", event => {
+                if (event._isClickBuycard) return;
+            
+                document.getElementById("modal-buy-card-wrapper").classList.add("close");
+                document.getElementById("modal-buy-card-wrapper").classList.remove("open");
+                
+            })
+            document.getElementById("close-btn-buycard").addEventListener("click", event => {
+                if (event._isClickBuycard) return;
+                document.getElementById("modal-buy-card-wrapper").classList.add("close");
+                document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
+            })
+            
+        }
+        BUTTON_BUY.forEach(b=>b.addEventListener('click', event => {
+            b.setAttribute('disabled', '');}))
+            b.innerHTML = "Own";
+        checkLoginLocalBooks += 1
+        localStorage.setItem("books", JSON.stringify(checkLoginLocalBooks));
+        let checkLoginLocalBook = JSON.parse(localStorage.getItem("books"));
+         document.getElementById("count-profile-books").innerHTML = checkLoginLocalBook;
+         document.getElementById("count-books").innerHTML = checkLoginLocalBook;
+         document.getElementById("count-books-auth").innerHTML = checkLoginLocalBook;
+         
+
+
+
         document.getElementById("modal-login-email").value = "";
         document.getElementById("modal-login-password").value = "";
         document.getElementById("modal-login-wrapper").classList.add("close");
@@ -619,10 +705,14 @@ document.getElementById("input-radio1").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("spring-favorites").style.opacity = "0";
-    document.getElementById("summer-favorites").style.opacity = "0";
-    document.getElementById("autumn-favorites").style.opacity = "0";
-    document.getElementById("winter-favorites").style.opacity = "1";
+    document.getElementById("winter-favorites").classList.add("open");
+    document.getElementById("winter-favorites").classList.remove("close");
+    document.getElementById("spring-favorites").classList.add("close");
+    document.getElementById("spring-favorites").classList.remove("open");
+    document.getElementById("summer-favorites").classList.add("close");
+    document.getElementById("summer-favorites").classList.remove("open");
+    document.getElementById("autumn-favorites").classList.add("close");
+    document.getElementById("autumn-favorites").classList.remove("open");
 })
 document.getElementById("input-radio2").addEventListener("click", event => {
     document.getElementById("input-radio2").checked = true;
@@ -630,10 +720,14 @@ document.getElementById("input-radio2").addEventListener("click", event => {
     document.getElementById("label1").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("winter-favorites").style.opacity = "0";
-    document.getElementById("summer-favorites").style.opacity = "0";
-    document.getElementById("autumn-favorites").style.opacity = "0";
-    document.getElementById("spring-favorites").style.opacity = "1";
+    document.getElementById("spring-favorites").classList.add("open");
+    document.getElementById("spring-favorites").classList.remove("close");
+    document.getElementById("winter-favorites").classList.add("close");
+    document.getElementById("winter-favorites").classList.remove("open");
+    document.getElementById("summer-favorites").classList.add("close");
+    document.getElementById("summer-favorites").classList.remove("open");
+    document.getElementById("autumn-favorites").classList.add("close");
+    document.getElementById("autumn-favorites").classList.remove("open");
 })
 document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("input-radio3").checked = true;
@@ -641,10 +735,14 @@ document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label1").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("winter-favorites").style.opacity = "0";
-    document.getElementById("spring-favorites").style.opacity = "0";
-    document.getElementById("autumn-favorites").style.opacity = "0";
-    document.getElementById("summer-favorites").style.opacity = "1";
+    document.getElementById("summer-favorites").classList.add("open");
+    document.getElementById("summer-favorites").classList.remove("close");
+    document.getElementById("winter-favorites").classList.add("close");
+    document.getElementById("winter-favorites").classList.remove("open");
+    document.getElementById("spring-favorites").classList.add("close");
+    document.getElementById("spring-favorites").classList.remove("open");
+    document.getElementById("autumn-favorites").classList.add("close");
+    document.getElementById("autumn-favorites").classList.remove("open");
 })
 document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("input-radio4").checked = true;
@@ -652,10 +750,14 @@ document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label1").style.cursor = "pointer";
-    document.getElementById("winter-favorites").style.opacity = "0";
-    document.getElementById("spring-favorites").style.opacity = "0";
-    document.getElementById("summer-favorites").style.opacity = "0";
-    document.getElementById("autumn-favorites").style.opacity = "1";
+    document.getElementById("autumn-favorites").classList.add("open");
+    document.getElementById("autumn-favorites").classList.remove("close");
+    document.getElementById("winter-favorites").classList.add("close");
+    document.getElementById("winter-favorites").classList.remove("open");
+    document.getElementById("winter-favorites").classList.add("close");
+    document.getElementById("winter-favorites").classList.remove("open");
+    document.getElementById("summer-favorites").classList.add("close");
+    document.getElementById("summer-favorites").classList.remove("open");
 })
 
 
