@@ -711,6 +711,9 @@
 .title-description span {
     text-transform: uppercase;
 }
+.title-description p {
+    margin: 0;
+}
 .text-description {
     font-size: 15px;
     font-weight: 400;
@@ -1731,7 +1734,7 @@
     width: 430px;
     display: flex;
     flex-direction: column;
-    padding: 30px 20px 40px;
+    padding: 30px 20px 30px;
 }
 .modal-profile-right-name {
     font-family: Forum;
@@ -1761,25 +1764,35 @@
 }
 .modal-profile-right-rended-books {
     width: 350px;
-    height: 100px;
+    height: 123px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-bottom: 35px;
+    justify-content: space-between;
+    margin-bottom: 13px;
 }
 .modal-profile-right-rended-books p {
     margin: 0;
+    margin-bottom: 10px;
     font-size: 25px;
 }
 .modal-profile-right-rended-books ul {
-    margin: 15px 0 0;
     padding-left: 30px;
     line-height: 30px;
     letter-spacing: 1.8px;
+    height: 60px;
+    width: 350px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    margin: 0;
 }
+.modal-profile-right-rended-books ul li {
+    white-space: nowrap;
+}
+
 .modal-profile-right-card-number {
     display: flex;
     gap: 15px;
+    margin-top: 15px;
 }
 .icon-copy {
     border: none;
