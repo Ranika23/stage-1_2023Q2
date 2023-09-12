@@ -130,7 +130,22 @@ document.getElementById("close-btn-login").addEventListener("click", event => {
 
 
 
-
+//disabled button's form modul card-buy
+function activButton() {
+               
+    let cardNumber = document.getElementById("card_number").value;
+    let expirationCode1 = document.getElementById("expiration_code").value;
+    let expirationCode2 = document.getElementById("expiration_code2").value;
+    let cvc = document.getElementById("cvc").value;
+    let cardHolder = document.getElementById("cardholder").value;
+    let postalCode = document.getElementById("postal_code").value;
+    let cityTown = document.getElementById("city_town").value;          
+    if (cardNumber && expirationCode1 && expirationCode2 && cvc && cardHolder && postalCode && cityTown) {
+        document.getElementById("button-modal-buy").classList.add("activ")
+    } else {
+        document.getElementById("button-modal-buy").classList.remove("activ")
+    }
+    }
 // modal register
 document.getElementById("modal-register-form").addEventListener("submit", event => {
     //generation random digital
@@ -240,10 +255,16 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
     // counter books
     
     BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
+
+
         let parrentItem = b.parentNode.querySelector("div > .title-description > span").innerHTML + ", " + b.parentNode.querySelector("div > .title-description > p").innerHTML;
         let liItem = document.createElement("li");
         liItem.innerHTML = parrentItem;
         document.querySelector(".modal-profile-right-rended-books > ul").append(liItem)
+
+
+
+
 
         if (localStorage.getItem("books") === null) {
             //modal buy
@@ -274,33 +295,23 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
-            
+            activButton()
 
-            //counter 
-            localStorage.setItem("books", JSON.stringify(0));
-            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
-            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-visits").innerHTML = checkLoginLocalBooks;
-            document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalBooks;
-
-            document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
-                b.setAttribute('disabled', '');
-                b.innerHTML = "Own";
-                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
-                localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+            //counter         
+                document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
+                
+                localStorage.setItem("books", JSON.stringify(1));
+                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
                 document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-                document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
-
+                document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
+    
+                
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");
-                
-
-                let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
-                document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
-                document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
-                document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;       
+                 
+                b.setAttribute('disabled', '');
+                b.innerHTML = "Own";
             })
        
         }   
@@ -380,8 +391,6 @@ document.getElementById("modal-register-form").addEventListener("submit", event 
 
 
 
-     
-
 
 
      // return after log out
@@ -405,10 +414,9 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
         document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
         document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
         document.getElementById("count-books").innerHTML = checkLoginLocalBooks;   
-    //digital library cards
-
-
-
+    
+    
+        //digital library cards
     let countCheck = 0
     let modalLoginEmail = document.getElementById("modal-login-email").value;
     let modalLoginPassword = document.getElementById("modal-login-password").value;
@@ -452,8 +460,6 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
         
 
     // counter bookes
-
-    // counter bookes
     
     BUTTON_BUY.forEach(b=>b.addEventListener('click', event => { 
         let parrentItem = b.parentNode.querySelector("div > .title-description > span").innerHTML + ", " + b.parentNode.querySelector("div > .title-description > p").innerHTML;
@@ -490,33 +496,21 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");  
             })
-            
+            activButton()
 
             //counter 
-            localStorage.setItem("books", JSON.stringify(0));
-            let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
-            document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-            document.getElementById("count-visits").innerHTML = checkLoginLocalBooks;
-            document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalBooks;
-
-            document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
-                b.setAttribute('disabled', '');
-                b.innerHTML = "Own";
-                let checkLoginLocalBook = JSON.parse(localStorage.getItem("books")) + 1;
-                localStorage.setItem("books", JSON.stringify(checkLoginLocalBook));
-                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
+                document.getElementById("modal-buy-card-form").addEventListener("submit", event => {
+                localStorage.setItem("books", JSON.stringify(1));
+                let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"))
                 document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-                document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
                 document.getElementById("count-books").innerHTML = checkLoginLocalBooks;
-
+                document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
+                    
                 document.getElementById("modal-buy-card-wrapper").classList.add("close");
                 document.getElementById("modal-buy-card-wrapper").classList.remove("open");
-                
-
-                let checkLoginLocalVisit = JSON.parse(localStorage.getItem("visits"))
-                document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
-                document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
-                document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;       
+                     
+                b.setAttribute('disabled', '');
+                b.innerHTML = "Own";
             })
        
         }   
@@ -584,12 +578,6 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
          })
         
         
-
-
-
-
-
-
          //modal my profile
          document.getElementById("drop-link-my-profile").addEventListener("click", event => {          
             document.getElementById("modal-profile-wrapper").classList.remove("close");
@@ -829,14 +817,18 @@ document.getElementById("input-radio1").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("winter-favorites").classList.add("open");
-    document.getElementById("winter-favorites").classList.remove("close");
     document.getElementById("spring-favorites").classList.add("close");
     document.getElementById("spring-favorites").classList.remove("open");
     document.getElementById("summer-favorites").classList.add("close");
     document.getElementById("summer-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
+    document.getElementById("winter-favorites").classList.add("open");
+    document.getElementById("winter-favorites").classList.remove("close");
+
+
+
+    
 })
 document.getElementById("input-radio2").addEventListener("click", event => {
     document.getElementById("input-radio2").checked = true;
@@ -844,14 +836,14 @@ document.getElementById("input-radio2").addEventListener("click", event => {
     document.getElementById("label1").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("spring-favorites").classList.add("open");
-    document.getElementById("spring-favorites").classList.remove("close");
     document.getElementById("winter-favorites").classList.add("close");
     document.getElementById("winter-favorites").classList.remove("open");
     document.getElementById("summer-favorites").classList.add("close");
     document.getElementById("summer-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
+    document.getElementById("spring-favorites").classList.add("open");
+    document.getElementById("spring-favorites").classList.remove("close");
 })
 document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("input-radio3").checked = true;
@@ -859,14 +851,14 @@ document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label1").style.cursor = "pointer";
     document.getElementById("label4").style.cursor = "pointer";
-    document.getElementById("summer-favorites").classList.add("open");
-    document.getElementById("summer-favorites").classList.remove("close");
     document.getElementById("winter-favorites").classList.add("close");
     document.getElementById("winter-favorites").classList.remove("open");
     document.getElementById("spring-favorites").classList.add("close");
     document.getElementById("spring-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
+    document.getElementById("summer-favorites").classList.add("open");
+    document.getElementById("summer-favorites").classList.remove("close");
 })
 document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("input-radio4").checked = true;
@@ -874,64 +866,178 @@ document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("label2").style.cursor = "pointer";
     document.getElementById("label3").style.cursor = "pointer";
     document.getElementById("label1").style.cursor = "pointer";
-    document.getElementById("autumn-favorites").classList.add("open");
-    document.getElementById("autumn-favorites").classList.remove("close");
-    document.getElementById("winter-favorites").classList.add("close");
-    document.getElementById("winter-favorites").classList.remove("open");
+    document.getElementById("spring-favorites").classList.add("close");
+    document.getElementById("spring-favorites").classList.remove("open");
     document.getElementById("winter-favorites").classList.add("close");
     document.getElementById("winter-favorites").classList.remove("open");
     document.getElementById("summer-favorites").classList.add("close");
     document.getElementById("summer-favorites").classList.remove("open");
+    document.getElementById("autumn-favorites").classList.add("open");
+    document.getElementById("autumn-favorites").classList.remove("close");
 })
 
 
 
 console.log(`
-    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part2.md;
+    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/library/library-part3.md;
     \n
-    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/library/;
+    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/library/ ;
     \n
-    3. Done 12.08.2023 / deadline 14.08.2023;
+    3. Done 10.09.2023 / deadline 11.09.2023;
     \n
-    4. Score : 50/50;
+    4. Score : 200/200;
     \n
-    Вёрстка соответствует макету. Ширина экрана 768px: 
+    Этап 1: Пользователь не зарегистрирован. Ограниченная карусель в блоке About: 
     \n
-    - (2/2) блок <header>; 
+    - (15/15) Карусель реагирует на нажатие кнопок (кнопки под каруселью и стрелочки слева и справа в мобильной версии) и происходит анимация перелистывания; 
     \n
-    - (2/2) секция Welcome;
+    - (2/2) На экране шириной 1440px проверяем, чтобы было доступно 2 других скрытых картинки. При каждом нажатии выезжает следующая, и так до границ справа и слева;
     \n
-    - (4/4) секция About: добавлены новые элементы в виде стрелок и сделан переход на 5 точек вместо 3х, расстояние от картинки до точек сделано по макету (балл не снижается);
+    - (2/2) Выделенная кнопка под каруселью (имеется ввиду кнопка соответствующая активному слайду и которая имеет коричневый цвет) - неактивная;
     \n
-    - (2/2) секция Favorites;
+    - (2/2) Если анимация карусели не успела завершиться, при этом нажата была следующая кнопка, то картинка не должна зависнуть в промежуточном состоянии;
     \n
-    - (2/2) в соответствии с условием ТЗ кнопка, находившаяся в состоянии 'own' на Desktop, осталась в том же состоянии и на Tablet;
+    - (2/2) На экране шириной 768px проверяем, чтобы было доступно 4 других скрытых картинки. Для этого меняем разрешение и перезагружаем страницу. Теперь доступных перемещений становится 5;
     \n
-    - (4/4) секция CoffeShop;
+    - (2/2) Неактивными становятся не только выделенные кнопки, но и стрелочки на границах карусели;
     \n
-    - (4/4) секция Contact;
+    Слайдер в блоке Favorites:
     \n
-    - (4/4) секция LibraryCard;
+    - (15/15) "Слайдер" реагирует на нажатие кнопок панели навигации и происходит анимация затухания и проявления.;
     \n
-    - (2/2) блок <footer>;
+    - (2/2) На любой ширине экрана все 4 карточки с книгами одновременно будут плавно затухать, а затем плавно проявляться следующие;
     \n
-    Ни на одном из разрешений до 640px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется:
+    - (2/2) Анимация может быть прервана следующим нажатием на кнопку выбора поры года, но при этом анимация не должна застывать в промежуточном состоянии. Если анимация не была прервана следующим нажатием кнопки, то она должна отрабатывать до конца.;
     \n
-    - (4/4) нет полосы прокрутки при ширине страницы от 1440рх до 640рх; 
+    - (2/2) Во время анимаций высота блока Favorites не должна меняться.
     \n
-    - (4/4) элементы не выходят за пределы окна браузера при ширине страницы от 1440рх до 640рх; 
+    - (2/2) Панель навигации "слайдера" сделана по технологии "sticky" для разрешений с одним рядом книг (768px и меньше), т.е. опускается вниз вместе со скроллом страницы, прилипая к верхней части экрана, в рамках блока Favorites; 
     \n
-    - (4/4) элементы не наезжают друг на друга при ширине страницы от 1440рх до 640рх;
+    До авторизации:
     \n
-    На ширине экрана 768рх реализовано адаптивное меню: 
+    - (2/2) В блоке Favorites все кнопки должны иметь имя Buy, а не Own; 
     \n
-    - (2/2) Версия Tablet, отступ иконки юзера и открытого меню от правого края соответствует макету. Сам крест отцентрирован по центральной позиции бургер-иконки. При переходе из одного состояния в другое ничего не прыгает. Само меню прижато к правому краю целиком. Цвет выпавшего меню совпадает с цветом полоски навигации; 
+    Этап 2: Пользователь на этапе регистрации. Меню авторизации при нажатии на иконку пользователя:
     \n
-    - (4/4) при нажатии на бургер-иконку плавно появляется адаптивное меню;
+    - (2/2) Нажатие на иконку пользователя в хедере открывает меню, которое должно оказаться под иконкой таким образом, что правый верхний угол меню находится в той же точке, что и нижний правый угол контейнера с иконкой в хедере. Меню под иконкой;
     \n
-    - (2/2) при нажатии на крестик, или на область вне меню, адаптивное меню плавно скрывается, уезжая за экран;
+    - (2/2) На разрешении 768px, при открытом бургер-меню, оно закрывается и открывается меню авторизации; 
     \n
-    - (2/2) ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям при нажатии, само адаптивное меню при этом плавно скрывается;
-    
-    - (2/2) размеры открытого бургер-меню соответствуют макету, так же открытое бургер-меню проверено на PixelPerfect; 
+    - (2/2) То же верно и в обратную сторону, кнопка бургер-меню должна быть доступна при открытом меню авторизации.;
+    \n
+    - (2/2) Нажатие на любую область или элемент вне меню приводят к закрытию меню авторизации;
+    \n
+    Модальное окно REGISTER:
+    \n
+    - (15/15) Дизайн модального окна соответствует макету;
+    \n
+    - (2/2) При нажатии на кнопку Register в открытом меню авторизации появляется модальное окно REGISTER, где есть поля First name, Last name, E-mail и Password;
+    \n
+    - (2/2) При нажатии кнопки Sign Up в блоке Digital Library Cards также появляется модальное окно REGISTER;
+    \n 
+    - (2/2) Окно центрировано, а область вокруг затемнена (насколько затемнена - не имеет значения);
+    \n
+    - (2/2) При нажатии на крестик в углу окна, или на затемнённую область вне этого окна, оно закрывается;
+    \n
+    - (2/2) В данном случае, ограничения по полям - все поля должны быть не пустыми;
+    \n 
+    - (2/2) Пароль должен быть не короче 8 символов;
+    \n
+    - (2/2) В поле E-mail должна быть валидация типа email;
+    \n
+    Окончание регистрации:
+    \n
+    - (2/2) Данные сохраняются в хранилище localStorage, в том числе и пароль, хотя в реальной жизни так делать нельзя;
+    \n
+    - (2/2) Иконка пользователя меняется на заглавные буквы имени;
+    \n
+    - (2/2) Отображение страницы приходит в состояние после авторизации (этап 4);
+    \n
+    - (2/2) Будет сгенерирован девятизначный Card Number случайным образом в формате 16-ричного числа;
+    \n
+    При наличии регистрации, но будучи не авторизованным:
+    \n
+    - (2/2) Блок Digital Library Cards. Если введённые имя и номер карты совпадают с данными пользователя, то отображается панель с информацией, вместо кнопки Check the card на 10 секунд;
+    \n
+    - (2/2) Там же после отображения информации, кнопка возвращается в прежнее состояние, а поля в форме сбрасываются;
+    \n
+    Этап 3: Пользователь на этапе входа в учётную запись после регистрации. Модальное окно LOGIN:
+    \n
+    - (15/15) Дизайн модального окна соответствует макету;
+    \n
+    - (2/2) При нажатии на кнопку Log In появляется модальное окно LOGIN, где есть поля E-mail or readers card и Password;
+    \n
+    - (2/2) При нажатии кнопки Log In в блоке Digital Library Cards также появляется модальное окно LOGIN;
+    \n
+    - (2/2) Окно центрировано, а область вокруг затемнена (насколько затемнена - не имеет значения);
+    \n
+    - (2/2) При нажатии на крестик в углу окна, или на затемнённую область вне этого окна, оно закрывается;
+    \n
+    - (2/2) Для авторизации все поля должны быть не пустыми;
+    \n
+    - (2/2) Пароль должен быть не короче 8 символов;
+    \n
+    Блок Favorites:
+    \n
+    - (2/2) Если пользователь ещё не вошёл в учётную запись, то при нажатии на любую кнопку Buy открывается модальное окно LOGIN;
+    \n
+    Этап 4: Пользователь после входа в учётную запись. Меню профиля при нажатии на иконку с инициалами пользователя;
+    \n
+    - (2/2) При наведении курсором на иконку пользователя должно отображаться полное имя пользователя (атрибут title);
+    \n
+    - (2/2) Нажатие на иконку пользователя в хедере открывает меню, которое должно оказаться под иконкой таким образом, что правый верхний угол меню находится в той же точке, что и нижний правый угол контейнера с иконкой в хедере. Меню под иконкой;
+    \n
+    - (2/2) На разрешении 768px при открытом бургер-меню, оно закрывается и открывается меню авторизации;
+    \n
+    - (2/2) То же верно и в обратную сторону, кнопка бургер-меню должна быть доступна;
+    \n
+    - (2/2) Нажатие на любую область или элемент вне меню приводят к закрытию меню профиля;
+    \n
+    - (2/2) Вместо надписи Profile отображается девятизначный Card Number. Для Card Number можно использовать меньший шрифт чтобы надпись вметилась в контейнер;
+    \n
+    - (2/2) Нажатие на кнопку My Profile открывает модальное окно MY PROFILE;
+    \n
+    -(2/2) Нажатие на кнопку Log Out приводит к выходу пользователю из состояния авторизации, возвращаемся к этапу #1;
+    \n
+    Модальное окно MY PROFILE:
+    \n
+    - (15/15) Дизайн модального окна соответствует макету;
+    \n
+    - (2/2) Счетчик для Visits отображает, сколько раз пользователь проходил процесс авторизации, включая самый первый - регистрацию;
+    \n
+    - (2/2) Счетчик для Books отображает, сколько у пользователя книг находятся в состоянии Own. Значение варьируется 0-16;
+    \n
+    - (2/2) Рядом с Card Number есть кнопка, нажатие на которую копирует код карты клиента в буфер обмена;
+    \n
+    - (2/2) Окно центрировано, а область вокруг затемнена (насколько затемнена - не имеет значения);
+    \n
+    - (2/2) При нажатии на крестик в углу окна, или на затемненную область вне этого окна, оно закрывается;
+    \n
+    Блок Favorites:
+    \n
+    - (2/2) При нажатии на любую кнопку Buy, еще до покупки абонемента, открывается модальное окно BUY A LIBRARY CARD;
+    \n
+    - (2/2) При нажатии на любую кнопку Buy, после покупки абонемента, меняет вид кнопки на неактивную Own, добавляя единицу к счетчику книг в профиле;
+    \n
+    - (2/2) Кроме того после нажатия обновляется не только счетчик, но и название книги должно отобразится в разделе Rented Books. Название формируется по принципу <название книги>, <автор книги>. В случае если название книги слишком длинное или список стал слишком большой список книг в блоке Rented Books становится скроллируемым (по необходимости горизонтально/ вертикально или оба скролла сразу) Тайтл Rented Books скроллироваться не должен;
+    \n
+    Модальное окно BUY A LIBRARY CARD:
+    \n
+    - (2/2) Модальное окно нужно сделать шириной 640px. Будет это обрезка по 5px по бокам, или просто уменьшение длины с сохранением сетки - значения не имеет, хотя при правильной сеточной структуре, сделать это будет намного проще;
+    \n
+    - (15/15) Дизайн модального окна соответствует макету;
+    \n
+    - (2/2) При нажатии на крестик в углу окна, или на затемнённую область вне этого окна, оно закрывается;
+    \n
+    - (2/2) Для того, чтобы кнопка Buy была активна, все поля должны быть не пустыми;
+    \n
+    - (2/2) Bank card number должен содержать 16 цифр. С пробелами каждые 4 символа или нет - значения не имеет;
+    \n
+    - (2/2) Expiration code содержит 2 поля с ограничением в 2 цифры;
+    \n
+    - (2/2) CVC должен содержать 3 цифры;
+    \n
+    Блок Digital Library Cards:
+    \n
+    - (2/2) При наличии авторизации вместо кнопки Check the Card будут отображаться данные пользователя и бейджи, как на дизайне LibraryCard after login in account;
 `);
