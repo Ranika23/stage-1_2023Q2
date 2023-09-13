@@ -409,11 +409,6 @@ document.getElementById("modal-login-form").addEventListener("submit", event => 
         document.getElementById("count-visits").innerHTML = checkLoginLocalVisit;
         document.getElementById("profile-visits").innerHTML = checkLoginLocalVisit;
         document.getElementById("profile-visit-auth").innerHTML = checkLoginLocalVisit;
-
-    let checkLoginLocalBooks = JSON.parse(localStorage.getItem("books"));
-        document.getElementById("count-profile-books").innerHTML = checkLoginLocalBooks;
-        document.getElementById("count-books-auth").innerHTML = checkLoginLocalBooks;
-        document.getElementById("count-books").innerHTML = checkLoginLocalBooks;   
     
     
         //digital library cards
@@ -643,8 +638,12 @@ if(localStorage.getItem("user") !== null) {
         let count = 0;
         let checkLocalVisits = JSON.parse(localStorage.getItem("visits"))
         document.getElementById("profile-visits").innerHTML = checkLocalVisits;
-        let checkLocalBooks = JSON.parse(localStorage.getItem("books"))
-        document.getElementById("count-books").innerHTML = checkLocalBooks;
+        
+        
+        let checkLocalBooks = JSON.parse(localStorage.getItem("books"));
+        if(checkLocalBooks > 0) {
+            document.getElementById("count-books").innerHTML = checkLocalBooks;};
+        
         
 
 
