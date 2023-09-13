@@ -822,10 +822,13 @@ document.getElementById("input-radio1").addEventListener("click", event => {
     document.getElementById("summer-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
-    document.getElementById("winter-favorites").classList.add("open");
+    
+
+    function winterTimeout() {
+        document.getElementById("winter-favorites").classList.add("open");
     document.getElementById("winter-favorites").classList.remove("close");
-
-
+    }
+    setTimeout(winterTimeout, 2000); 
 
     
 })
@@ -841,8 +844,13 @@ document.getElementById("input-radio2").addEventListener("click", event => {
     document.getElementById("summer-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
-    document.getElementById("spring-favorites").classList.add("open");
+    
+
+    function springTimeout() {
+        document.getElementById("spring-favorites").classList.add("open");
     document.getElementById("spring-favorites").classList.remove("close");
+    }
+    setTimeout(springTimeout, 2000); 
 })
 document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("input-radio3").checked = true;
@@ -856,8 +864,13 @@ document.getElementById("input-radio3").addEventListener("click", event => {
     document.getElementById("spring-favorites").classList.remove("open");
     document.getElementById("autumn-favorites").classList.add("close");
     document.getElementById("autumn-favorites").classList.remove("open");
-    document.getElementById("summer-favorites").classList.add("open");
+    
+
+    function summerTimeout() {
+        document.getElementById("summer-favorites").classList.add("open");
     document.getElementById("summer-favorites").classList.remove("close");
+    }
+    setTimeout(summerTimeout, 2000); 
 })
 document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("input-radio4").checked = true;
@@ -871,8 +884,13 @@ document.getElementById("input-radio4").addEventListener("click", event => {
     document.getElementById("winter-favorites").classList.remove("open");
     document.getElementById("summer-favorites").classList.add("close");
     document.getElementById("summer-favorites").classList.remove("open");
-    document.getElementById("autumn-favorites").classList.add("open");
-    document.getElementById("autumn-favorites").classList.remove("close");
+
+
+    function autumnTimeout() {
+        document.getElementById("autumn-favorites").classList.add("open");
+        document.getElementById("autumn-favorites").classList.remove("close");
+    }
+    setTimeout(autumnTimeout, 2000);
 })
 
 
