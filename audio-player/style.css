@@ -135,6 +135,7 @@
 .next, .back {
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 .panel-scroll {
     display: flex;
