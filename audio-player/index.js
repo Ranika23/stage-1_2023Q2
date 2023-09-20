@@ -1,5 +1,6 @@
 let songNum = 0;
 
+
 // background of page
 const PAGE_1 = document.querySelector(".bachground-page1")
 const PAGE_2 = document.querySelector(".bachground-page2")
@@ -72,6 +73,50 @@ const NEXT = document.querySelector(".next");
 const playList = [AUDIO_1, AUDIO_2, AUDIO_3]
 
 
+//time-duration
+function songTime() {
+    let timeSong = Math.floor(playList[songNum].duration / 60) + ":" + (Math.floor(playList[songNum].duration,2) - (Math.floor(playList[songNum].duration / 60) * 60))
+document.querySelector(".play-time").innerHTML = timeSong
+}
+
+
+
+
+
+//progress-line
+const PROGRESS = document.querySelector(".line-progress");
+const CONTAINER_PROGRESS = document.querySelector(".container-progress")
+const TIME = document.querySelector(".start-time");
+function progressUpdate(event) {
+    const {duration, currentTime} = event.srcElement;
+    const progressLine = (currentTime / duration) * 100;
+    PROGRESS.style.width = progressLine + "%";
+    //time-current
+    if (Math.floor(currentTime, 2) - (Math.floor(currentTime / 60) * 60) < 10) {
+        let timeCurrentSong = Math.floor(currentTime / 60) + ":0" + (Math.floor(currentTime, 2) - (Math.floor(currentTime / 60) * 60))
+        TIME.innerHTML = timeCurrentSong;
+    }
+    if (Math.floor(currentTime, 2) - (Math.floor(currentTime / 60) * 60) >= 10) {
+        let timeCurrentSong = Math.floor(currentTime / 60) + ":" + (Math.floor(currentTime, 2) - (Math.floor(currentTime / 60) * 60))
+        TIME.innerHTML = timeCurrentSong;
+    }
+}
+playList[songNum].addEventListener("timeupdate", progressUpdate)
+
+
+
+//progress click
+function progressClick(event) {
+    const WIDTH_PROGRESS = this.clientWidth;
+    const CLICK = event.offsetX;
+    const DURATION = playList[songNum].duration;
+    playList[songNum].currentTime = (CLICK / WIDTH_PROGRESS) * DURATION;
+}
+CONTAINER_PROGRESS.addEventListener("click", progressClick)
+
+
+
+
 
 
 
@@ -83,8 +128,9 @@ function toggleBtn() {
 }
 let isPlay = false;
 function playAudio() {
+    songTime()
+    /*songCurrentTime()*/
     if (isPlay === false) {
-        playList[songNum].currentTime = 0;
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
@@ -92,7 +138,6 @@ function playAudio() {
     else if (isPlay === true) {
         isPlay = false;
         playList[songNum].pause();
-        
         toggleBtn()
     }  
 }
@@ -105,6 +150,8 @@ BUTTON.addEventListener("click", playAudio);
 
 // switch buttons next-back
 function playAudioNext() {
+    playList[songNum].addEventListener("timeupdate", progressUpdate)
+    songTime()
     if (isPlay === false) {
         playList[songNum].currentTime = 0;
         playList[songNum].play();
@@ -118,6 +165,8 @@ function playAudioNext() {
     }  
 }
 function playAudioBack() {
+    playList[songNum].addEventListener("timeupdate", progressUpdate)
+    songTime()
     if (isPlay === false) {
         playList[songNum].currentTime = 0;
         playList[songNum].play();
@@ -152,6 +201,10 @@ function playBack() {
 
 BACK.addEventListener("click", playBack);
 NEXT.addEventListener("click", playNext);
+
+// autoplay
+playList[songNum].addEventListener("ended", playNext)
+
 
 
 
