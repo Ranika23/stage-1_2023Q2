@@ -228,12 +228,23 @@ document.body.addEventListener("click", event => {
     if (event._isClickMenu) return;
     MENU.classList.remove("open");
 })
+
 function clickMenu() {
     playList[songNum].addEventListener("timeupdate", progressUpdate)
     songTime()
-    playAudio()
-    playList[songNum].play()
-    playList[songNum].currentTime = 0;
+    if (isPlay === false) {
+        playList[songNum].currentTime = 0;
+        playList[songNum].play();
+        isPlay = true;
+        toggleBtn()
+    }  
+    else if (isPlay === true) { 
+        playList[songNum].currentTime = 0;
+        playList[songNum].play();        
+    }  
+    backGround()
+    playImg()
+    songTitle()
 }
 M_TITLE_1.addEventListener("click", event => {
     songNum = 0;
