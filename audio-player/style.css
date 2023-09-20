@@ -113,7 +113,7 @@
 .song-title1,
 .song-title2,
 .song-title3 {
-    width: 60%;
+    width: 55%;
     height: 100%;
     display: flex;
     padding-left: 10px;
@@ -125,12 +125,70 @@
 .song-title3 {
     display: none;
 }
+.menu-button {
+    height: 100%;
+    width: 15%;
+}
+.menu-button img {
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+}
+.menu {
+    position: absolute;
+    width: 340px;
+    height: 300px;
+    z-index: 0;
+    background: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-right: 50vw;
+    right: -170px;
+    margin-top: 50vh;
+    top: -240px;
+    border-radius: 10px;
+}
+.menu.open{
+    position: absolute;
+    width: 340px;
+    height: 300px;
+    background: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-right: 50vw;
+    right: -170px;
+    margin-top: 50vh;
+    top: 60px;
+    border-radius: 10px;
+    transition: 0.5s;
+    z-index: 999;
+}
+.menu-title1,
+.menu-title2,
+.menu-title3 {
+    width: 95%;
+    height: 30%;
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
 .button-next-back {
     height: 100%;
-    width: 20%;
+    width: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: end;
 }
 .next, .back {
     height: 30px;

@@ -21,6 +21,7 @@ function backGround() {
 }
 
 
+
 // images for songs
 const IMG_1 = document.querySelector(".play-image1")
 const IMG_2 = document.querySelector(".play-image2")
@@ -58,6 +59,8 @@ function songTitle() {
 }
 
 
+
+
 // songs
 const AUDIO_1 = new Audio("assets/audio/song-1.mp3");
 const AUDIO_2 = new Audio("assets/audio/song-2.mp3");
@@ -72,6 +75,9 @@ const BACK= document.querySelector(".back");
 const NEXT = document.querySelector(".next");
 const playList = [AUDIO_1, AUDIO_2, AUDIO_3]
 
+
+// autoplay
+playList[songNum].addEventListener("ended", playNext)
 
 //time-duration
 function songTime() {
@@ -111,6 +117,7 @@ function progressClick(event) {
     const CLICK = event.offsetX;
     const DURATION = playList[songNum].duration;
     playList[songNum].currentTime = (CLICK / WIDTH_PROGRESS) * DURATION;
+    playList[songNum].addEventListener("ended", playNext)
 }
 CONTAINER_PROGRESS.addEventListener("click", progressClick)
 
@@ -129,7 +136,9 @@ function toggleBtn() {
 let isPlay = false;
 function playAudio() {
     songTime()
-    /*songCurrentTime()*/
+    backGround()
+    playImg()
+    songTitle()
     if (isPlay === false) {
         playList[songNum].play();
         isPlay = true;
@@ -202,9 +211,50 @@ function playBack() {
 BACK.addEventListener("click", playBack);
 NEXT.addEventListener("click", playNext);
 
-// autoplay
-playList[songNum].addEventListener("ended", playNext)
 
+
+
+//menu
+const MENU_BUTTON = document.querySelector(".menu-button");
+const MENU = document.querySelector(".menu")
+const M_TITLE_1 = document.querySelector(".menu-title1")
+const M_TITLE_2 = document.querySelector(".menu-title2")
+const M_TITLE_3 = document.querySelector(".menu-title3")
+MENU_BUTTON.addEventListener("click", event => {
+    MENU.classList.toggle("open");
+    event._isClickMenu = true;
+})
+document.body.addEventListener("click", event => {
+    if (event._isClickMenu) return;
+    MENU.classList.remove("open");
+})
+function clickMenu() {
+    playList[songNum].addEventListener("timeupdate", progressUpdate)
+    songTime()
+    playAudio()
+    playList[songNum].play()
+    playList[songNum].currentTime = 0;
+}
+M_TITLE_1.addEventListener("click", event => {
+    songNum = 0;
+    clickMenu()
+    playList[1].pause()
+    playList[2].pause()
+})
+M_TITLE_2.addEventListener("click", event => {
+    songNum = 1;
+    clickMenu()
+    playList[0].pause()
+    playList[2].pause()
+
+})
+M_TITLE_3.addEventListener("click", event => {
+    songNum = 2;
+    clickMenu()
+    playList[0].pause()
+    playList[1].pause()
+
+})
 
 
 
