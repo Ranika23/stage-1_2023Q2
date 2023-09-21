@@ -4,11 +4,11 @@ let songNum = 0;
 function animationPlay() {
     document.querySelector(".wrapper-player").style.opacity = "1";
     document.querySelector(".audio-visualizer").style.opacity = "1";
-} 
+}
 function animationPause() {
     document.querySelector(".wrapper-player").style.opacity = "0";
     document.querySelector(".audio-visualizer").style.opacity = "";
-} 
+}
 
 // background of page
 const PAGE_1 = document.querySelector(".bachground-page1")
@@ -17,7 +17,7 @@ const PAGE_3 = document.querySelector(".bachground-page3")
 const pageList = [PAGE_1, PAGE_2, PAGE_3]
 
 function backGround() {
-    for(let i = 0; i < pageList.length; i++) {
+    for (let i = 0; i < pageList.length; i++) {
         if (i === songNum) {
             pageList[i].style.opacity = "1";
             pageList[i].style.zIndex = "1";
@@ -38,7 +38,7 @@ const IMG_3 = document.querySelector(".play-image3")
 const imgList = [IMG_1, IMG_2, IMG_3]
 
 function playImg() {
-    for(let i = 0; i < imgList.length; i++) {
+    for (let i = 0; i < imgList.length; i++) {
         if (i === songNum) {
             imgList[i].style.display = "flex";
         }
@@ -57,7 +57,7 @@ const TITLE_3 = document.querySelector(".song-title3")
 const titleList = [TITLE_1, TITLE_2, TITLE_3]
 
 function songTitle() {
-    for(let i = 0; i < titleList.length; i++) {
+    for (let i = 0; i < titleList.length; i++) {
         if (i === songNum) {
             titleList[i].style.display = "flex";
         }
@@ -80,7 +80,7 @@ const AUDIO_3 = new Audio("assets/audio/song-3.mp3");
 const PLAY = document.querySelector(".play");
 const PAUSE = document.querySelector(".pause");
 const BUTTON = document.querySelector(".button-play");
-const BACK= document.querySelector(".back");
+const BACK = document.querySelector(".back");
 const NEXT = document.querySelector(".next");
 const playList = [AUDIO_1, AUDIO_2, AUDIO_3]
 
@@ -90,8 +90,8 @@ playList[songNum].addEventListener("ended", playNext)
 
 //time-duration
 function songTime() {
-    let timeSong = Math.floor(playList[songNum].duration / 60) + ":" + (Math.floor(playList[songNum].duration,2) - (Math.floor(playList[songNum].duration / 60) * 60))
-document.querySelector(".play-time").innerHTML = timeSong
+    let timeSong = Math.floor(playList[songNum].duration / 60) + ":" + (Math.floor(playList[songNum].duration, 2) - (Math.floor(playList[songNum].duration / 60) * 60))
+    document.querySelector(".play-time").innerHTML = timeSong
 }
 
 
@@ -103,7 +103,7 @@ const PROGRESS = document.querySelector(".line-progress");
 const CONTAINER_PROGRESS = document.querySelector(".container-progress")
 const TIME = document.querySelector(".start-time");
 function progressUpdate(event) {
-    const {duration, currentTime} = event.srcElement;
+    const { duration, currentTime } = event.srcElement;
     const progressLine = (currentTime / duration) * 100;
     PROGRESS.style.width = progressLine + "%";
     //time-current
@@ -153,15 +153,15 @@ function playAudio() {
         isPlay = true;
         toggleBtn()
         animationPlay()
-    }  
+    }
     else if (isPlay === true) {
         isPlay = false;
         playList[songNum].pause();
         toggleBtn()
         animationPause()
-    } 
+    }
     // autoplay
-    playList[songNum].addEventListener("ended", playNext) 
+    playList[songNum].addEventListener("ended", playNext)
 }
 BUTTON.addEventListener("click", playAudio);
 
@@ -180,14 +180,14 @@ function playAudioNext() {
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
-        
-    }  
-    else if (isPlay === true) {
-        songNum > 0 ? playList[songNum - 1].pause(): playList[2].pause(); 
-        playList[songNum].currentTime = 0;
-        playList[songNum].play(); 
 
-    }  
+    }
+    else if (isPlay === true) {
+        songNum > 0 ? playList[songNum - 1].pause() : playList[2].pause();
+        playList[songNum].currentTime = 0;
+        playList[songNum].play();
+
+    }
 }
 function playAudioBack() {
     playList[songNum].addEventListener("timeupdate", progressUpdate)
@@ -198,17 +198,17 @@ function playAudioBack() {
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
-    }  
+    }
     else if (isPlay === true) {
-        songNum < 2 ? playList[songNum + 1].pause(): playList[0].pause(); 
+        songNum < 2 ? playList[songNum + 1].pause() : playList[0].pause();
         playList[songNum].currentTime = 0;
-        playList[songNum].play();        
-    }  
+        playList[songNum].play();
+    }
 }
 function playNext() {
     songNum += 1;
-    if(songNum > 2) songNum = 0;
-    if(songNum < 0) songNum = 2;
+    if (songNum > 2) songNum = 0;
+    if (songNum < 0) songNum = 2;
     playAudioNext()
     backGround()
     playImg()
@@ -219,10 +219,10 @@ function playNext() {
 
 function playBack() {
     songNum -= 1;
-    if(songNum > 2) songNum = 0;
-    if(songNum < 0) songNum = 2;
-    playAudioBack()  
-    backGround() 
+    if (songNum > 2) songNum = 0;
+    if (songNum < 0) songNum = 2;
+    playAudioBack()
+    backGround()
     playImg()
     songTitle()
     // autoplay
@@ -259,11 +259,11 @@ function clickMenu() {
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
-    }  
-    else if (isPlay === true) { 
+    }
+    else if (isPlay === true) {
         playList[songNum].currentTime = 0;
-        playList[songNum].play();        
-    }  
+        playList[songNum].play();
+    }
     backGround()
     playImg()
     songTitle()
@@ -294,3 +294,37 @@ M_TITLE_3.addEventListener("click", event => {
 
 // autoplay
 playList[songNum].addEventListener("ended", playNext)
+
+
+
+console.log(`
+    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-2.md;
+    \n
+    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/audio-player/ ;
+    \n
+    3. Done 21.09.2023 / deadline 24.09.2023;
+    \n
+    4. Score : 70/60;
+    \n
+    1) Вёрстка(10/10): 
+    \n
+    - (5/5) вёрстка аудиоплеера: есть кнопка Play/Pause, кнопки "Вперёд" и "Назад" для пролистывания аудиотреков, прогресс-бар, отображается название и автор трека; 
+    \n
+    - (5/5) в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс;
+    \n
+    2) Кнопка Play/Pause (10/10):
+    \n
+    - (5/5) есть кнопка Play/Pause, при клике по которой можно запустить или остановить проигрывание аудиотрека;
+    \n
+    - (5/5) внешний вид и функционал кнопки Play/Pause изменяется в зависимости от того, проигрывается ли в данный момент аудиотрек;
+    \n
+    3) (10/10) При кликах по кнопкам "Вперёд" и "Назад" переключается проигрываемый аудиотрек. Аудиотреки пролистываются по кругу - после последнего идёт первый;
+    \n
+    4) (10/10) При смене аудиотрека меняется изображение - обложка аудиотрека;
+    \n
+    5) (10/10) Прогресс-бар отображает прогресс проигрывания текущего аудиотрека. При перемещении ползунка вручную меняется текущее время проигрывания аудиотрека +10;
+    \n
+    6) (10/10) Отображается продолжительность аудиотрека и его текущее время проигрывания;
+    \n
+    7) (10/10) Высокое качество оформления приложения и дополнительный, не предусмотренный в задании, функционал, улучшающий качество приложения (плейлист в открывающемся бургер-меню);
+`);
