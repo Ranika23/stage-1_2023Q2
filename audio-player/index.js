@@ -1,5 +1,14 @@
 let songNum = 0;
 
+//animation-play
+function animationPlay() {
+    document.querySelector(".wrapper-player").style.opacity = "1";
+    document.querySelector(".audio-visualizer").style.opacity = "1";
+} 
+function animationPause() {
+    document.querySelector(".wrapper-player").style.opacity = "0";
+    document.querySelector(".audio-visualizer").style.opacity = "";
+} 
 
 // background of page
 const PAGE_1 = document.querySelector(".bachground-page1")
@@ -143,12 +152,16 @@ function playAudio() {
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
+        animationPlay()
     }  
     else if (isPlay === true) {
         isPlay = false;
         playList[songNum].pause();
         toggleBtn()
-    }  
+        animationPause()
+    } 
+    // autoplay
+    playList[songNum].addEventListener("ended", playNext) 
 }
 BUTTON.addEventListener("click", playAudio);
 
@@ -161,21 +174,25 @@ BUTTON.addEventListener("click", playAudio);
 function playAudioNext() {
     playList[songNum].addEventListener("timeupdate", progressUpdate)
     songTime()
+    animationPlay()
     if (isPlay === false) {
         playList[songNum].currentTime = 0;
         playList[songNum].play();
         isPlay = true;
         toggleBtn()
+        
     }  
     else if (isPlay === true) {
         songNum > 0 ? playList[songNum - 1].pause(): playList[2].pause(); 
         playList[songNum].currentTime = 0;
-        playList[songNum].play();        
+        playList[songNum].play(); 
+
     }  
 }
 function playAudioBack() {
     playList[songNum].addEventListener("timeupdate", progressUpdate)
     songTime()
+    animationPlay()
     if (isPlay === false) {
         playList[songNum].currentTime = 0;
         playList[songNum].play();
@@ -196,6 +213,8 @@ function playNext() {
     backGround()
     playImg()
     songTitle()
+    // autoplay
+    playList[songNum].addEventListener("ended", playNext)
 }
 
 function playBack() {
@@ -206,6 +225,8 @@ function playBack() {
     backGround() 
     playImg()
     songTitle()
+    // autoplay
+    playList[songNum].addEventListener("ended", playNext)
 }
 
 BACK.addEventListener("click", playBack);
@@ -232,6 +253,7 @@ document.body.addEventListener("click", event => {
 function clickMenu() {
     playList[songNum].addEventListener("timeupdate", progressUpdate)
     songTime()
+    animationPlay()
     if (isPlay === false) {
         playList[songNum].currentTime = 0;
         playList[songNum].play();
@@ -270,4 +292,5 @@ M_TITLE_3.addEventListener("click", event => {
 
 
 
-
+// autoplay
+playList[songNum].addEventListener("ended", playNext)
