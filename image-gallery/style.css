@@ -127,14 +127,13 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     align-items: center;
     flex-wrap: wrap;
-    gap: 25px;
-    padding: 25px 25px 10px;
+    gap: 2.5vw;
+    padding: 25px 2.5vw 10px;
 }
 .img-gallery {
-
     display: flex;
     width: 30vw;
     height: 20vw;
@@ -181,12 +180,19 @@
     .box-search {
         width: 30%;
     }
+    .images-container {
+        padding: 25px 3.3vw 10px;
+        gap: 3.33vw;
+    }
     .img-gallery {
         width: 45vw;
         height: 30vw;
     }
 }
 @media (max-width: 920px) {
+    .images-container {
+        justify-content: center;
+    }
     .img-gallery {
         width: 70vw;
         height: 45vw;
