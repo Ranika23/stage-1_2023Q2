@@ -95,14 +95,14 @@
 .button-close {
     width: 25px;
     height: 25px;
-    top: 4px;
+    top: 3px;
     background-image: url(assets/img/close.png);
     display: none;
 }
 .button-close:hover {
     width: 27px;
     height: 27px;
-    top: 1px;
+    top: 2px;
 }    
 .main {
     height: 60%;
@@ -127,7 +127,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     gap: 25px;
@@ -176,4 +176,19 @@
     color: white;
     text-decoration: underline;
     transition: 0.5s;
+}
+@media (max-width: 1160px) {
+    .box-search {
+        width: 30%;
+    }
+    .img-gallery {
+        width: 45vw;
+        height: 30vw;
+    }
+}
+@media (max-width: 920px) {
+    .img-gallery {
+        width: 70vw;
+        height: 45vw;
+    }
 }
