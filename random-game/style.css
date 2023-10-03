@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    background-image: url(assets/img/фон.jpg);
+    background-size: 100% 100%;
+    /*background: linear-gradient(90deg, #399292, #00c0c0, #3dd8be);*/
+}
+.tetris {
+    display: flex;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    width: 550px;
+    height: 350px;
+    padding: 30px;
+    padding-left: 50px;
+    border-radius: 50px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
+    inset -15px -15px 20px rgba(19, 19, 22, 0.3),
+    15px 15px 20px rgba(19, 19, 22, 0.3), 
+    -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    
+}
+
+.rotate {
+    position: absolute;
+    background-image: url(assets/img/rotate.png);
+    width: 64px;
+    height: 64px;
+    right: 100px;
+    top: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.left {
+    position: absolute;
+    background-image: url(assets/img/left.png);
+    width: 42px;
+    height: 42px;
+    right: 150px;
+    top: 190px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.right {
+    position: absolute;
+    background-image: url(assets/img/right.png);
+    width: 42px;
+    height: 42px;
+    right: 70px;
+    top: 190px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.bottom {
+    position: absolute;
+    background-image: url(assets/img/bottom.png);
+    width: 42px;
+    height: 42px;
+    right: 110px;
+    top: 220px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 209px;
+    height: 250px;
+    padding: 1px;
+    gap: 1px;
+    border-radius: 2px;
+
+    background-color: rgba(255, 255, 249, 0.70);
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3),
+    -3px -3px 5px rgba(19, 19, 22, 0.3);
+
+}
+.container div {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: rgba(59, 56, 3, 0.144);
+}
+.container div.I {
+    background-color: rgb(235, 106, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.L {
+    background-color: rgb(235, 231, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.J {
+    background-color: rgb(0, 233, 58);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.S {
+    background-color: rgb(0, 224, 231);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.Z {
+    background-color: rgb(71, 2, 233);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.T {
+    background-color: rgb(240, 0, 200);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.O {
+    background-color: rgb(236, 0, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
