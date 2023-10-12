@@ -65,8 +65,8 @@ class TetrisPlay {
         const matrixTetrom = TETROM_MAT[nameTetrom]; //матрица случайной фигурки
 
         const columnPlayMargin = 6 - Math.floor(matrixTetrom.length / 2)// номер стартовой колонки
-        /*const rowPlayMargin = -2*/
-        const rowPlayMargin = matrixTetrom.length;
+        const rowPlayMargin = -2;
+        /*const rowPlayMargin = matrixTetrom.length;*/
 
         this.tetrom = { //значение фигурки
             nameTetrom,
@@ -74,6 +74,92 @@ class TetrisPlay {
             rowPlayMargin,
             columnPlayMargin
         }
+    }
+    rotateTetrom(){
+        const startTetrom = this.tetrom.matrixTetrom;
+        const rotateTetrom = [];
+        for (let i = 0; i < this.tetrom.matrixTetrom.length; i++) {
+            rotateTetrom[i] = [];
+            for (let j = 0; j < this.tetrom.matrixTetrom.length; j++) {
+                rotateTetrom[i][j] = this.tetrom.matrixTetrom[this.tetrom.matrixTetrom.length - j - 1][i];
+            }
+        }
+        this.tetrom.matrixTetrom = rotateTetrom;
+        if(this.validTetrom() === false) {
+            this.tetrom.matrixTetrom = startTetrom;
+        }
+    }
+    leftTetrom() {
+        this.tetrom.columnPlayMargin -= 1;
+        if(this.validTetrom() === false) {
+            this.tetrom.columnPlayMargin += 1;
+        }
+    }
+    rigthTetrom() {
+        this.tetrom.columnPlayMargin += 1;
+        if(this.validTetrom() === false) {
+            this.tetrom.columnPlayMargin -= 1;
+        }
+    }
+    downTetrom() {
+        this.tetrom.rowPlayMargin += 1;
+        if(this.validTetrom() === false) {
+            this.tetrom.rowPlayMargin -= 1;
+            this.saveTetrom();
+        }
+    }
+    validTetrom() {
+        const size = this.tetrom.matrixTetrom.length;
+        for (let r = 0; r < size; r++) {
+            for (let c = 0; c < size; c++) {
+                if(this.tetrom.matrixTetrom[r][c] === 0) continue;
+                if(this.outBoardTetrom(r,c)) return false;
+                if(this.touchTetrom(r,c)) return false;
+            }
+        }
+    return true
+    }
+
+    outBoardTetrom(r,c) {
+        return this.tetrom.rowPlayMargin + r >= this.marginplay.length ||
+            this.tetrom.columnPlayMargin + c >= 13 ||
+            this.tetrom.columnPlayMargin + c < 0;
+    }
+    saveTetrom() {
+        const tetrMatrSize = TETRIS.tetrom.matrixTetrom.length;
+        for (let r = 0; r < tetrMatrSize; r++) {
+            for (let c = 0; c < tetrMatrSize; c++) {
+                if (!TETRIS.tetrom.matrixTetrom[r][c]) continue;
+    
+                TETRIS.marginplay[TETRIS.tetrom.rowPlayMargin + r][TETRIS.tetrom.columnPlayMargin + c] = TETRIS.tetrom.nameTetrom
+          
+            }
+        }
+        this.deleteRows() // удаление заполненной строчки
+        this.generTetrom()
+    }
+    deleteRows() {
+        const rowsNumber = []; //для номеров заполненных строк
+        for (let r = 0; r < 15; r++) {
+            if(this.marginplay[r].every(element => element != 0)) {
+                rowsNumber.push(r);
+            }
+        }
+        this.deleteLine(rowsNumber);
+
+    }
+
+    deleteLine(rows) {
+        rows.forEach(row => {
+            for(; row > 0; row--) {
+                this.marginplay[row] = this.marginplay[row - 1];
+            }
+            this.marginplay[0] = new Array(13).fill(0);
+        })
+    }
+
+    touchTetrom(r,c){
+        return this.marginplay[this.tetrom.rowPlayMargin + r]?.[this.tetrom.columnPlayMargin + c];
     }
 }
 
@@ -90,341 +176,9 @@ function convIndexPosit(r, c) {
 }
 
 initKeyBoardTetrom()
-
+initClickTetrom()
 drawTetrom()
 
-
-function drawTetromDownRight() {
-    cellsTetrom.forEach(cellTetrom => cellTetrom.removeAttribute("class"));
-    const nameTetr = TETRIS.tetrom.nameTetrom; //имя фигурки
-    const tetrMatrSize = TETRIS.tetrom.matrixTetrom.length; //размер матрицы фигурки
-
-    for (let r = 0; r < tetrMatrSize; r++) {
-        for (let c = 0; c < tetrMatrSize; c++) {
-            if (!TETRIS.tetrom.matrixTetrom[r][c]) continue;
-            if (TETRIS.tetrom.rowPlayMargin + r < 0) continue;
-            const indexCell = (TETRIS.tetrom.rowPlayMargin + r) * 13 + TETRIS.tetrom.columnPlayMargin + c + 1;
-            cellsTetrom[indexCell].classList.add(nameTetr)
-        }
-    }
-
-}
-function drawTetromDownLeft() {
-    cellsTetrom.forEach(cellTetrom => cellTetrom.removeAttribute("class"));
-    const nameTetr = TETRIS.tetrom.nameTetrom; //имя фигурки
-    const tetrMatrSize = TETRIS.tetrom.matrixTetrom.length; //размер матрицы фигурки
-
-    for (let r = 0; r < tetrMatrSize; r++) {
-        for (let c = 0; c < tetrMatrSize; c++) {
-            if (!TETRIS.tetrom.matrixTetrom[r][c]) continue;
-            if (TETRIS.tetrom.rowPlayMargin + r < 0) continue;
-            const indexCell = (TETRIS.tetrom.rowPlayMargin + r) * 13 + TETRIS.tetrom.columnPlayMargin + c - 1;
-            cellsTetrom[indexCell].classList.add(nameTetr)
-        }
-    }
-
-}
-
-
-let matrixRotate = TETRIS.tetrom.matrixTetrom;
-// движение фигурки по нажатию на клавиши
-function initKeyBoardTetrom() {
-
-
-    document.addEventListener("keydown", event => {
-
-        if (event.code == "Enter") {
-
-            rotateTetrom();
-        
-
-            TETRIS.tetrom.matrixTetrom = rotateTetrom()
-          
- 
-            matrixRotate = TETRIS.tetrom.matrixTetrom;
-
-            if (matrixRotate[matrixRotate.length - 1].includes(1) === false && (TETRIS.tetrom.nameTetrom != "O") && (TETRIS.tetrom.nameTetrom != "I")) {
-                if (TETRIS.tetrom.rowPlayMargin > 12) {
-          
-                    TETRIS.tetrom.rowPlayMargin -= 2;          
-                }         
-            }
-            else if (TETRIS.tetrom.rowPlayMargin > 12 && (TETRIS.tetrom.nameTetrom != "O") && (TETRIS.tetrom.nameTetrom != "I")) {
-                TETRIS.tetrom.rowPlayMargin -= 1;
-            }
-            else if (TETRIS.tetrom.nameTetrom === "I") {
-            if(TETRIS.tetrom.rowPlayMargin > 11) {
-            TETRIS.tetrom.rowPlayMargin -= 2;
-        }
-    }
-            drawTetrom()
-
-            if (TETRIS.tetrom.nameTetrom === "I") {
-                if (TETRIS.tetrom.columnPlayMargin === 0) {
-                    drawTetromDownRight();
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                }
-                if (TETRIS.tetrom.columnPlayMargin === -2) {
-                    drawTetromDownRight();
-                    TETRIS.tetrom.columnPlayMargin += 2;
-                    drawTetrom()
-                }
-                if (TETRIS.tetrom.columnPlayMargin === -1) {
-                    drawTetromDownRight();
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                    drawTetrom()
-                }
-                if (TETRIS.tetrom.columnPlayMargin === 10) {
-                    drawTetromDownLeft();
-                    TETRIS.tetrom.columnPlayMargin -= 1;
-                }
-                if (TETRIS.tetrom.columnPlayMargin === 11) {
-                    drawTetromDownLeft();
-                    TETRIS.tetrom.columnPlayMargin -= 2;
-                        drawTetrom()   
-                }
-            }
-            else if (TETRIS.tetrom.columnPlayMargin === -1 && TETRIS.tetrom.nameTetrom != "O") {
-                drawTetromDownRight();
-                TETRIS.tetrom.columnPlayMargin += 1;
-            }
-            else if (TETRIS.tetrom.columnPlayMargin === 11 && TETRIS.tetrom.nameTetrom != "O" && TETRIS.tetrom.nameTetrom != "I") {
-                drawTetromDownLeft();
-                TETRIS.tetrom.columnPlayMargin -= 1;
-            }
-        }
-
-        if (event.code == "ArrowDown") {
-            TETRIS.tetrom.rowPlayMargin += 1;
-            if (matrixRotate[matrixRotate.length - 1].includes(1) === false) {
-              
-                if (TETRIS.tetrom.rowPlayMargin < 14 && (TETRIS.tetrom.nameTetrom != "I")) {
-                    drawTetrom()
-                }
-                if (TETRIS.tetrom.rowPlayMargin < 13 && (TETRIS.tetrom.nameTetrom === "I")) {
-                    drawTetrom()
-                }
-                if (matrixRotate[matrixRotate.length - 2].includes(1) === true && TETRIS.tetrom.nameTetrom === "I") {
-                    if (TETRIS.tetrom.rowPlayMargin < 12) {
-                        drawTetrom()
-                    }
-                }
-                if (matrixRotate[matrixRotate.length - 2].includes(1) === false) {
-                    if (TETRIS.tetrom.rowPlayMargin < 14) {
-                        drawTetrom()
-                    }
-                }
-                if (TETRIS.tetrom.rowPlayMargin > 13) {
-                    TETRIS.tetrom.rowPlayMargin -= 1;
-                }
-            }
-
-            if (TETRIS.tetrom.nameTetrom === "O") {
-                if (TETRIS.tetrom.rowPlayMargin < 14) {
-                    drawTetrom()
-                }
-                if (TETRIS.tetrom.rowPlayMargin > 13) {
-                    TETRIS.tetrom.rowPlayMargin -= 1;
-                }
-            }
-
-            if (matrixRotate[matrixRotate.length - 1].includes(1) && TETRIS.tetrom.nameTetrom != "O") {
-               
-                if (TETRIS.tetrom.rowPlayMargin < 16 - matrixRotate.length) {
-                    drawTetrom()
-                }
-                if (TETRIS.tetrom.rowPlayMargin > 15 - matrixRotate.length) {                    
-                    TETRIS.tetrom.rowPlayMargin -= 1;
-                }
-                
-            }
-
-
-            if (rotateLeftLast() === true) {
-                if (TETRIS.tetrom.columnPlayMargin === (12 - matrixRotate.length)) {
-                    drawTetromDownRight();
-                    TETRIS.tetrom.columnPlayMargin += 1
-                }
-            }
-
-            else if ((rotateLeftLast() === false) && TETRIS.tetrom.nameTetrom != "I") {
-                if (TETRIS.tetrom.columnPlayMargin === (13 - matrixRotate.length)) {
-                    drawTetromDownRight();
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                }
-            }
-
-            else if (TETRIS.tetrom.nameTetrom === "I") {
-                if (rotateLeftLast() === false) {
-                    if (TETRIS.tetrom.columnPlayMargin === (13 - matrixRotate.length)) {
-                        drawTetromDownRight();
-                        TETRIS.tetrom.columnPlayMargin += 1;
-                    }
-                }
-
-                if (rotateLeftBeforeLast() === false) {
-                    if (TETRIS.tetrom.columnPlayMargin === (14 - matrixRotate.length)) {
-                        drawTetromDownRight();
-                        TETRIS.tetrom.columnPlayMargin += 1
-                    }
-                }
-            }
-
-
-            if (rotateLeftFirth() === true) {
-                if (TETRIS.tetrom.columnPlayMargin === 1) {
-                    drawTetromDownLeft();
-                    TETRIS.tetrom.columnPlayMargin -= 1
-                }
-            }
-
-
-            else if ((rotateLeftFirth() === false) && TETRIS.tetrom.nameTetrom != "I") {
-
-                if (TETRIS.tetrom.columnPlayMargin === 0) {
-
-                    drawTetromDownLeft();
-                    TETRIS.tetrom.columnPlayMargin -= 1
-                }
-            }
-
-            else if (TETRIS.tetrom.nameTetrom === "I") {
-                if (rotateLeftFirth() === false) {
-                    if (TETRIS.tetrom.columnPlayMargin === 0) {
-                        drawTetromDownLeft();
-                        TETRIS.tetrom.columnPlayMargin -= 1
-                    }
-                }
-
-                if (rotateLeftAfterFirth() === false) {
-                    if (TETRIS.tetrom.columnPlayMargin === -1) {
-                        drawTetromDownLeft();
-                        TETRIS.tetrom.columnPlayMargin -= 1
-                    }
-                }
-            }
-        }
-
-        function rotateLeftLast() {
-            for (let i = 0; i < matrixRotate.length; i++) {
-                for (let j = 0; j < matrixRotate.length; j++) {
-                    if (j === matrixRotate.length - 1) {
-                        if (matrixRotate[i][j] === 1) { return true }
-                    }
-                }
-            }
-            return false
-        }
-        function rotateLeftBeforeLast() {
-            if (TETRIS.tetrom.nameTetrom === "I") {
-                for (let i = 0; i < matrixRotate.length; i++) {
-                    for (let j = 0; j < matrixRotate.length; j++) {
-                        if (j === matrixRotate.length - 2) {
-                            if (matrixRotate[i][j] === 1) { return true }
-                        }
-                    }
-                }
-            }
-
-            return false
-        }
-        function rotateLeftFirth() {
-            for (let i = 0; i < matrixRotate.length; i++) {
-                for (let j = 0; j < matrixRotate.length; j++) {
-                    if (j === 0) {
-                        if (matrixRotate[i][j] === 1) { return true }
-                    }
-                }
-            }
-            return false
-        }
-        function rotateLeftAfterFirth() {
-            if (TETRIS.tetrom.nameTetrom === "I") {
-                for (let i = 0; i < matrixRotate.length; i++) {
-                    for (let j = 0; j < matrixRotate.length; j++) {
-                        if (j === 1) {
-                            if (matrixRotate[i][j] === 1) { return true }
-                        }
-                    }
-                }
-            }
-
-            return false
-        }
-
-
-        if (event.code == "ArrowRight") {
-            
-            if ((TETRIS.tetrom.columnPlayMargin > (12 - matrixRotate.length)) && (rotateLeftLast() === true)) {
-                TETRIS.tetrom.columnPlayMargin -= 1;
-            }
-
-            else if (rotateLeftLast() === false && TETRIS.tetrom.nameTetrom != "I") {
-                if (TETRIS.tetrom.columnPlayMargin > (13 - matrixRotate.length)) {
-                    TETRIS.tetrom.columnPlayMargin -= 1;
-                }
-            }
-            else if (TETRIS.tetrom.nameTetrom === "I") {
-                if ((rotateLeftBeforeLast() === false) && (rotateLeftLast() === false) && (TETRIS.tetrom.columnPlayMargin > (14 - matrixRotate.length))) {
-                    TETRIS.tetrom.columnPlayMargin -= 1;
-                }
-                if ((rotateLeftBeforeLast() === true) && (rotateLeftLast() === false) && (TETRIS.tetrom.columnPlayMargin > (13 - matrixRotate.length))) {
-                    TETRIS.tetrom.columnPlayMargin -= 1;
-                }
-                if (matrixRotate[matrixRotate.length - 2].includes(1) === false) {
-              
-                    if(TETRIS.tetrom.rowPlayMargin > 13) {
-                        TETRIS.tetrom.rowPlayMargin -= 1;
-                    }
-                }  
-                if ((matrixRotate[matrixRotate.length - 2].includes(1) === true) && (matrixRotate[matrixRotate.length - 1].includes(1) === false) && (TETRIS.tetrom.rowPlayMargin > 12)) {
-                  
-                    TETRIS.tetrom.rowPlayMargin -= 1;
-                  
-                }
-            }
-            TETRIS.tetrom.columnPlayMargin += 1;
-            drawTetrom()
-
-        }
-        if (event.code == "ArrowLeft") {
-            if ((TETRIS.tetrom.columnPlayMargin < 1) && (rotateLeftFirth() === true)) {
-                TETRIS.tetrom.columnPlayMargin += 1;
-            }
-
-
-            else if (rotateLeftFirth() === false && TETRIS.tetrom.nameTetrom != "I") {
-                if (TETRIS.tetrom.columnPlayMargin < 0) {
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                }
-            }
-            else if (TETRIS.tetrom.nameTetrom === "I") {
-                if ((rotateLeftAfterFirth() === false) && (rotateLeftFirth() === false) && (TETRIS.tetrom.columnPlayMargin < -1)) {
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                }
-                if ((rotateLeftAfterFirth() === true) && (rotateLeftFirth() === false) && (TETRIS.tetrom.columnPlayMargin < 0)) {
-                    TETRIS.tetrom.columnPlayMargin += 1;
-                }
-                if (matrixRotate[matrixRotate.length - 2].includes(1) === false) {
-              
-                    if(TETRIS.tetrom.rowPlayMargin > 13) {
-                        TETRIS.tetrom.rowPlayMargin -= 1;
-                    }
-                }  
-                if (matrixRotate[matrixRotate.length - 2].includes(1) === true && (matrixRotate[matrixRotate.length - 1].includes(1) === false)) {
-                    if(TETRIS.tetrom.rowPlayMargin > 12) {
-                  
-                        TETRIS.tetrom.rowPlayMargin -= 1;
-                      
-                    }
-                } 
-
-            }
-            TETRIS.tetrom.columnPlayMargin -= 1;
-            drawTetrom()
-        }
-    })
-}
 
 function initClickTetrom() {
     const bottom = document.querySelector(".bottom");
@@ -432,42 +186,64 @@ function initClickTetrom() {
     const right = document.querySelector(".right");
     const rotate = document.querySelector(".rotate");
     rotate.addEventListener("click", event => {
-        TETRIS.tetrom.matrixTetrom = rotateTetrom()
-        rotateTetrom();
+        rotateTetromMove();
     })
 
     bottom.addEventListener("click", event => {
-        TETRIS.tetrom.rowPlayMargin += 1;
-        drawTetrom()
-        if (TETRIS.tetrom.rowPlayMargin > (14 - TETRIS.tetrom.matrixTetrom[0].length)) {
-            TETRIS.tetrom.rowPlayMargin -= 1;
-        }
+        downTetromMove();
     })
 
     left.addEventListener("click", event => {
-        TETRIS.tetrom.columnPlayMargin -= 1;
-        drawTetrom()
-        if (TETRIS.tetrom.columnPlayMargin < (Math.floor(TETRIS.tetrom.matrixTetrom.length) + 1 - TETRIS.tetrom.matrixTetrom.length)) {
-            TETRIS.tetrom.columnPlayMargin += 1;
-        }
+        leftTetromMove();
     })
     right.addEventListener("click", event => {
-        TETRIS.tetrom.columnPlayMargin += 1;
-        drawTetrom()
-        if (TETRIS.tetrom.columnPlayMargin > (12 - TETRIS.tetrom.matrixTetrom.length)) {
-            TETRIS.tetrom.columnPlayMargin -= 1;
-        }
+        rigthTetromMove();
     })
-
-
 }
 
+function initKeyBoardTetrom() {
+
+
+    document.addEventListener("keydown", event => {
+
+        if (event.code == "Enter") {
+            rotateTetromMove();
+        }
+        if (event.code == "ArrowDown") {
+            downTetromMove();
+        }
+        if (event.code == "ArrowRight") {
+            rigthTetromMove();
+        }
+        if (event.code == "ArrowLeft") {
+            leftTetromMove();
+        }    
+    })
+}
+function rotateTetromMove(tetrom) {
+    TETRIS.rotateTetrom();
+    drawTetrom();
+};
+function downTetromMove() {
+    TETRIS.downTetrom();
+    drawTetrom();
+};
+function rigthTetromMove() {
+    TETRIS.rigthTetrom();
+    drawTetrom();
+};
+function leftTetromMove() {
+    TETRIS.leftTetrom();
+    drawTetrom();
+};
 
 
 // прорисовка фигурки
 function drawTetrom() {
     cellsTetrom.forEach(cellTetrom => cellTetrom.removeAttribute("class"));
+    drawMatrix()
     const nameTetr = TETRIS.tetrom.nameTetrom; //имя фигурки
+
     const tetrMatrSize = TETRIS.tetrom.matrixTetrom.length; //размер матрицы фигурки
 
     for (let r = 0; r < tetrMatrSize; r++) {
@@ -475,22 +251,23 @@ function drawTetrom() {
             if (!TETRIS.tetrom.matrixTetrom[r][c]) continue;
             if (TETRIS.tetrom.rowPlayMargin + r < 0) continue;
             const indexCell = convIndexPosit(TETRIS.tetrom.rowPlayMargin + r, TETRIS.tetrom.columnPlayMargin + c);
-            cellsTetrom[indexCell].classList.add(nameTetr)
+            cellsTetrom[indexCell].classList.add(nameTetr);
+        }
+    }
+  
+
+}
+
+// прорисовка поля после падения фигурок
+function drawMatrix() {
+    for (let r = 0; r < 15; r++) {
+        for (let c = 0; c < 13; c++) {
+            if (!TETRIS.marginplay[r][c]) continue;
+            const name = TETRIS.marginplay[r][c];
+            const index = convIndexPosit(r, c);
+            cellsTetrom[index].classList.add(name)
         }
     }
 
 }
 
-// поворот фигурки
-function rotateTetrom() {
-    const tetrMatrSize = TETRIS.tetrom.matrixTetrom.length; //размер матрицы фигурки
-    const rotateTetrom = [];
-    for (let i = 0; i < tetrMatrSize; i++) {
-        rotateTetrom[i] = [];
-        for (let j = 0; j < tetrMatrSize; j++) {
-            rotateTetrom[i][j] = TETRIS.tetrom.matrixTetrom[tetrMatrSize - j - 1][i];
-        }
-    }
-
-    return rotateTetrom
-}
