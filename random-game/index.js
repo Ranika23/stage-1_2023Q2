@@ -163,6 +163,8 @@ class TetrisPlay {
     }
 }
 
+let animationStartId;
+let timeStartId;
 
 
 const TETRIS = new TetrisPlay();
@@ -177,7 +179,7 @@ function convIndexPosit(r, c) {
 
 initKeyBoardTetrom()
 initClickTetrom()
-drawTetrom()
+downTetromMove()
 
 
 function initClickTetrom() {
@@ -227,6 +229,8 @@ function rotateTetromMove(tetrom) {
 function downTetromMove() {
     TETRIS.downTetrom();
     drawTetrom();
+    stopDraw();
+    startDraw();
 };
 function rigthTetromMove() {
     TETRIS.rigthTetrom();
@@ -237,7 +241,13 @@ function leftTetromMove() {
     drawTetrom();
 };
 
-
+function startDraw() { // автоматическое падение фигурок
+    timeStartId = setTimeout(() => animationStartId = requestAnimationFrame(downTetromMove), 500);
+}
+function stopDraw() {
+cancelAnimationFrame(animationStartId);
+clearTimeout(timeStartId);
+}
 // прорисовка фигурки
 function drawTetrom() {
     cellsTetrom.forEach(cellTetrom => cellTetrom.removeAttribute("class"));
