@@ -451,11 +451,11 @@ function saveLocalStorage() {
 
 
 console.log(`
-    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-5.md;
+    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-9.md;
     \n
-    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/image-gallery/ ;
+    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/random-game/ ;
     \n
-    3. Done 28.09.2023 / deadline 02.10.2023;
+    3. Done 15.10.2023 / deadline 15.10.2023;
     \n
     4. Score : 70/60;
     \n
