@@ -1,0 +1,445 @@
+@font-face {
+    font-family: Regular;
+    src: url(assets/fonts/Forum-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.body {
+    font-family: Regular;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    padding-left:5px;
+    padding-right:5px;
+    background-image: url(assets/img/фон.jpg);
+    background-size: 100% 100%;
+}
+
+
+.again {
+    position: absolute;
+    z-index: 999;
+    left: inherit;
+    top: 80%;
+    width: 50%;
+    height: 10%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: rgb(247, 247, 93);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
+    inset -15px -15px 20px rgba(19, 19, 22, 0.3),
+    15px 15px 20px rgba(19, 19, 22, 0.3), 
+    -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    font-size: 3.5vw;
+    color: rgb(59, 54, 54);;
+    animation: again 4s;
+}
+@keyframes again {
+    0% {
+        width: 0vw;
+        height: 0vw;
+ 
+    }
+    95% {
+        width: 0vw;
+        height: 0vw;
+
+    }
+    100% {
+        width: 50%;
+        height: 10%;
+        z-index: 99999;
+    }
+}
+.end {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 999;
+    top: 15%;
+    left: inherit;
+    width: 90%;
+    height: 70%;
+    border-radius: 50px;
+    font-size: 0px;
+    animation: gameOver 3s;
+    color: rgba(61, 61, 54, 0.808);
+}
+@keyframes gameOver{
+    0% {
+        font-size: 0px;
+    }
+    10% {
+        font-size: 16vw;
+    }
+    48% {
+        font-size: 6vw;
+    }
+    85% {
+        font-size: 16vw;
+    }
+    95% {
+        font-size: 0px;
+    }
+}
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: 999;
+    top: inherit;
+    left: inherit;
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    background-color: rgb(247, 247, 93);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
+    inset -15px -15px 20px rgba(19, 19, 22, 0.3),
+    15px 15px 20px rgba(54, 54, 38, 0.3), 
+    -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    font-size: 2vw;
+    gap: 4%;
+}
+.start div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 90%;
+    border: 1px solid rgb(129, 86, 248);
+    border-radius: 10px;
+    color: rgb(129, 86, 248);
+    box-shadow: inset 3px 3px 5px rgba(255, 255, 255, 0.3), inset -3px -3px 5px rgba(19, 19, 22, 0.3), 3px 3px 5px rgba(54, 54, 38, 0.3), -3px -3px 5px rgba(59, 59, 68, 0.3);
+    cursor: pointer;
+}
+.tetris {
+    display: flex;
+    position: relative;
+    justify-self: end;
+    align-items: center;
+    width: 550px;
+    height: 350px;
+    padding: 30px;
+    padding-left: 50px;
+    border-radius: 50px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
+    inset -15px -15px 20px rgba(19, 19, 22, 0.3),
+    15px 15px 20px rgba(19, 19, 22, 0.3), 
+    -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    
+}
+.my-result {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 0vw;
+    height: 0vw;
+    border-radius: 10px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
+    inset -15px -15px 20px rgba(19, 19, 22, 0.3),
+    15px 15px 20px rgba(19, 19, 22, 0.3), 
+    -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    animation: my-result 2.8s;
+}
+.my-result div {
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 30%;
+    color: rgb(255, 255, 11);
+    text-align: center;
+}
+.speed,
+.moves,
+.points {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3%;
+}
+.speed div,
+.moves div,
+.points div {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+}
+@keyframes my-result {
+    1% {
+        width: 40vw;
+        height: 15vw;
+    }
+    80% {
+        width: 40vw;
+        height: 15vw; 
+    }
+    98% {
+        width: 40vw;
+        height: 15vw; 
+    }
+    99% {
+        width: 0vw;
+        height: 0vw;  
+    }
+    100% {
+        display: none;
+    }
+}
+.title-top {
+    display: none;
+    gap: 0%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 20vw;
+    border-radius: 10px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), inset -15px -15px 20px rgba(19, 19, 22, 0.3), 15px 15px 20px rgba(19, 19, 22, 0.3), -15px -15px 20px rgba(59, 59, 68, 0.3);
+    animation: top10 3.2s;
+    font-size: 2.5em;
+    top: 25%;
+    opacity: 0.8;
+    text-align: center;
+    color: rgb(36, 33, 33);
+    padding: 30px;
+}
+.top10 {
+    display: flex;
+    gap: 0%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 10px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), inset -15px -15px 20px rgba(19, 19, 22, 0.3), 15px 15px 20px rgba(19, 19, 22, 0.3), -15px -15px 20px rgba(59, 59, 68, 0.3);
+    animation: top10 3.2s;
+    font-size: 9px;
+    top: 15%;
+    padding: 1%;
+    filter: blur(1px);
+}
+.top10 div {
+    width: 95%;
+    height: 10%;
+    color: rgb(255, 255, 11);;
+}
+.title,
+.rows {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0%;
+} 
+.title div,
+.rows div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    font-size: 1.5em;
+    border: 0.1px solid rgb(100, 100, 100);
+}
+@keyframes top10 {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+ 
+    }
+    95% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+
+    }
+    100% {
+        width: 30vw;
+        height: 40vw;
+        z-index: 99999;
+        opacity: 1;
+    }
+}
+.rotate {
+    position: absolute;
+    background-image: url(assets/img/rotate.png);
+    width: 64px;
+    height: 64px;
+    right: 100px;
+    top: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.left {
+    position: absolute;
+    background-image: url(assets/img/left.png);
+    width: 42px;
+    height: 42px;
+    right: 150px;
+    top: 190px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.right {
+    position: absolute;
+    background-image: url(assets/img/right.png);
+    width: 42px;
+    height: 42px;
+    right: 70px;
+    top: 190px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.bottom {
+    position: absolute;
+    background-image: url(assets/img/bottom.png);
+    width: 42px;
+    height: 42px;
+    right: 110px;
+    top: 220px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 4px 4px 5px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 5px rgba(19, 19, 22, 0.3);
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 209px;
+    height: 250px;
+    padding: 1px;
+    gap: 1px;
+    border-radius: 2px;
+
+    background-color: rgba(255, 255, 249, 0.70);
+    box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3),
+    -3px -3px 5px rgba(19, 19, 22, 0.3);
+
+}
+.container div {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: rgba(59, 56, 3, 0.144);
+}
+.container div.I {
+    background-color: rgb(235, 106, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.L {
+    background-color: rgb(235, 231, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.J {
+    background-color: rgb(0, 233, 58);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.S {
+    background-color: rgb(0, 224, 231);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.Z {
+    background-color: rgb(71, 2, 233);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.T {
+    background-color: rgb(240, 0, 200);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.container div.O {
+    background-color: rgb(236, 0, 0);
+    box-shadow: inset 2.5px 2.5px 2px rgba(255, 255, 255, 0.3),
+    inset -2.5px -2.5px 2px rgba(19, 19, 22, 0.3);
+}
+.mask {
+    animation: mask 0.5s;
+}
+@keyframes mask {
+    0% {
+        transform: scale(0.8) rotate(30deg);
+    }
+    45% {
+        transform: scale(0.8) rotate(-30deg);
+    }
+    90% {
+        transform: scale(1) rotate(0);
+    }
+}
+.footer {
+    height: 5%;
+    width: 100%;
+    background: grey;
+    opacity: 0.7;
+    padding: 10px 30px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.git-img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+.rs_school_js {
+    height: 90%;
+    width: 20%;
+    
+}
+
+.rss-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 300px;
+}
+.account-github {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.account-github:hover,
+.rss-link:hover {
+    color: white;
+    text-decoration: underline;
+    transition: 0.5s;
+}
