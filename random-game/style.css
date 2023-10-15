@@ -21,7 +21,6 @@
     padding-right:5px;
     background-image: url(assets/img/фон.jpg);
     background-size: 100% 100%;
-    /*background: linear-gradient(90deg, #399292, #00c0c0, #3dd8be);*/
 }
 
 
@@ -29,7 +28,7 @@
     position: absolute;
     z-index: 999;
     left: inherit;
-    top: 70%;
+    top: 80%;
     width: 50%;
     height: 10%;
     display: none;
@@ -41,7 +40,26 @@
     inset -15px -15px 20px rgba(19, 19, 22, 0.3),
     15px 15px 20px rgba(19, 19, 22, 0.3), 
     -15px -15px 20px  rgba(59, 59, 68, 0.3);
-    font-size: 3vw;
+    font-size: 3.5vw;
+    color: rgb(59, 54, 54);;
+    animation: again 4s;
+}
+@keyframes again {
+    0% {
+        width: 0vw;
+        height: 0vw;
+ 
+    }
+    95% {
+        width: 0vw;
+        height: 0vw;
+
+    }
+    100% {
+        width: 50%;
+        height: 10%;
+        z-index: 99999;
+    }
 }
 .end {
     display: none;
@@ -49,13 +67,31 @@
     align-items: center;
     position: absolute;
     z-index: 999;
-    top: 22%;
+    top: 15%;
     left: inherit;
-    width: 50%;
-    height: 10%;
+    width: 90%;
+    height: 70%;
     border-radius: 50px;
-
-    font-size: 6vw;
+    font-size: 0px;
+    animation: gameOver 3s;
+    color: rgba(61, 61, 54, 0.808);
+}
+@keyframes gameOver{
+    0% {
+        font-size: 0px;
+    }
+    10% {
+        font-size: 16vw;
+    }
+    48% {
+        font-size: 6vw;
+    }
+    85% {
+        font-size: 16vw;
+    }
+    95% {
+        font-size: 0px;
+    }
 }
 .start {
     display: flex;
@@ -113,20 +149,25 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* margin-left: 10px; */
-    width: 40vw;
-    height: 20vw;
+    width: 0vw;
+    height: 0vw;
     border-radius: 10px;
     background-color: rgba(134, 134, 132, 1);
     box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), 
     inset -15px -15px 20px rgba(19, 19, 22, 0.3),
     15px 15px 20px rgba(19, 19, 22, 0.3), 
     -15px -15px 20px  rgba(59, 59, 68, 0.3);
+    animation: my-result 2.8s;
 }
 .my-result div {
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
-    height: 25%;
-    color: rgb(255, 255, 11);;
+    height: 30%;
+    color: rgb(255, 255, 11);
+    text-align: center;
 }
 .speed,
 .moves,
@@ -134,7 +175,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 10px;
+    gap: 3%;
 }
 .speed div,
 .moves div,
@@ -142,6 +183,106 @@
     width: 100%;
     height: 100%;
     font-size: 1.5em;
+}
+@keyframes my-result {
+    1% {
+        width: 40vw;
+        height: 15vw;
+    }
+    80% {
+        width: 40vw;
+        height: 15vw; 
+    }
+    98% {
+        width: 40vw;
+        height: 15vw; 
+    }
+    99% {
+        width: 0vw;
+        height: 0vw;  
+    }
+    100% {
+        display: none;
+    }
+}
+.title-top {
+    display: none;
+    gap: 0%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 20vw;
+    border-radius: 10px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), inset -15px -15px 20px rgba(19, 19, 22, 0.3), 15px 15px 20px rgba(19, 19, 22, 0.3), -15px -15px 20px rgba(59, 59, 68, 0.3);
+    animation: top10 3.2s;
+    font-size: 2.5em;
+    top: 25%;
+    opacity: 0.8;
+    text-align: center;
+    color: rgb(36, 33, 33);
+    padding: 30px;
+}
+.top10 {
+    display: flex;
+    gap: 0%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 10px;
+    background-color: rgba(134, 134, 132, 1);
+    box-shadow: inset 15px 15px 20px rgba(255, 255, 255, 0.3), inset -15px -15px 20px rgba(19, 19, 22, 0.3), 15px 15px 20px rgba(19, 19, 22, 0.3), -15px -15px 20px rgba(59, 59, 68, 0.3);
+    animation: top10 3.2s;
+    font-size: 9px;
+    top: 15%;
+    padding: 1%;
+    filter: blur(1px);
+}
+.top10 div {
+    width: 95%;
+    height: 10%;
+    color: rgb(255, 255, 11);;
+}
+.title,
+.rows {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0%;
+} 
+.title div,
+.rows div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    font-size: 1.5em;
+    border: 0.1px solid rgb(100, 100, 100);
+}
+@keyframes top10 {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+ 
+    }
+    95% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+
+    }
+    100% {
+        width: 30vw;
+        height: 40vw;
+        z-index: 99999;
+        opacity: 1;
+    }
 }
 .rotate {
     position: absolute;

@@ -37,6 +37,8 @@ const TETROM_MAT = {  // матрицы фигурок
 }
 let countTetrom = 0;
 let countPoints = 0;
+let numberGame = 1;
+
 function getRandomName(arr) { // генерация случайного имени фигурки
     const randomInd = Math.floor(Math.random() * arr.length);
     return arr[randomInd];
@@ -62,7 +64,6 @@ class TetrisPlay {
 
     generMarginPlay() {
         this.marginplay = new Array(15).fill().map(() => new Array(13).fill(0));
-        console.table(this.marginplay)
     }
     generTetrom() {
         const nameTetrom = getRandomName(TETROM_NAME); // случайное имя фигурки
@@ -70,7 +71,7 @@ class TetrisPlay {
 
         const columnPlayMargin = 6 - Math.floor(matrixTetrom.length / 2)// номер стартовой колонки
         const rowPlayMargin = -2;
-        /*const rowPlayMargin = matrixTetrom.length;*/
+   
 
         this.tetrom = { //значение фигурки
             nameTetrom,
@@ -171,7 +172,6 @@ class TetrisPlay {
            
             }
             countPoints += 1;
-            console.log(countPoints);
             this.marginplay[0] = new Array(13).fill(0);
         })
    
@@ -201,25 +201,17 @@ const cellsTetrom = document.querySelectorAll(".container div");
 // songs
 const AUDIO_1 = new Audio("assets/audio/start_game.mp3");
 const AUDIO_2 = new Audio("assets/audio/game-over.mp3");
-
-
-
-
 const playList = [AUDIO_1, AUDIO_2];
-
-
-// autoplay
-
-
-
 
 
 let numberSpeed = 0;// скорость игры
 let n = 0;
 let speed = [900, 700, 500, 300, 100];
 
-document.querySelector(".tetris").style.filter = "blur(15px)";
+document.querySelector(".tetris").style.filter = "blur(10px)";
 document.querySelector(".my-result").style.display = "none";
+document.querySelector(".top10").style.display = "none";
+document.querySelector(".title-top").style.display = "none";
  function playAuto() {
     playList[0].play();
  }
@@ -235,31 +227,26 @@ function start() {
 }
 document.querySelector(".speed1").addEventListener("click", event => {
     n = 1;
-    console.log("speed")
     numberSpeed = speed[0];
     start(); 
 })
 document.querySelector(".speed2").addEventListener("click", event => {
     n = 2;
-    console.log("speed2")
     numberSpeed = speed[1];
     start(); 
 })
 document.querySelector(".speed3").addEventListener("click", event => {
     n = 3;
-    console.log("speed3")
     numberSpeed = speed[2];
     start(); 
 })
 document.querySelector(".speed4").addEventListener("click", event => {
     n = 4;
-    console.log("speed4")
     numberSpeed = speed[3];
     start(); 
 })
 document.querySelector(".speed5").addEventListener("click", event => {
     n = 5;
-    console.log("speed5")
     numberSpeed = speed[4];
     start(); 
 })
@@ -272,7 +259,7 @@ function initClickTetrom() {
     const right = document.querySelector(".right");
     const rotate = document.querySelector(".rotate");
     rotate.addEventListener("click", event => {
-        stopDraw();
+        rotateTetromMove();
     })
 
     bottom.addEventListener("click", event => {
@@ -320,6 +307,7 @@ function downTetromMove() {
         playList[1].play();
         playList[0].pause();
         gameEnd();
+        countTetrom -= 1;
     }
 };
 function rigthTetromMove() {
@@ -376,19 +364,13 @@ function drawMatrix() {
 }
 
 function gameEnd() {
-    
+
     stopDraw();
     animationGameEnd()
-    setTimeout(() => activeAgain (), 900);
+    activeAgain ()
+
     document.querySelector(".count-moves").innerHTML = countTetrom;
     document.querySelector(".count-points").innerHTML = countPoints;
-    document.querySelector(".speed-moves").innerHTML = n;
-    
-    
-
-
-
-
 
 }
 
@@ -407,15 +389,92 @@ function activeAgain () {
     document.querySelector(".tetris").style.display = "none";
     document.querySelector(".my-result").style.display = "flex";
     document.querySelector(".again").style.display = "flex";
+    document.querySelector(".top10").style.display = "flex";
     document.querySelector(".end").style.display = "flex";
+    document.querySelector(".title-top").style.display = "flex";
+    document.querySelector(".title-top").style.zIndex = "99999999";
+    document.querySelector(".again").style.zIndex = "99999999";
+    
+}
+
+document.querySelector(".title-top").addEventListener("click", event => {
+    saveLocalStorage()
+    document.querySelector(".title-top").style.display = "none";
+    document.querySelector(".top10").style.filter = "none";
+
+
+
+    localStorage.setItem("numberGame", JSON.stringify(user)); 
+ 
+   if(user.length <= 10) {
+    for(let i = 0; i < user.length; i++) {
+        let obj = user[i];
+        document.querySelector(".moves" + String(i + 1)).innerHTML = String(obj.moves);
+        document.querySelector(".points" + String(i + 1)).innerHTML = String(obj.points);
+        
+    }
+   }
+   let j = 1;
+   if(user.length > 10) {
+    for(let i = user.length - 10; i < user.length; i++) {
+        let obj = user[i];
+        document.querySelector(".moves" + String(j)).innerHTML = String(obj.moves);
+        document.querySelector(".points" + String(j)).innerHTML = String(obj.points);   
+        j++;
+    }
+   }
+  
+    
+    
+
+})
+document.querySelector(".again").addEventListener("click", event => {
+    
+location.reload()
+})
+let user = [];
+function saveLocalStorage() { 
+
+    
+   
+    let local = JSON.parse(localStorage.getItem("numberGame"));
+    
+    if(local != null) {
+        let i = local.length - 1;
+        user.push(...local);
+    }
+    user.push({
+        moves: countTetrom + 1,
+        points: countPoints
+    })
 }
 
 
-document.querySelector(".again").addEventListener("click", event => {
-
-    
-location.reload()
-
-  
-    
-})
+console.log(`
+    1. Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-5.md;
+    \n
+    2. Deploy: https://rolling-scopes-school.github.io/ranika23-JSFEPRESCHOOL2023Q2/image-gallery/ ;
+    \n
+    3. Done 28.09.2023 / deadline 02.10.2023;
+    \n
+    4. Score : 70/60;
+    \n
+    1) Вёрстка(10/10): 
+    \n
+    - (5/5) реализован интерфейс игры; 
+    \n
+    - (5/5) в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс;
+    \n
+    2) (10/10) Логика игры. Ходы, перемещения фигур, другие действия игрока подчиняются определённым свойственным игре правилам;
+    \n
+    3) (10/10) Реализовано завершение игры при достижении игровой цели;
+    \n
+    4) (10/10)  По окончанию игры выводится её результат: количество ходов, набранные баллы;
+    \n
+    5) (10/10)  Есть таблица результатов, в которой сохраняются результаты 10 последних игр (хранится в local storage);
+    \n
+    6) (10/10)  Анимации или звуки, или настройки игры. Баллы начисляются за любой из перечисленных пунктов;
+    \n
+    7) (10/10)  Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения;
+    \n
+`);
