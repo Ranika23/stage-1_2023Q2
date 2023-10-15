@@ -35,9 +35,12 @@ const TETROM_MAT = {  // матрицы фигурок
         [1, 1],
         [1, 1]],
 }
+let countTetrom = 0;
+let countPoints = 0;
 function getRandomName(arr) { // генерация случайного имени фигурки
     const randomInd = Math.floor(Math.random() * arr.length);
     return arr[randomInd];
+
 }
 
 
@@ -46,6 +49,7 @@ class TetrisPlay {
     constructor() {
         this.marginplay; //пустое игровое поле
         this.tetrom; //пустая фигура
+        this.gameEnd = false; //конец игры
         this.initial()
     }
 
@@ -74,6 +78,7 @@ class TetrisPlay {
             rowPlayMargin,
             columnPlayMargin
         }
+     
     }
     rotateTetrom(){
         const startTetrom = this.tetrom.matrixTetrom;
@@ -106,6 +111,8 @@ class TetrisPlay {
         if(this.validTetrom() === false) {
             this.tetrom.rowPlayMargin -= 1;
             this.saveTetrom();
+            countTetrom += 1;
+     
         }
     }
     validTetrom() {
@@ -130,13 +137,20 @@ class TetrisPlay {
         for (let r = 0; r < tetrMatrSize; r++) {
             for (let c = 0; c < tetrMatrSize; c++) {
                 if (!TETRIS.tetrom.matrixTetrom[r][c]) continue;
-    
+                if (this.outBoardTopTetrom(r)) {
+                    this.gameEnd = true;
+                    return;
+                }
                 TETRIS.marginplay[TETRIS.tetrom.rowPlayMargin + r][TETRIS.tetrom.columnPlayMargin + c] = TETRIS.tetrom.nameTetrom
           
             }
         }
+
         this.deleteRows() // удаление заполненной строчки
         this.generTetrom()
+    }
+    outBoardTopTetrom(r) {
+        return this.tetrom.rowPlayMargin + r < 0;
     }
     deleteRows() {
         const rowsNumber = []; //для номеров заполненных строк
@@ -146,6 +160,7 @@ class TetrisPlay {
             }
         }
         this.deleteLine(rowsNumber);
+ 
 
     }
 
@@ -153,9 +168,13 @@ class TetrisPlay {
         rows.forEach(row => {
             for(; row > 0; row--) {
                 this.marginplay[row] = this.marginplay[row - 1];
+           
             }
+            countPoints += 1;
+            console.log(countPoints);
             this.marginplay[0] = new Array(13).fill(0);
         })
+   
     }
 
     touchTetrom(r,c){
@@ -167,19 +186,84 @@ let animationStartId;
 let timeStartId;
 
 
-const TETRIS = new TetrisPlay();
+let TETRIS = new TetrisPlay();
 
 
 
-const cellsTetrom = document.querySelectorAll(".container div");
+
+
 
 function convIndexPosit(r, c) {
     return r * 13 + c;
 }
+const cellsTetrom = document.querySelectorAll(".container div");
 
-initKeyBoardTetrom()
-initClickTetrom()
-downTetromMove()
+// songs
+const AUDIO_1 = new Audio("assets/audio/start_game.mp3");
+const AUDIO_2 = new Audio("assets/audio/game-over.mp3");
+
+
+
+
+const playList = [AUDIO_1, AUDIO_2];
+
+
+// autoplay
+
+
+
+
+
+let numberSpeed = 0;// скорость игры
+let n = 0;
+let speed = [900, 700, 500, 300, 100];
+
+document.querySelector(".tetris").style.filter = "blur(15px)";
+document.querySelector(".my-result").style.display = "none";
+ function playAuto() {
+    playList[0].play();
+ }
+ 
+function start() {
+    playList[0].play();
+    playList[0].addEventListener("ended", playAuto)
+    document.querySelector(".start").style.display = "none";
+    document.querySelector(".tetris").style.filter = "none";
+    initClickTetrom()
+    initKeyBoardTetrom()
+    downTetromMove()
+}
+document.querySelector(".speed1").addEventListener("click", event => {
+    n = 1;
+    console.log("speed")
+    numberSpeed = speed[0];
+    start(); 
+})
+document.querySelector(".speed2").addEventListener("click", event => {
+    n = 2;
+    console.log("speed2")
+    numberSpeed = speed[1];
+    start(); 
+})
+document.querySelector(".speed3").addEventListener("click", event => {
+    n = 3;
+    console.log("speed3")
+    numberSpeed = speed[2];
+    start(); 
+})
+document.querySelector(".speed4").addEventListener("click", event => {
+    n = 4;
+    console.log("speed4")
+    numberSpeed = speed[3];
+    start(); 
+})
+document.querySelector(".speed5").addEventListener("click", event => {
+    n = 5;
+    console.log("speed5")
+    numberSpeed = speed[4];
+    start(); 
+})
+
 
 
 function initClickTetrom() {
@@ -188,7 +272,7 @@ function initClickTetrom() {
     const right = document.querySelector(".right");
     const rotate = document.querySelector(".rotate");
     rotate.addEventListener("click", event => {
-        rotateTetromMove();
+        stopDraw();
     })
 
     bottom.addEventListener("click", event => {
@@ -231,6 +315,12 @@ function downTetromMove() {
     drawTetrom();
     stopDraw();
     startDraw();
+    
+    if(TETRIS.gameEnd) {
+        playList[1].play();
+        playList[0].pause();
+        gameEnd();
+    }
 };
 function rigthTetromMove() {
     TETRIS.rigthTetrom();
@@ -242,11 +332,15 @@ function leftTetromMove() {
 };
 
 function startDraw() { // автоматическое падение фигурок
-    timeStartId = setTimeout(() => animationStartId = requestAnimationFrame(downTetromMove), 500);
+    timeStartId = setTimeout(() => animationStartId = requestAnimationFrame(downTetromMove), numberSpeed);
+
 }
 function stopDraw() {
+
 cancelAnimationFrame(animationStartId);
 clearTimeout(timeStartId);
+
+
 }
 // прорисовка фигурки
 function drawTetrom() {
@@ -278,6 +372,50 @@ function drawMatrix() {
             cellsTetrom[index].classList.add(name)
         }
     }
+   
+}
+
+function gameEnd() {
+    
+    stopDraw();
+    animationGameEnd()
+    setTimeout(() => activeAgain (), 900);
+    document.querySelector(".count-moves").innerHTML = countTetrom;
+    document.querySelector(".count-points").innerHTML = countPoints;
+    document.querySelector(".speed-moves").innerHTML = n;
+    
+    
+
+
+
+
 
 }
 
+function animationGameEnd() {
+   
+    const fullSquares = [...cellsTetrom].filter(c => c.classList.length > 0);
+    fullSquares.forEach((c, j) => {
+        setTimeout(() => c.classList.add("mask"), j * 10);
+        setTimeout(() => c.removeAttribute("class"), j * 10 + 700)
+    })
+    
+}
+
+
+function activeAgain () {
+    document.querySelector(".tetris").style.display = "none";
+    document.querySelector(".my-result").style.display = "flex";
+    document.querySelector(".again").style.display = "flex";
+    document.querySelector(".end").style.display = "flex";
+}
+
+
+document.querySelector(".again").addEventListener("click", event => {
+
+    
+location.reload()
+
+  
+    
+})
